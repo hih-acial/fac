@@ -22,17 +22,17 @@ editorType: used to understand if code for tinymce need to be loaded
 	<title>{$pageTitle|default:"TestLink"}</title>
 	<link rel="icon" href="{$basehref}{$smarty.const.TL_THEME_IMG_DIR}favicon.ico" type="image/x-icon" />
 	
-{* ----- load CSS ------------------------------------------------------------------- *} 
-	<style media="all" type="text/css">@import "{$css}";</style>
+{* ----- load CSS ------------------------------------------------------------------- *}
+
 
 	{if $use_custom_css}
 	<style media="all" type="text/css">@import "{$custom_css}";</style>
 	{/if}
-	
+
 	{if $testproject_coloring eq 'background'}
   	<style type="text/css"> body {ldelim}background: {$testprojectColor};{rdelim}</style>
 	{/if}
-  
+
 	<style media="print" type="text/css">@import "{$basehref}{$smarty.const.TL_PRINT_CSS}";</style>
 
 {* ----- load javascripts libraries -------------------------------------------------- *} 
@@ -61,7 +61,7 @@ editorType: used to understand if code for tinymce need to be loaded
 	<script type="text/javascript" src="{$basehref}third_party/chosen/chosen.jquery.js"></script>
 
 	<script type="text/javascript" src="{$basehref}third_party/prototype/prototype.js" language="javascript"></script>
-
+	<script src="https://bootswatch.com/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript" language="javascript">
 	//<!--
 	var fRoot = '{$basehref}';
