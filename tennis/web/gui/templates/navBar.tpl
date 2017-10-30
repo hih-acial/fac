@@ -13,10 +13,10 @@ title bar + menu
 {config_load file="input_dimensions.conf" section=$cfg_section}
 
 {include file="inc_head.tpl" openHead="yes"}
-<link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
+
 
 <body style="min-width: 800px;">
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="color: white;">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">

@@ -6,7 +6,7 @@
  
 *}
 {lang_get var="labels"
-          s="current_test_plan,ok,testplan_role,msg_no_rights_for_tp,
+          s='current_test_plan,ok,testplan_role,msg_no_rights_for_tp,
              title_test_execution,href_execute_test,href_rep_and_metrics,
              href_update_tplan,href_newest_tcversions,title_plugins,
              href_my_testcase_assignments,href_platform_assign,
@@ -15,7 +15,7 @@
              href_plan_management,href_assign_user_roles,
              href_build_new,href_plan_mstones,href_plan_define_priority,
              href_metrics_dashboard,href_add_remove_test_cases,
-             href_exec_ro_access"}
+             href_exec_ro_access'}
 
 
 {$menuLayout=$tlCfg->gui->layoutMainPageRight}
@@ -54,7 +54,7 @@
 {$divStyle="width:300px;padding: 0px 0px 0px 10px;"}
 {$aStyle="padding: 3px 15px;font-size:16px"}
 
-<div class="vertical_menu" style="float: right; margin:0px 0px 10px 10px;width: 320px;">
+<div class="vertical_menu" >
 	{if $gui->num_active_tplans > 0}
 	  <div class="" style="padding: 3px 15px;">
      {lang_get s='help' var='common_prefix'}
