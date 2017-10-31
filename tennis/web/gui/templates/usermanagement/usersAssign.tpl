@@ -137,7 +137,7 @@ during refresh feature, and then we have a bad refresh on page getting a bug.
     </div>
 
     <div id="usersRoleTable">
-	    <table class="table table-bordered table-hover sortable" width="100%" id="item_view">
+	    <table class="table table-striped table-responsive table-hover sortable" width="100%" id="item_view">
             <thead class="bg-success">
             <tr>
                 <th>
@@ -224,7 +224,7 @@ during refresh feature, and then we have a bad refresh on page getting a bug.
     	{if $tlCfg->demoMode}
 			{$labels.warn_demo}
 		{else}
-    		<input type="submit" name="do_update" value="{$labels.btn_upd_user_data}" />
+    		<input class="btn btn-warning" type="submit" name="do_update" value="{$labels.btn_upd_user_data}" />
 		{/if}
 	</div>
   </form>
