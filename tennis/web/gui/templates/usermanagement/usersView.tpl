@@ -60,7 +60,7 @@ var del_action=fRoot+"lib/usermanagement/usersView.php?operation=disable&user=";
 
   <h1 class="title">{$gui->main_title}</h1>
   {include file="usermanagement/menu.inc.tpl"}
-  <div class="workBack">
+  <div class="container container-fluid">
 
     {include file="inc_update.tpl" result=$gui->result item="user" 
              action=$gui->action user_feedback=$gui->user_feedback}

@@ -33,8 +33,8 @@ some variables smarty and javascript are created on the inc_*.tpl files.
           click_to_enable,click_to_disable'}
 
 
-{include file="inc_head.tpl" openHead="yes" enableTableSorting="yes"}
-{include file="inc_del_onclick.tpl"}
+{include file="../inc_head.tpl" openHead="yes" enableTableSorting="yes"}
+{include file="../inc_del_onclick.tpl"}
 
 <script type="text/javascript">
 /* All this stuff is needed for logic contained in inc_del_onclick.tpl */
@@ -46,34 +46,42 @@ var del_action=fRoot+'{$deleteAction}';
   {include file="DataTables.inc.tpl" DataTablesOID="item_view"
                                      DataTableslengthMenu=$ll}
 {/if}
-
 </head>
 
 <body {$body_onload}>
+<section>
 
-<h1 class="title">{$gui->pageTitle}</h1>
+
+    <br>
 <div class="workBack">
 
-<div class="groupBtn">
-  <form method="post" action="{$searchAction}" style="display:inline;">
-    <input type="text" id="name" name="name" value="{$gui->name}"  
+<div class="groupBtn container container-fluid text-center well">
+  <form class="form-inline" method="post" action="{$searchAction}" >
+    <div class="form-group">
+    <input class="form-control" type="text" id="name" name="name" value="{$gui->name}"
            size="{#TESTPROJECT_NAME_SIZE#}" maxlength="{#TESTPROJECT_NAME_MAXLEN#}"
            placeholder="{$labels.hint_like_search_on_name}" required/>
-    <input type="submit" id="search" name="search" value="{$labels.btn_search_filter}" title="{$labels.hint_like_search_on_name}" />
+    <input class="form-control btn btn-success" type="submit" id="search" name="search" value="{$labels.btn_search_filter}" title="{$labels.hint_like_search_on_name}" />
+    </div>
   </form>
-  <form method="post" action="{$searchAction}" style="display:inline;">
-    <input type="submit" name="resetFilter" value="{$labels.btn_reset_filter}" />
+    <br>
+  <form class="form-inline" method="post" action="{$searchAction}" style="display:inline;">
+    <input class="form-control btn-default" type="submit" name="resetFilter" value="{$labels.btn_reset_filter}" />
   </form>
   &nbsp;&nbsp;&nbsp;
   {if $gui->canManage}
-  <form method="post" action="{$createAction}" style="display:inline;">
-    <input type="submit" id="create" name="create" value="{$labels.btn_create}" />
+  <form class="form-inline" method="post" action="{$createAction}" style="display:inline;">
+    <input class="form-control btn-success" type="submit" id="create" name="create" value="{$labels.btn_create}" />
   </form>
   {/if}
 </div>
-<p>
-
-<div id="testproject_management_list">
+</div>
+</section>
+<br>
+<section>
+    <h1 class="text-success text-center">{$gui->pageTitle}</h1>
+    <br>
+<div id="testproject_management_list" class="container">
 {if $gui->tprojects == ''}
   {if $gui->feedback != ''}
     {$gui->feedback|escape}
@@ -81,101 +89,101 @@ var del_action=fRoot+'{$deleteAction}';
     {$labels.testproject_txt_empty_list}
   {/if}
 {else}
+
   <form method="post" id="testProjectView" name="testProjectView" action="{$managerURL}">
     <input type="hidden" name="doAction" id="doAction" value="">
     <input type="hidden" name="tprojectID" id="tprojectID" value="">
-
-  <table id="item_view" class="simple_tableruler sortable">
-    <tr>
-      <th>{$tlImages.toggle_api_info}
-      {$tlImages.sort_hint}{$labels.th_name}</th>
-      <th class="{$noSortableColumnClass}">{$labels.th_notes}</th>
-      <th>{$tlImages.sort_hint}{$labels.tcase_id_prefix}</th>
-      <th>{$tlImages.sort_hint}{$labels.th_issuetracker}</th>
-      <th class="{$noSortableColumnClass}">{$labels.th_requirement_feature}</th>
-      <th class="icon_cell">{$labels.th_active}</th>
-      <th class="icon_cell">{$labels.public}</th>
-      {if $gui->canManage == "yes"}
-      <th class="icon_cell">{$labels.th_delete}</th>
-      {/if}
-    </tr>
-    {foreach item=testproject from=$gui->tprojects}
-    <tr>
-      <td>    <a href="{$editAction}{$testproject.id}">
-             {$testproject.name|escape}
-             <span class="api_info" style='display:none'>{$tlCfg->api->id_format|replace:"%s":$testproject.id}</span>
-             {if $gsmarty_gui->show_icon_edit}
-                  <img title="{$labels.testproject_alt_edit}" alt="{$labels.testproject_alt_edit}"
-                       src="{$tlImages.edit}"/>
+      <table class="table table-striped table-hover ">
+          <thead class="bg-success">
+          <tr>
+              <th>{$tlImages.toggle_api_info}
+                  {$tlImages.sort_hint}{$labels.th_name}</th>
+              <th class="{$noSortableColumnClass}">{$labels.th_notes}</th>
+              <th>{$tlImages.sort_hint}{$labels.tcase_id_prefix}</th>
+              <th>{$tlImages.sort_hint}{$labels.th_issuetracker}</th>
+              <th class="{$noSortableColumnClass}">{$labels.th_requirement_feature}</th>
+              <th class="icon_cell">{$labels.th_active}</th>
+              <th class="icon_cell">{$labels.public}</th>
+              {if $gui->canManage == "yes"}
+                  <th class="icon_cell">{$labels.th_delete}</th>
               {/if}
-           </a>
-      </td>
-      <td>
-        {if $gui->editorType == 'none'}{$testproject.notes|nl2br}{else}{$testproject.notes}{/if}</td>
-      </td>
-      <td width="10%">
-        {$testproject.prefix|escape}
-      </td>
-      
-      <td width="10%">
-        {$testproject.itstatusImg} &nbsp; {$testproject.itname|escape} 
-      </td>
-      {*
-      <td width="10%">
-        {$testproject.rmsstatusImg} &nbsp; {$testproject.rmsname|escape} 
-      </td>
-      *}
-      <td class="clickable_icon">
-        {if $testproject.opt->requirementsEnabled}
-            <input type="image" style="border:none" 
-                   title="{$labels.click_to_disable}"  alt="{$labels.click_to_disable}" 
-                   onClick = "doAction.value='disableRequirements';tprojectID.value={$testproject.id};"
-                   src="{$tlImages.on}"/>
-          {else}
-            <input type="image" style="border:none" 
-                   title="{$labels.click_to_enable}"  alt="{$labels.click_to_enable}" 
-                   onClick = "doAction.value='enableRequirements';tprojectID.value={$testproject.id};"
-                   src="{$tlImages.off}"/>
-          {/if}
-      </td>
-      <td class="clickable_icon">
-        {if $testproject.active}
-            <input type="image" style="border:none" 
-                   title="{$labels.active_click_to_change}"  alt="{$labels.active_click_to_change}" 
-                   onClick = "doAction.value='setInactive';tprojectID.value={$testproject.id};"
-                   src="{$tlImages.on}"/>
-          {else}
-            <input type="image" style="border:none" 
-                   title="{$labels.inactive_click_to_change}"  alt="{$labels.inactive_click_to_change}" 
-                   onClick = "doAction.value='setActive';tprojectID.value={$testproject.id};"
-                   src="{$tlImages.off}"/>
-          {/if}
-      </td>
-      <td class="clickable_icon">
-        {if $testproject.is_public}
-            <img style="border:none"  title="{$labels.public}" alt="{$labels.public}" src="{$tlImages.choiceOn}" />
-          {else}
-            &nbsp;
-          {/if}
-      </td>
-      {if $gui->canManage == "yes"}
-      <td class="clickable_icon">
-          <img style="border:none;cursor: pointer;"  alt="{$labels.testproject_alt_delete}"
-               title="{$labels.testproject_alt_delete}"
-               onclick="delete_confirmation({$testproject.id},'{$testproject.name|escape:'javascript'|escape}',
-                                          '{$del_msgbox_title}','{$warning_msg}');"
-               src="{$tlImages.delete}"/>
-      </td>
-      {/if}
-    </tr>
-    {/foreach}
+          </tr>
+          </thead>
+          <tbody>
+          {foreach item=testproject from=$gui->tprojects}
+          <tr>
+              <td>    <a href="{$editAction}{$testproject.id}">
+                      {$testproject.name|escape}
+                      <span class="api_info" style='display:none'>{$tlCfg->api->id_format|replace:"%s":$testproject.id}</span>
+                      {if $gsmarty_gui->show_icon_edit}
+                          <img title="{$labels.testproject_alt_edit}" alt="{$labels.testproject_alt_edit}"
+                               src="{$tlImages.edit}"/>
+                      {/if}
+                  </a>
+              </td>
+              <td>
+                  {if $gui->editorType == 'none'}{$testproject.notes|nl2br}{else}{$testproject.notes}{/if}
+              </td>
+              <td width="10%">
+                  {$testproject.prefix|escape}
+              </td>
 
-  </table>
+              <td width="10%">
+                  {$testproject.itstatusImg} &nbsp; {$testproject.itname|escape}
+              </td>
+
+              <td class="clickable_icon">
+                  {if $testproject.opt->requirementsEnabled}
+                      <input type="image" style="border:none"
+                             title="{$labels.click_to_disable}"  alt="{$labels.click_to_disable}"
+                             onClick = "doAction.value='disableRequirements';tprojectID.value={$testproject.id};"
+                             src="{$tlImages.on}"/>
+                  {else}
+                      <input type="image" style="border:none"
+                             title="{$labels.click_to_enable}"  alt="{$labels.click_to_enable}"
+                             onClick = "doAction.value='enableRequirements';tprojectID.value={$testproject.id};"
+                             src="{$tlImages.off}"/>
+                  {/if}
+              </td>
+              <td class="clickable_icon">
+                  {if $testproject.active}
+                      <input type="image" style="border:none"
+                             title="{$labels.active_click_to_change}"  alt="{$labels.active_click_to_change}"
+                             onClick = "doAction.value='setInactive';tprojectID.value={$testproject.id};"
+                             src="{$tlImages.on}"/>
+                  {else}
+                      <input type="image" style="border:none"
+                             title="{$labels.inactive_click_to_change}"  alt="{$labels.inactive_click_to_change}"
+                             onClick = "doAction.value='setActive';tprojectID.value={$testproject.id};"
+                             src="{$tlImages.off}"/>
+                  {/if}
+              </td>
+              <td class="clickable_icon">
+                  {if $testproject.is_public}
+                      <img style="border:none"  title="{$labels.public}" alt="{$labels.public}" src="{$tlImages.choiceOn}" />
+                  {else}
+                      &nbsp;
+                  {/if}
+              </td>
+              {if $gui->canManage == "yes"}
+                  <td class="clickable_icon">
+                      <img style="border:none;cursor: pointer;"  alt="{$labels.testproject_alt_delete}"
+                           title="{$labels.testproject_alt_delete}"
+                           onclick="delete_confirmation({$testproject.id},'{$testproject.name|escape:'javascript'|escape}',
+                                   '{$del_msgbox_title}','{$warning_msg}');"
+                           src="{$tlImages.delete}"/>
+                  </td>
+              {/if}
+          </tr>
+          {/foreach}
+          </tbody>
+      </table>
   </form>
 {/if}
 </div>
 
 </div>
+</section>
 
 {if $gui->doAction == "reloadAll"}
   <script type="text/javascript">
@@ -191,6 +199,5 @@ var del_action=fRoot+'{$deleteAction}';
   </script>
   {/if}
 {/if}
-
 </body>
 </html>

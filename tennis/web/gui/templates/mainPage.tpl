@@ -612,7 +612,6 @@ window.onload=function()
       </div>
 
       </section>
-
 <script>
     jQuery( document ).ready(function() {
         jQuery(".chosen-select").chosen({ width: "85%" });

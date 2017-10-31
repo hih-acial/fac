@@ -3,6 +3,7 @@
 {* Purpose: smarty template - main frame *}
 {*******************************************************************}
 <!DOCTYPE html>
+<html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset={$pageCharset}" />
 	<meta http-equiv="Content-language" content="en" />

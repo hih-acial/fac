@@ -45,7 +45,7 @@ title bar + menu
 
                 <form class="navbar-form navbar-right" style="display:inline" name="productForm" action="lib/general/navBar.php?viewer={$gui->viewer}" method="get">
                     {$labels.testproject}
-                    <select class="form-control">
+                    <select class="form-control" name="testproject" onchange="this.form.submit();">
                         {foreach key=tproject_id item=tproject_name from=$gui->TestProjects}
                             <option value="{$tproject_id}" title="{$tproject_name|escape}"
                                     {if $tproject_id == $gui->tprojectID} selected {/if}>
@@ -59,9 +59,9 @@ title bar + menu
 
                 {if $gui->tprojectID}
                     {if $gui->grants->view_testcase_spec == "yes"}
-                        <form style="display:inline" target="mainframe" name="searchTC" id="searchTC"
+                        <form class="form-inline" style="display:inline" target="mainframe" name="searchTC" id="searchTC"
                               action="lib/testcases/archiveData.php" method="get">
-                            <input  style="font-size: 80%; position:relative; top:-1px;" type="text" size="{$gui->searchSize}"
+                            <input class="form-control"  style="font-size: 80%; position:relative; top:-1px;" type="text" size="{$gui->searchSize}"
                                    title="{$labels.search_testcase}" name="targetTestCase" value="{$gui->tcasePrefix}" />
 
                             {* useful to avoid a call to method to get test case prefix in called page *}
@@ -79,12 +79,12 @@ title bar + menu
                     {/if}
 
                     {if $gui->grants->view_testcase_spec == "yes"}
-                        <form style="display:inline" target="mainframe" name="fullTextSearch" id="fullTextSearch"
+                        <form class="form-inline" style="display:inline" target="mainframe" name="fullTextSearch" id="fullTextSearch"
                               action="lib/search/searchMgmt.php" method="post">
                             <input type="hidden" name="caller" value="navBar">
                             <input type="hidden" name="tproject_id" value="{$gui->tproject_id}">
 
-                            <input style="font-size: 80%; position:relative; top:-1px;" type="text" size="50"
+                            <input class="form-control" style="font-size: 80%; position:relative; top:-1px;" type="text" size="50"
                                    title="{$labels.full_text_search}" name="target" value="" />
 
                             <img src="{$tlImages.magnifier}"
@@ -115,7 +115,7 @@ title bar + menu
 	{/foreach}
 	</div>
 {/if}
-  
+
 {if $gui->updateMainPage == 1}
   <script type="text/javascript">
   parent.mainframe.location = "{$basehref}lib/general/mainPage.php";
