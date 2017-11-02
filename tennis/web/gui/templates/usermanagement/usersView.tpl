@@ -58,7 +58,7 @@ var del_action=fRoot+"lib/usermanagement/usersView.php?operation=disable&user=";
 <body>
 {if $gui->grants->user_mgmt == "yes"}
 
-  <h1 class="title">{$gui->main_title}</h1>
+  <h1 class="text-center text-success">{$gui->main_title}</h1>
   {include file="usermanagement/menu.inc.tpl"}
   <div class="container container-fluid">
 
@@ -68,28 +68,33 @@ var del_action=fRoot+"lib/usermanagement/usersView.php?operation=disable&user=";
     {foreach from=$gui->tableSet key=idx item=matrix}
       {$matrix->renderBodySection()}
     {/foreach}
-
+      <br>
     <div class="groupBtn">
-      <span style="float:left;">  
+      <span style="float:left;">
         <form method="post" action="{$createUserAction}" name="launch_create">
           <input type="hidden" id="operation" name="operation" value="" />
-          <input type="submit" name="doCreate"  value="{$labels.btn_create}" />
+          <input class="btn btn-success" type="submit" name="doCreate"  value="{$labels.btn_create}" />
         </form>
       </span>
 
       <span>
         <form method="post" action="{$exportUsersAction}" name="launch_export" style="inline;">
-          <input type="submit" id="export"  name="export" value="{$labels.btn_export}" style="margin-left: 3px;">
+          <input class="btn btn-warning" type="submit" id="export"  name="export" value="{$labels.btn_export}" style="margin-left: 3px;">
         </form>
       </span>
 
     </div>
-    <div class="groupBtn">
-        <form method="post" action="{$editUserAction}" name="manage_user" style="inline;">
-          <input type="text" id="login"  name="login" size="{#LOGIN_SIZE#}" maxlength="{#LOGIN_MAXLEN#}"
-                 placeholder="{$labels.th_login}" required> 
-          <input type="submit" id="manage_user"  name="manage_user" value="{$labels.btn_manage_user}" 
+      <br>
+    <div class="groupBtn ">
+        <form class="form-horizontal" method="post" action="{$editUserAction}" name="manage_user" style="inline;">
+          <div class="form-group ">
+              <div class="col-lg-4">
+                  <input class="form-control" type="text" id="login"  name="login" size="{#LOGIN_SIZE#}" maxlength="{#LOGIN_MAXLEN#}"
+                         placeholder="{$labels.th_login}" required>
+              </div>
+              <input class="btn btn-primary" type="submit" id="manage_user"  name="manage_user" value="{$labels.btn_manage_user}"
                  style="margin-left: 3px;">
+          </div>
         </form>
     </div>
   </div>

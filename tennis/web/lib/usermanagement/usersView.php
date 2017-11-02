@@ -177,7 +177,7 @@ function buildMatrix(&$guiObj,&$argsObj)
  
   // login added as workaround for SORTING, because the whole string is used then user_id
   // in url takes precedence over the login displayed 
-  $actionUrl = '<a href="' . $argsObj->basehref .  
+  $actionUrl = '<a href="' . $argsObj->basehref .
                'lib/usermanagement/usersEdit.php?doAction=edit&' .
                'loginJustToFixSort=';
 

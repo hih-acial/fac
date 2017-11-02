@@ -114,7 +114,7 @@ function refreshLastUpdate (last_update)
 
 <body>
 
-<h1 class="title">{$labels.title_account_settings}</h1>
+<h1 class="text-center text-success">{$labels.title_account_settings}</h1>
 
 {include file="inc_update.tpl" user_feedback=$user_feedback}
 

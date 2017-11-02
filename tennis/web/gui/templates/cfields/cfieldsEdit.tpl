@@ -309,7 +309,7 @@ function initShowOnExec(id_master,show_on_cfg)
 
 <body onload="configure_cf_attr('combo_cf_node_type_id',js_enable_on_cfg,js_show_on_cfg);">
 
-<h1 class="title">
+<h1 class="title text-center">
  	{$labels.title_cfields_mgmt} 
 	{include file="inc_help.tpl" helptopic="hlp_customFields" show_help_icon=true}
 </h1>
@@ -331,152 +331,155 @@ function initShowOnExec(id_master,show_on_cfg)
   </form>
 
 {else}
-<form method="post" name="cfields_edit" action="lib/cfields/cfieldsEdit.php"
-      onSubmit="javascript:return validateForm(this);">
-<input type="hidden" id="hidden_id" name="cfield_id" value="{$gui->cfield.id}" />
-<table class="common">
+    <section>
+        <div class="container container-fluid well">
+            <form class="form-horizontal" method="post" name="cfields_edit" action="lib/cfields/cfieldsEdit.php"
+                  onSubmit="return validateForm(this);">
+                <input type="hidden" id="hidden_id" name="cfield_id" value="{$gui->cfield.id}" />
 
-	 <tr>
-			<th style="background:none;">{$labels.name}</th>
-			<td><input type="text" name="cf_name"
-			                       size="{#CFIELD_NAME_SIZE#}"
-			                       maxlength="{#CFIELD_NAME_MAXLEN#}"
-    			 value="{$gui->cfield.name|escape}" required />
-           {include file="error_icon.tpl" field="cf_name"}
-    	</td>
-		</tr>
-		<tr>
-			<th style="background:none;">{$labels.label}</th>
-			<td><input type="text" name="cf_label"
-			                       size="{#CFIELD_LABEL_SIZE#}"
-			                       maxlength="{#CFIELD_LABEL_MAXLEN#}"
-			           value="{$gui->cfield.label|escape}" required />
-		           {include file="error_icon.tpl" field="cf_label"}
-    	</td>
-	  </tr>
-		<tr>
-			<th style="background:none;">{$labels.available_on}</th>
-			<td>
-			  {if $gui->cfield_is_used} {* Type CAN NOT BE CHANGED *}
-			    {assign var="idx" value=$gui->cfield.node_type_id}
-			    {$gui->cfieldCfg->cf_allowed_nodes.$idx}
-			    <input type="hidden" id="combo_cf_node_type_id"
-			           value={$gui->cfield.node_type_id} name="cf_node_type_id" />
-			  {else}
-  				<select onchange="configure_cf_attr('combo_cf_node_type_id',
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" for="cf_name">{$labels.name} <span style="color:red;">*</span></label>
+                    <div class="col-lg-10">
+                        <input class="form-control" type="text" id="cf_name" name="cf_name"
+                               size="{#CFIELD_NAME_SIZE#}"
+                               maxlength="{#CFIELD_NAME_MAXLEN#}"
+                               value="{$gui->cfield.name|escape}" required />
+                        {include file="error_icon.tpl" field="cf_name"}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-2 control-label" for="cf_label">{$labels.label} <span style="color:red;">*</span></label>
+                    <div class="col-lg-10">
+                        <input class="form-control" type="text" id="cf_label" name="cf_label"
+                               size="{#CFIELD_LABEL_SIZE#}"
+                               maxlength="{#CFIELD_LABEL_MAXLEN#}"
+                               value="{$gui->cfield.label|escape}" required />
+                        {include file="error_icon.tpl" field="cf_label"}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="combo_cf_node_type_id" class="col-lg-2 control-label"> {$labels.available_on}</label>
+                    <div class="col-lg-10">
+                        {if $gui->cfield_is_used} {* Type CAN NOT BE CHANGED *}
+                        {assign var="idx" value=$gui->cfield.node_type_id}
+                        {$gui->cfieldCfg->cf_allowed_nodes.$idx}
+                        <input type="hidden" id="combo_cf_node_type_id"
+                               value={$gui->cfield.node_type_id} name="cf_node_type_id" />
+                        {else}
+                            <select class="form-control" onchange="configure_cf_attr('combo_cf_node_type_id',
   				                                    js_enable_on_cfg,
   				                                    js_show_on_cfg);"
-  				        id="combo_cf_node_type_id"
-  				        name="cf_node_type_id">
-  				{html_options options=$gui->cfieldCfg->cf_allowed_nodes selected=$gui->cfield.node_type_id}
-  				</select>
-				{/if}
-			</td>
-		</tr>
-
-		<tr>
-			<th style="background:none;">{$labels.type}</th>
-			<td>
-			  {if $gui->cfield_is_used}
-			    {$idx=$gui->cfield.type}
-			    {$gui->cfield_types.$idx}
-			    <input type="hidden" id="hidden_cf_type"
-			           value={$gui->cfield.type} name="cf_type" />
-			  {else}
-  				<select onchange="cfg_possible_values_display(js_possible_values_cfg,
+                                    id="combo_cf_node_type_id"
+                                    name="cf_node_type_id">
+                                {html_options options=$gui->cfieldCfg->cf_allowed_nodes selected=$gui->cfield.node_type_id}
+                            </select>
+                        {/if}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="combo_cf_type" class="col-lg-2 control-label"> {$labels.type}</label>
+                    <div class="col-lg-10">
+                        {if $gui->cfield_is_used}
+                            {$idx=$gui->cfield.type}
+                            {$gui->cfield_types.$idx}
+                            <input type="hidden" id="hidden_cf_type"
+                                   value={$gui->cfield.type} name="cf_type" />
+                        {else}
+                            <select class="form-control" onchange="cfg_possible_values_display(js_possible_values_cfg,
   				                                              'combo_cf_type',
   				                                              'possible_values');"
-  				        id="combo_cf_type"
-  				        name="cf_type">
-	  			{html_options options=$gui->cfield_types selected=$gui->cfield.type}
-		  		</select>
-		  	{/if}
-			</td>
-		</tr>
+                                    id="combo_cf_type"
+                                    name="cf_type">
+                                {html_options options=$gui->cfield_types selected=$gui->cfield.type}
+                            </select>
+                        {/if}
+                    </div>
+                </div>
 
-    {if $gui->show_possible_values }
-      {$display_style=""}
-    {else}
-      {$display_style="none"}
-		{/if}
-		<tr id="possible_values" style="display:{$display_style};">
-			<th style="background:none;">{$labels.possible_values}</th>
-			<td>
-				<input type="text" id="cf_possible_values"
-				                   name="cf_possible_values"
-		                       size="{#CFIELD_POSSIBLE_VALUES_SIZE#}"
-		                       maxlength="{#CFIELD_POSSIBLE_VALUES_MAXLEN#}"
-				                   value="{$gui->cfield.possible_values}" />
-			</td>
-		</tr>
+                {if $gui->show_possible_values }
+                    {$display_style=""}
+                {else}
+                    {$display_style="none"}
+                {/if}
 
-   {* ------------------------------------------------------------------------------- *}
-    {* NEW *}
-		<tr	id="container_cf_enable_on">
-			<th style="background:none;">{$labels.enable_on}</th>
-			<td>
-				<select name="cf_enable_on" id="cf_enable_on"
-				        onchange="initShowOnExec('cf_enable_on',js_show_on_cfg);">
-        {foreach item=area_cfg key=area_name from=$gui->cfieldCfg->cf_enable_on}
-          {assign var="access_key" value="enable_on_$area_name"}
-				  <option value={$area_name} id="option_{$area_name}" 
-				          {if $area_cfg.value == 0} style="display:none;" {/if} 
-				  {if $gui->cfield.$access_key} selected="selected"	{/if}>{$area_cfg.label}</option>
-				{/foreach}
-				</select>
-			</td>
-		</tr>
+                <div class="form-group" id="possible_values" style="display:{$display_style};">
+                    <label class="col-lg-2 control-label" for="cf_possible_values">{$labels.possible_values}</label>
+                    <div class="col-lg-10">
+                        <input class="form-control" type="text" id="cf_possible_values"
+                               name="cf_possible_values"
+                               size="{#CFIELD_POSSIBLE_VALUES_SIZE#}"
+                               maxlength="{#CFIELD_POSSIBLE_VALUES_MAXLEN#}"
+                               value="{$gui->cfield.possible_values}" />
+                    </div>
+                </div>
 
+                {* ------------------------------------------------------------------------------- *}
+                {* NEW *}
+                <div class="form-group" id="container_cf_enable_on">
+                    <label for="cf_enable_on" class="col-lg-2 control-label"> {$labels.enable_on}</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" name="cf_enable_on" id="cf_enable_on"
+                                onchange="initShowOnExec('cf_enable_on',js_show_on_cfg);">
+                            {foreach item=area_cfg key=area_name from=$gui->cfieldCfg->cf_enable_on}
+                                {assign var="access_key" value="enable_on_$area_name"}
+                                <option value={$area_name} id="option_{$area_name}"
+                                        {if $area_cfg.value == 0} style="display:none;" {/if}
+                                        {if $gui->cfield.$access_key} selected="selected"	{/if}>{$area_cfg.label}</option>
+                            {/foreach}
+                        </select>
+                    </div>
+                </div>
 
-    {* ----------------------------------------------------------------------- *}
-    {*   Execution  *}
-    		<tr id="container_cf_show_on_execution" {$gui->cfieldCfg->cf_show_on.execution.style}>
-			<th style="background:none;">{$labels.show_on_exec}</th>
-			<td>
-				<select id="cf_show_on_execution"  name="cf_show_on_execution">
-				{html_options options=$gsmarty_option_yes_no selected=$gui->cfield.show_on_execution}
-				</select>
-			</td>
-		</tr>
+                <div class="form-group" id="container_cf_show_on_execution" {$gui->cfieldCfg->cf_show_on.execution.style}>
+                    <label class="col-lg-2 control-label" for="cf_show_on_execution">{$labels.show_on_exec}</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" id="cf_show_on_execution"  name="cf_show_on_execution">
+                            {html_options options=$gsmarty_option_yes_no selected=$gui->cfield.show_on_execution}
+                        </select>
+                    </div>
+                </div>
+                {* BUGID *}
+                {if isset($gui->cfield_is_linked) && $gui->cfield_is_linked}
+                    <table class="common">
+                        <tr> <th>{$labels.assigned_to_testprojects} </th>
+                            {foreach item=tproject from=$gui->linked_tprojects}
+                        <tr> <td>{$tproject.name|escape}</td> </tr>
+                        {/foreach}
+                    </table>
 
-	</table>
+                {/if}
 
-  {* BUGID *}
-  {if isset($gui->cfield_is_linked) && $gui->cfield_is_linked}
-  <table class="common">
-    <tr> <th>{$labels.assigned_to_testprojects} </th>
-    {foreach item=tproject from=$gui->linked_tprojects}
-      <tr> <td>{$tproject.name|escape}</td> </tr>
-    {/foreach}
-  </table>
+                <div class="groupBtn col-lg-offset-4 col-md-offset-4">
+                    <input type="hidden" name="do_action" value="" />
+                    {if $user_action eq 'edit'  or $user_action eq 'do_update'}
+                        <input class="btn btn-success" type="submit" name="do_update" value="{$labels.btn_upd}"
+                               onclick="do_action.value='do_update'"/>
 
-  {/if}
+                        {*  {if $gui->cfield_is_used eq 0} *}
+                        {* Allow delete , just give warning *}
+                        <input class="btn btn-danger" type="button" name="do_delete" value="{$labels.btn_delete}"
+                               onclick="delete_confirmation({$gui->cfield.id},'{$gui->cfield.name|escape:'javascript'|escape}',
+                                       '{$del_msgbox_title}','{$warning_msg}');">
+                        {* {/if} *}
 
-	<div class="groupBtn">
-	<input type="hidden" name="do_action" value="" />
-	{if $user_action eq 'edit'  or $user_action eq 'do_update'}
-		<input type="submit" name="do_update" value="{$labels.btn_upd}"
-		       onclick="do_action.value='do_update'"/>
+                    {else}
+                        <input class="btn btn-success" type="submit" name="do_update" value="{$labels.btn_add}"
+                               onclick="do_action.value='do_add'"/>
 
-		{*  {if $gui->cfield_is_used eq 0} *}
-		{* Allow delete , just give warning *}
-  		<input type="button" name="do_delete" value="{$labels.btn_delete}"
-  		       onclick="delete_confirmation({$gui->cfield.id},'{$gui->cfield.name|escape:'javascript'|escape}',
-  		                                    '{$del_msgbox_title}','{$warning_msg}');">
-    {* {/if} *}
+                        <input class="btn btn-primary" type="submit" name="do_add_and_assign" id="do_add_and_assign" value="{$labels.btn_add_and_assign_to_current}"
+                               onclick="do_action.value='do_add_and_assign'"/>
+                    {/if}
+                    <input class="btn btn-default" type="button" name="cancel" value="{$labels.btn_cancel}"
+                           onclick="location.href=fRoot+'lib/cfields/cfieldsView.php';" />
 
-	{else}
-		<input type="submit" name="do_update" value="{$labels.btn_add}"
-		       onclick="do_action.value='do_add'"/>
+                </div>
+            </form>
+        </div>
 
-    <input type="submit" name="do_add_and_assign" id="do_add_and_assign" value="{$labels.btn_add_and_assign_to_current}"
-           onclick="do_action.value='do_add_and_assign'"/>
-	{/if}
-		<input type="button" name="cancel" value="{$labels.btn_cancel}"
-			onclick="javascript: location.href=fRoot+'lib/cfields/cfieldsView.php';" />
+    </section>
 
-	</div>
-</form>
 <hr />
 {/if}
 

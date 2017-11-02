@@ -24,7 +24,7 @@ editorType: used to understand if code for tinymce need to be loaded
 	
 {* ----- load CSS ------------------------------------------------------------------- *}
 	<link rel="stylesheet" href="https://bootswatch.com/cerulean/bootstrap.min.css">
-
+	<link rel="stylesheet" href="../themes/default/font-awesome/css/font-awesome.min.css">
 	{if $use_custom_css}
 	<style media="all" type="text/css">@import "{$custom_css}";</style>
 	{/if}

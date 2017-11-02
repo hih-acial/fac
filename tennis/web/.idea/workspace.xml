@@ -11,47 +11,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.tpl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gui/templates/main.tpl">
+      <file leaf-file-name="usersAssign.tpl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/usersAssign.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state relative-caret-position="2363">
+              <caret line="139" column="53" lean-forward="false" selection-start-line="139" selection-start-column="53" selection-end-line="139" selection-end-column="53" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inc_head.tpl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gui/templates/inc_head.tpl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6">
-              <caret line="25" column="64" lean-forward="false" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="64" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="navBar.tpl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gui/templates/navBar.tpl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="45" column="85" lean-forward="false" selection-start-line="45" selection-start-column="85" selection-end-line="45" selection-end-column="85" />
-              <folding>
-                <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="e#1363#1369#0#HTML" expanded="true" />
-                <element signature="e#1369#1375#0#HTML" expanded="true" />
-                <element signature="e#1375#1381#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#span#2;n#div#1;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#0;n#div#0;n#div#2;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#0;n#div#2;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#form#0;n#div#2;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#form#0;n#div#2;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#1;n#div#2;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#2;n#form#1;n#div#2;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#form#1;n#div#2;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -59,85 +24,112 @@
       <file leaf-file-name="projectView.tpl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/gui/templates/project/projectView.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="63" column="46" lean-forward="false" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
+            <state relative-caret-position="1156">
+              <caret line="68" column="114" lean-forward="false" selection-start-line="68" selection-start-column="114" selection-end-line="68" selection-end-column="114" />
               <folding>
-                <element signature="n#style#0;n#form#1;n#div#0;n#div#0;n#section#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#form#2;n#div#0;n#div#0;n#section#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#a#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#section#1;n#body#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#span#0;n#a#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#section#1;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#td#1;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#section#1;n#body#0;n#!!top" expanded="false" />
-                <element signature="n#td#2;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#section#1;n#body#0;n#!!top" expanded="false" />
-                <element signature="n#td#3;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#section#1;n#body#0;n#!!top" expanded="false" />
-                <element signature="n#td#4;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#section#1;n#body#0;n#!!top" expanded="false" />
-                <element signature="n#td#5;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#section#1;n#body#0;n#!!top" expanded="false" />
-                <element signature="n#td#6;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#section#1;n#body#0;n#!!top" expanded="false" />
                 <element signature="e#7320#7866#0#Smarty" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="usersAssign.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/usermanagement/usersAssign.php">
+      <file leaf-file-name="userInfo.tpl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/userInfo.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="150" column="0" lean-forward="true" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+            <state relative-caret-position="1972">
+              <caret line="116" column="35" lean-forward="false" selection-start-line="116" selection-start-column="35" selection-end-line="116" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="usersAssign.tpl" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/usersAssign.tpl">
+      <file leaf-file-name="usersEdit.tpl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/usersEdit.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3961">
-              <caret line="233" column="7" lean-forward="true" selection-start-line="233" selection-start-column="7" selection-end-line="233" selection-end-column="7" />
+            <state relative-caret-position="578">
+              <caret line="259" column="12" lean-forward="true" selection-start-line="244" selection-start-column="5" selection-end-line="259" selection-end-column="12" />
               <folding>
-                <element signature="e#3327#3333#0#HTML" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rolesView.tpl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/rolesView.tpl">
+      <file leaf-file-name="rolesEdit.tpl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/rolesEdit.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+            <state relative-caret-position="470">
+              <caret line="290" column="4" lean-forward="true" selection-start-line="290" selection-start-column="4" selection-end-line="290" selection-end-column="4" />
               <folding>
-                <element signature="e#4629#4853#0#Smarty" expanded="false" />
+                <element signature="n#div#2;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#2;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#2;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+                <element signature="n#div#2;n#div#2;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+                <element signature="n#div#3;n#div#2;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#3;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#3;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+                <element signature="n#div#2;n#div#3;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+                <element signature="n#div#3;n#div#3;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#4;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#4;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+                <element signature="n#div#2;n#div#4;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#table#0;n#form#0;n#section#0;n#body#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="usersView.tpl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/usersView.tpl">
+      <file leaf-file-name="cfieldsView.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/cfields/cfieldsView.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="62" column="39" lean-forward="false" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
+            <state relative-caret-position="340">
+              <caret line="20" column="28" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menu.inc.tpl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/menu.inc.tpl">
+      <file leaf-file-name="cfieldsView.tpl" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/gui/templates/cfields/cfieldsView.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="52" lean-forward="true" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="79" />
+            <state relative-caret-position="657">
+              <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#section#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#section#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h1#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cfieldsEdit.tpl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gui/templates/cfields/cfieldsEdit.tpl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="349" column="0" lean-forward="true" selection-start-line="339" selection-start-column="16" selection-end-line="349" selection-end-column="0" />
+              <folding>
+                <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#section#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cfieldsExport.tpl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gui/templates/cfields/cfieldsExport.tpl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="54" column="12" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="54" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataTables.inc.tpl" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/gui/templates/DataTables.inc.tpl">
+      <file leaf-file-name="cfieldsImport.tpl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gui/templates/cfields/cfieldsImport.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="2" lean-forward="true" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
+            <state relative-caret-position="697">
+              <caret line="97" column="41" lean-forward="false" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -160,6 +152,8 @@
       <find>createaction</find>
       <find>.table-</find>
       <find>container</find>
+      <find>p</find>
+      <find>featuretype</find>
     </findStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -179,16 +173,25 @@
         <option value="$PROJECT_DIR$/gui/templates/mainPage.tpl" />
         <option value="$PROJECT_DIR$/lib/project/projectEdit.php" />
         <option value="$PROJECT_DIR$/third_party/bootstrap/3.3.6/css/bootstrap.css" />
-        <option value="$PROJECT_DIR$/gui/templates/inc_head.tpl" />
         <option value="$PROJECT_DIR$/gui/templates/project/projectView.tpl" />
         <option value="$PROJECT_DIR$/gui/templates/project/projectEdit.tpl" />
         <option value="$PROJECT_DIR$/lib/usermanagement/usersAssign.php" />
         <option value="$PROJECT_DIR$/gui/templates/main.tpl" />
         <option value="$PROJECT_DIR$/gui/templates/usermanagement/menu.inc.tpl" />
-        <option value="$PROJECT_DIR$/gui/templates/usermanagement/rolesView.tpl" />
-        <option value="$PROJECT_DIR$/gui/templates/usermanagement/usersView.tpl" />
         <option value="$PROJECT_DIR$/gui/templates/navBar.tpl" />
+        <option value="$PROJECT_DIR$/lib/usermanagement/usersView.php" />
+        <option value="$PROJECT_DIR$/gui/templates/usermanagement/usersView.tpl" />
         <option value="$PROJECT_DIR$/gui/templates/usermanagement/usersAssign.tpl" />
+        <option value="$PROJECT_DIR$/gui/templates/usermanagement/rolesView.tpl" />
+        <option value="$PROJECT_DIR$/gui/templates/usermanagement/userInfo.tpl" />
+        <option value="$PROJECT_DIR$/gui/templates/inc_head.tpl" />
+        <option value="$PROJECT_DIR$/gui/templates/usermanagement/usersEdit.tpl" />
+        <option value="$PROJECT_DIR$/gui/templates/usermanagement/rolesEdit.tpl" />
+        <option value="$PROJECT_DIR$/lib/cfields/cfieldsView.php" />
+        <option value="$PROJECT_DIR$/gui/templates/cfields/cfieldsEdit.tpl" />
+        <option value="$PROJECT_DIR$/gui/templates/cfields/cfieldsExport.tpl" />
+        <option value="$PROJECT_DIR$/gui/templates/cfields/cfieldsImport.tpl" />
+        <option value="$PROJECT_DIR$/gui/templates/cfields/cfieldsView.tpl" />
       </list>
     </option>
   </component>
@@ -199,7 +202,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="y" value="8" />
     <option name="width" value="949" />
     <option name="height" value="1000" />
@@ -219,6 +222,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -243,24 +247,17 @@
               <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="gui" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="templates" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="usermanagement" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="cfields" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="web" type="b2602c69:ProjectViewProjectNode" />
               <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="lib" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="web" type="b2602c69:ProjectViewProjectNode" />
-              <item name="web" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="lib" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="usermanagement" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -295,30 +292,32 @@
       <workItem from="1507900733941" duration="4867000" />
       <workItem from="1509353275032" duration="1650000" />
       <workItem from="1509355108012" duration="24383000" />
-      <workItem from="1509439429629" duration="25173000" />
+      <workItem from="1509439429629" duration="25213000" />
+      <workItem from="1509612629037" duration="8902000" />
+      <workItem from="1509624400731" duration="12392000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="75547000" />
+    <option name="totallyTimeSpent" value="96881000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17083333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32979852" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -337,145 +336,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/functions/inputparameter.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3576">
-          <caret line="280" column="8" lean-forward="true" selection-start-line="280" selection-start-column="8" selection-end-line="280" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/Core/Core_c.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="8" column="6" lean-forward="false" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/functions/lang_api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="40" column="9" lean-forward="false" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config_db.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gui/templates/input_dimensions.conf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4890">
-          <caret line="289" column="17" lean-forward="true" selection-start-line="289" selection-start-column="17" selection-end-line="289" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/functions/object.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="229" column="8" lean-forward="false" selection-start-line="229" selection-start-column="8" selection-end-line="229" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/functions/testproject.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="90" column="6" lean-forward="false" selection-start-line="90" selection-start-column="6" selection-end-line="90" selection-end-column="6" />
-          <folding>
-            <marker date="1507805992338" expanded="true" signature="3623:4165" ph="INSERT INTO $... " />
-            <marker date="1507805992338" expanded="true" signature="6169:6399" ph="UPDATE ${{$t... " />
-            <marker date="1507805992338" expanded="true" signature="6512:6628" ph="UPDATE ${{$t... " />
-            <marker date="1507805992338" expanded="true" signature="29939:30050" ph="SELECT id FR... $" />
-            <marker date="1507805992338" expanded="true" signature="30521:30596" ph="UPDATE ${{$t... " />
-            <marker date="1507805992338" expanded="true" signature="32248:32306" ph="SELECT tc_co... $" />
-            <marker date="1507805992338" expanded="true" signature="33151:33215" ph="UPDATE ${{$t... " />
-            <marker date="1507805992338" expanded="true" signature="37073:37215" ph="SELECT id FR... $" />
-            <marker date="1507805992338" expanded="true" signature="37391:37534" ph="SELECT id,ke... $" />
-            <marker date="1507805992338" expanded="true" signature="49578:50086" ph="INSERT INTO $... " />
-            <marker date="1507805992338" expanded="true" signature="51266:51289" ph="SELECT * FRO... req_specs" />
-            <marker date="1507805992338" expanded="true" signature="53140:53237" ph="DELETE FROM " />
-            <marker date="1507805992338" expanded="true" signature="54085:54189" ph="SELECT user_... $" />
-            <marker date="1507805992338" expanded="true" signature="65124:65413" ph="SELECT testc... $" />
-            <marker date="1507805992338" expanded="true" signature="107916:107968" ph="SELECT api_k... $" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/functions/tlsmarty.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="160" column="38" lean-forward="true" selection-start-line="160" selection-start-column="38" selection-end-line="160" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/functions/configCheck.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="41" column="17" lean-forward="false" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
-          <folding>
-            <marker date="1507805992293" expanded="true" signature="9508:9566" ph="SELECT * FRO... $" />
-            <marker date="1507805992293" expanded="true" signature="9884:9896" ph="..." />
-            <marker date="1507805992293" expanded="true" signature="26440:26452" ph="..." />
-            <marker date="1507805992293" expanded="true" signature="26891:26903" ph="..." />
-            <marker date="1507805992293" expanded="true" signature="27238:27250" ph="..." />
-            <marker date="1507805992293" expanded="true" signature="27764:27776" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gui/templates/inc_jsCfieldsValidation.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/functions/testcase.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="39" column="23" lean-forward="true" selection-start-line="39" selection-start-column="23" selection-end-line="39" selection-end-column="23" />
-          <folding>
-            <marker date="1507805992334" expanded="true" signature="8730:8849" ph="UPDATE ${{$t... " />
-            <marker date="1507805992334" expanded="true" signature="25935:26101" ph="SELECT nodes... $" />
-            <marker date="1507805992334" expanded="true" signature="35533:35652" ph="UPDATE ${{$t... " />
-            <marker date="1507805992334" expanded="true" signature="62447:62784" ph="SELECT ${{$f... " />
-            <marker date="1507805992334" expanded="true" signature="71536:72304" ph="SELECT UA.lo... $" />
-            <marker date="1507805992334" expanded="true" signature="72919:73309" ph="SELECT NHTC.... " />
-            <marker date="1507805992334" expanded="true" signature="92838:92926" ph="SELECT id,is... $" />
-            <marker date="1507805992334" expanded="true" signature="93846:93991" ph="SELECT id,is... $" />
-            <marker date="1507805992334" expanded="true" signature="97041:97320" ph="SELECT testc... $" />
-            <marker date="1507805992334" expanded="true" signature="98285:98498" ph="SELECT ${{$f... " />
-            <marker date="1507805992334" expanded="true" signature="100964:101072" ph="INSERT INTO $... " />
-            <marker date="1507805992334" expanded="true" signature="103139:103209" ph="DELETE FROM " />
-            <marker date="1507805992334" expanded="true" signature="143924:143970" ph="DELETE FROM " />
-            <marker date="1507805992334" expanded="true" signature="144006:144061" ph="DELETE FROM " />
-            <marker date="1507805992334" expanded="true" signature="144097:144150" ph="DELETE FROM " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ajax/gettestcasesummary.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="18" column="22" lean-forward="false" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/functions/inputparameter.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="116" column="9" lean-forward="false" selection-start-line="116" selection-start-column="9" selection-end-line="116" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.inc.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5442">
@@ -510,9 +370,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="24" />
-          <folding>
-            <marker date="1507882666181" expanded="true" signature="1358:1490" ph="SELECT NH.id... $" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -520,7 +377,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="45" lean-forward="false" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -528,7 +384,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
           <caret line="39" column="43" lean-forward="false" selection-start-line="39" selection-start-column="43" selection-end-line="39" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -536,12 +391,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="e#3058#4745#0#Smarty" expanded="false" />
-            <element signature="e#4751#7032#0#Smarty" expanded="false" />
-            <element signature="e#7038#9515#0#Smarty" expanded="false" />
-            <element signature="e#9521#12038#0#Smarty" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -549,14 +398,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="34" lean-forward="false" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-          <folding>
-            <element signature="e#2036#3432#0#Smarty" expanded="false" />
-            <element signature="e#3532#4368#0#Smarty" expanded="false" />
-            <element signature="e#4372#5420#0#Smarty" expanded="false" />
-            <element signature="e#5423#6763#0#Smarty" expanded="false" />
-            <element signature="e#6767#7715#0#Smarty" expanded="false" />
-            <element signature="e#7719#8690#0#Smarty" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -564,7 +405,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="31" lean-forward="true" selection-start-line="4" selection-start-column="31" selection-end-line="4" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -572,9 +412,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-10988">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1507805992021" expanded="true" signature="5269:5386" ph="SELECT id FR... $" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -582,7 +419,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -590,7 +426,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -598,7 +433,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-261">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -606,9 +440,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-562">
           <caret line="54" column="30" lean-forward="true" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
-          <folding>
-            <marker date="1507805992025" expanded="true" signature="5629:5746" ph="SELECT id FR... $" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -616,7 +447,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -624,7 +454,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -632,7 +461,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1009">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -652,7 +480,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1173">
           <caret line="29" column="50" lean-forward="false" selection-start-line="29" selection-start-column="50" selection-end-line="29" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -660,7 +487,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1394">
           <caret line="169" column="26" lean-forward="false" selection-start-line="169" selection-start-column="18" selection-end-line="169" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -668,7 +494,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -692,11 +517,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="827">
           <caret line="613" column="16" lean-forward="false" selection-start-line="613" selection-start-column="16" selection-end-line="613" selection-end-column="16" />
-          <folding>
-            <element signature="e#6267#8244#0#Smarty" expanded="false" />
-            <element signature="e#8328#10979#0#Smarty" expanded="false" />
-            <element signature="e#11063#13756#0#Smarty" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -712,136 +532,212 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-9594">
           <caret line="53" column="43" lean-forward="false" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gui/templates/project/projectEdit.tpl">
+    <entry file="file://$PROJECT_DIR$/lib/usermanagement/usersAssign.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="238" column="39" lean-forward="false" selection-start-line="238" selection-start-column="39" selection-end-line="238" selection-end-column="39" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#h1#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#section#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#label#0;n#div#1;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#section#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#label#0;n#div#2;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#section#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#div#3;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#section#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#3;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#section#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#div#3;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#section#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#div#4;n#fieldset#0;n#form#0;n#div#0;n#div#0;n#section#0;n#body#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#p#0;n#div#0;n#div#0;n#section#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="2244">
+          <caret line="150" column="0" lean-forward="false" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gui/templates/main.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="408">
+          <caret line="24" column="7" lean-forward="true" selection-start-line="24" selection-start-column="7" selection-end-line="24" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gui/templates/inc_head.tpl">
+    <entry file="file://$PROJECT_DIR$/gui/templates/navBar.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
-          <caret line="25" column="64" lean-forward="false" selection-start-line="25" selection-start-column="56" selection-end-line="25" selection-end-column="64" />
-          <folding />
+        <state relative-caret-position="765">
+          <caret line="45" column="85" lean-forward="false" selection-start-line="45" selection-start-column="85" selection-end-line="45" selection-end-column="85" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/menu.inc.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="52" lean-forward="true" selection-start-line="35" selection-start-column="52" selection-end-line="35" selection-end-column="79" />
-          <folding />
+        <state relative-caret-position="612">
+          <caret line="36" column="11" lean-forward="true" selection-start-line="36" selection-start-column="11" selection-end-line="36" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/tabsmenu.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-244">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/templates/inc_update.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gui/templates/DataTables.inc.tpl">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="2" lean-forward="true" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
+          <caret line="0" column="2" lean-forward="false" selection-start-line="0" selection-start-column="2" selection-end-line="0" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/templates/firstLogin.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/usermanagement/usersAssign.php">
+    <entry file="file://$PROJECT_DIR$/lib/usermanagement/usersView.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="150" column="0" lean-forward="true" selection-start-line="150" selection-start-column="0" selection-end-line="150" selection-end-column="0" />
+        <state relative-caret-position="2992">
+          <caret line="176" column="1" lean-forward="false" selection-start-line="176" selection-start-column="1" selection-end-line="176" selection-end-column="1" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gui/templates/navBar.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="45" column="85" lean-forward="false" selection-start-line="45" selection-start-column="85" selection-end-line="45" selection-end-column="85" />
-          <folding>
-            <element signature="n#style#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="e#1363#1369#0#HTML" expanded="true" />
-            <element signature="e#1369#1375#0#HTML" expanded="true" />
-            <element signature="e#1375#1381#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#span#2;n#div#1;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#0;n#div#2;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#2;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#form#0;n#div#2;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#form#0;n#div#2;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#1;n#div#2;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#2;n#form#1;n#div#2;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#form#1;n#div#2;n#div#0;n#nav#0;n#body#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gui/templates/project/projectView.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="63" column="46" lean-forward="false" selection-start-line="63" selection-start-column="46" selection-end-line="63" selection-end-column="46" />
-          <folding>
-            <element signature="n#style#0;n#form#1;n#div#0;n#div#0;n#section#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#2;n#div#0;n#div#0;n#section#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#a#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#section#1;n#body#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#span#0;n#a#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#section#1;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#td#1;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#section#1;n#body#0;n#!!top" expanded="false" />
-            <element signature="n#td#2;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#section#1;n#body#0;n#!!top" expanded="false" />
-            <element signature="n#td#3;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#section#1;n#body#0;n#!!top" expanded="false" />
-            <element signature="n#td#4;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#section#1;n#body#0;n#!!top" expanded="false" />
-            <element signature="n#td#5;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#section#1;n#body#0;n#!!top" expanded="false" />
-            <element signature="n#td#6;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#div#0;n#section#1;n#body#0;n#!!top" expanded="false" />
-            <element signature="e#7320#7866#0#Smarty" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/rolesView.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="e#4629#4853#0#Smarty" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/usersView.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="62" column="39" lean-forward="false" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
+        <state relative-caret-position="1479">
+          <caret line="87" column="25" lean-forward="false" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/templates/project/projectEdit.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2720">
+          <caret line="160" column="12" lean-forward="false" selection-start-line="154" selection-start-column="5" selection-end-line="160" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/themes/default/images/calendar.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/templates/inc_head.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="84" lean-forward="false" selection-start-line="25" selection-start-column="84" selection-end-line="25" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/rolesView.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2125">
+          <caret line="125" column="6" lean-forward="false" selection-start-line="125" selection-start-column="6" selection-end-line="125" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/templates/project/projectView.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="68" column="114" lean-forward="false" selection-start-line="68" selection-start-column="114" selection-end-line="68" selection-end-column="114" />
+          <folding>
+            <element signature="e#7320#7866#0#Smarty" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/usersAssign.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3961">
-          <caret line="233" column="7" lean-forward="true" selection-start-line="233" selection-start-column="7" selection-end-line="233" selection-end-column="7" />
+        <state relative-caret-position="2363">
+          <caret line="139" column="53" lean-forward="false" selection-start-line="139" selection-start-column="53" selection-end-line="139" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/userInfo.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1972">
+          <caret line="116" column="35" lean-forward="false" selection-start-line="116" selection-start-column="35" selection-end-line="116" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/rolesEdit.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="290" column="4" lean-forward="true" selection-start-line="290" selection-start-column="4" selection-end-line="290" selection-end-column="4" />
           <folding>
-            <element signature="e#3327#3333#0#HTML" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#div#2;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#2;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#2;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#div#2;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#2;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#3;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#3;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#div#3;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#div#3;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#4;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#4;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#div#2;n#div#4;n#form#0;n#section#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#table#0;n#form#0;n#section#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/cfields/cfieldsView.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="28" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/templates/usermanagement/usersEdit.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="259" column="12" lean-forward="true" selection-start-line="244" selection-start-column="5" selection-end-line="259" selection-end-column="12" />
+          <folding>
+            <element signature="n#style#0;n#form#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/templates/cfields/cfieldsImport.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="97" column="41" lean-forward="false" selection-start-line="97" selection-start-column="41" selection-end-line="97" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/templates/cfields/cfieldsExport.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="54" column="12" lean-forward="true" selection-start-line="46" selection-start-column="5" selection-end-line="54" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/templates/cfields/cfieldsEdit.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="349" column="0" lean-forward="true" selection-start-line="339" selection-start-column="16" selection-end-line="349" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#div#4;n#form#0;n#div#0;n#section#0;n#div#1;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gui/templates/cfields/cfieldsView.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="657">
+          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#section#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#section#2;n#div#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h1#0;n#div#0;n#body#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

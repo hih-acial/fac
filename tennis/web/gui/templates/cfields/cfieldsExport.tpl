@@ -37,40 +37,37 @@ function validateForm(f)
 
 
 <body>
-<h1 class="title">{$gui->page_title|escape}</h1>
-<div class="workBack">
+<h1 class="title text-center">{$gui->page_title|escape}</h1>
+<section class="container container-fluid well">
 {if $gui->do_it eq 1}
   <form method="post" id="export_xml" enctype="multipart/form-data" 
         action="lib/cfields/cfieldsExport.php"
-        onSubmit="javascript:return validateForm(this);">
-  
-    <table>
-    <tr>
-    <td>
-    {$labels.export_filename}
-    </td>
-    <td>
-  	<input type="text" name="export_filename" maxlength="{#FILENAME_MAXLEN#}" 
-			           value="{$gui->export_filename|escape}" size="{#FILENAME_SIZE#}"/>
-			  				{include file="error_icon.tpl" field="export_filename"}
-  	</td>
-  	<tr>
-  	<td>{$labels.file_type}</td>
-  	<td>
-  	<select name="exportType">
-  		{html_options options=$gui->exportTypes}
-  	</select>
-	  <a href={$basehref}{$smarty.const.PARTIAL_URL_TL_FILE_FORMATS_DOCUMENT}>{$labels.view_file_format_doc}</a>
-  	</td>
-  	</tr>
-  
-  	</table>
-  	
-  	<div class="groupBtn">
+        onSubmit="return validateForm(this);">
+
+      <div class="form-group">
+          <label class="col-lg-2 control-label" for="export_filename">{$labels.export_filename}</label>
+          <div class="col-lg-10">
+              <input type="text" class="form-control" id="export_filename" name="export_filename" maxlength="{#FILENAME_MAXLEN#}"
+                     value="{$gui->export_filename|escape}" size="{#FILENAME_SIZE#}"/>
+              {include file="error_icon.tpl" field="export_filename"}
+              {include file="error_icon.tpl" field="cf_name"}
+          </div>
+      </div>
+      <div class="form-group">
+          <label class="col-lg-2 control-label" for="exportType">{$labels.file_type}</label>
+          <div  class="col-lg-8">
+              <select class="form-control" id="exportType" name="exportType">
+                  {html_options options=$gui->exportTypes}
+              </select>
+          </div>
+          <a class="col-lg-2" href={$basehref}{$smarty.const.PARTIAL_URL_TL_FILE_FORMATS_DOCUMENT}>{$labels.view_file_format_doc}</a>
+      </div>
+      <br>
+  	<div class="groupBtn col-md-offset-4 col-md-offset-4">
   	  <input type="hidden" name="doAction" id="doAction" value="" />
-  		<input type="submit" name="doExport" id="doExport" value="{$labels.btn_export}" 
+  		<input class="btn btn-primary" type="submit" name="doExport" id="doExport" value="{$labels.btn_export}"
   		                     onclick="doAction.value=this.id" />
-  		<input type="button" name="cancel" value="{$labels.btn_cancel}"
+  		<input class="btn btn-default" type="button" name="cancel" value="{$labels.btn_cancel}"
     		     {if $gui->goback_url != ''}  onclick="location='{$gui->goback_url}'"
     		     {else}  onclick="javascript:history.back();" {/if} />
 
@@ -81,7 +78,7 @@ function validateForm(f)
 	{$gui->nothing_todo_msg|escape}
 {/if}
 
-</div>
+</section>
 
 </body>
 </html>

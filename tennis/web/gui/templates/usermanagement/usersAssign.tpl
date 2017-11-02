@@ -137,7 +137,7 @@ during refresh feature, and then we have a bad refresh on page getting a bug.
     </div>
 
     <div id="usersRoleTable">
-	    <table class="table table-striped table-responsive table-hover sortable" width="100%" id="item_view">
+	    <table class="table table-striped table-hover" id="item_view">
             <thead class="bg-success">
             <tr>
                 <th>

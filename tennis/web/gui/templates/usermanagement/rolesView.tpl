@@ -32,7 +32,7 @@ Purpose: smarty template - View defined roles
 </head>
 
 <body {$body_onload}>
-<h1 class="title">{$gui->main_title}</h1>
+<h1 class="text-center text-success">{$gui->main_title}</h1>
 
 {include file="usermanagement/menu.inc.tpl"}
 
@@ -66,13 +66,15 @@ Purpose: smarty template - View defined roles
         {$labels.no_roles}
     {else}
         {* data table *}
-        <table class="table table-hover sortable common">
+        <table class="table table-striped table-hover">
+            <thead class="bg-success">
             <tr>
                 <th width="30%">{$tlImages.sort_hint}{$labels.th_roles}</th>
                 <th class="{$noSortableColumnClass}">{$labels.th_role_description}</th>
                 <th class="icon_cell">{$labels.th_delete}</th>
                 <th class="icon_cell">{$labels.th_duplicate_role}</th>
             </tr>
+            </thead>
             {foreach from=$gui->roles item=role}
             {if $role->dbID neq $smarty.const.TL_ROLES_INHERITED}
             <tr>
@@ -117,7 +119,7 @@ Purpose: smarty template - View defined roles
 {if $draw_create_btn}
   <div class="groupBtn">
     <form method="post" action="{$createRoleAction}" name="launch_create">
-      <input type="submit" name="doCreate"  value="{$labels.btn_create}" />
+      <input class="btn btn-success" type="submit" name="doCreate"  value="{$labels.btn_create}" />
     </form>
   </div>
 {/if}
