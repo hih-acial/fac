@@ -313,8 +313,8 @@ function initShowOnExec(id_master,show_on_cfg)
  	{$labels.title_cfields_mgmt} 
 	{include file="inc_help.tpl" helptopic="hlp_customFields" show_help_icon=true}
 </h1>
-
-<h2>{$operation_descr|escape}</h2>
+<hr>
+<h2 class="text-center">{$operation_descr|escape}</h2>
 {include file="inc_update.tpl" user_feedback=$user_feedback}
 
 {if $gui->cfield_is_used}
