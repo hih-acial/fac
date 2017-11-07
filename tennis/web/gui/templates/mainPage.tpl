@@ -125,25 +125,13 @@ $gui->grants.exec_ro_access == "yes")}
                 </a>
             </li>
             <li>
-                <a href="#">Dashboard</a>
+                <a href="#" style="font-size: large">Espace campagne</a>
             </li>
             <li>
-                <a href="#">Shortcuts</a>
+                 <a href="#" style="font-size: large">Espace test</a>
             </li>
             <li>
-                <a href="#">Overview</a>
-            </li>
-            <li>
-                <a href="#">Events</a>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
+                <a href="#" style="font-size: large">Espace exécution</a>
             </li>
         </ul>
     </div>
