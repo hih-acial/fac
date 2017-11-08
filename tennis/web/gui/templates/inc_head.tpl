@@ -60,7 +60,6 @@ editorType: used to understand if code for tinymce need to be loaded
 	<script type="text/javascript" src="{$basehref}third_party/chosen/chosen.jquery.js"></script>
 
 	<script type="text/javascript" src="{$basehref}third_party/prototype/prototype.js" language="javascript"></script>
-	<script src="http://127.0.0.1/bootstrap/cerulean.min.js"></script>
 	<script type="text/javascript" language="javascript">
 	//<!--
 	var fRoot = '{$basehref}';
