@@ -49,9 +49,12 @@
 {$platformID=0}
 
 {if $control->draw_bulk_update_button}
-    <input type="button" value="{$labels.btn_bulk_update_to_latest_version}"
-           name="doBulkUpdateToLatest"
-           onclick="update2latest({$gui->tPlanID})" />
+<div class="text-center">
+  <input class="btn btn-secondary" type="button" value="{$labels.btn_bulk_update_to_latest_version}"
+         name="doBulkUpdateToLatest"
+         onclick="update2latest({$gui->tPlanID})" />
+</div>
+  <br>
 {/if}
 
 {* hidden feature input (mainly for testcase edit when refreshing frame) *}
@@ -73,6 +76,7 @@
 </style>
 
 {if $control->display_settings}
+
   <div id="settings_panel" style="overflow: visible;">
     <div class="x-panel-header x-unselectable" style="overflow: visible;">
       {$labels.caption_nav_settings}
@@ -124,9 +128,9 @@
         <tr>
             <td>{$labels.do_auto_update}</td>
             <td>
-               <input type="hidden" 
+               <input type="hidden"
                       id="hidden_setting_refresh_tree_on_action"
-                      name="hidden_setting_refresh_tree_on_action" 
+                      name="hidden_setting_refresh_tree_on_action"
                       value="{$control->settings.setting_refresh_tree_on_action.hidden_setting_refresh_tree_on_action}" />
 
                <input type="checkbox"
@@ -141,7 +145,7 @@
       {if $control->draw_export_testplan_button || $control->draw_import_xml_results_button}
         <tr>
           <td>&nbsp;</td><td>&nbsp;</td>
-        </tr>   
+        </tr>
         <tr>
           <td>&nbsp;</td>
           <td>
@@ -151,7 +155,7 @@
                                                            '{$control->settings.setting_testplan.selected}','{$platformID}',
                                                            '{$control->settings.setting_build.selected}','tree',
                                                            '{$control->form_token}');" />
-            &nbsp;                                               
+            &nbsp;
             <image src="{$tlImages.export_for_results_import}" title="{$labels.btn_export_testplan_tree_for_results}"
                    onclick="javascript: openExportTestPlan('export_testplan','{$session.testprojectID}',
                                                            '{$control->settings.setting_testplan.selected}',
@@ -159,7 +163,7 @@
                                                            '{$control->settings.setting_build.selected}','4results',
                                                            '{$control->form_token}');" />
 
-            &nbsp;                                               
+            &nbsp;
             {/if}
             {if $control->draw_import_xml_results_button}
             <image src="{$tlImages.import_results}" title="{$labels.import_xml_results}"
@@ -183,7 +187,7 @@
     </div>
 
   <div id="filters" class="x-panel-body exec_additional_info" style="padding-top: 3px;overflow: visible;">
-    
+
     <table class="smallGrey" style="width:98%;">
 
     {if $control->filters.filter_tc_id}
@@ -257,7 +261,7 @@
       <tr>
         <td>{$labels.status}</td>
         <td>
-          <select class="chosen-select" id="filter_workflow_status" 
+          <select class="chosen-select" id="filter_workflow_status"
           {if $control->advanced_filter_mode}
              name="filter_workflow_status[]" multiple="multiple"
              size="{$control->filter_item_quantity}">
@@ -270,7 +274,7 @@
         </td>
       </tr>
     {/if}
-            
+
     {if $control->filters.filter_importance}
       <tr>
         <td>{$labels.importance}</td>
@@ -281,14 +285,14 @@
              size="{$control->filters.filter_importance.size}">
           {else}
              name="filter_importance">
-          {/if}     
+          {/if}
              {html_options options=$control->filters.filter_importance.items
               selected=$control->filters.filter_importance.selected}
           </select>
         </td>
       </tr>
     {/if}
-            
+
     {if $control->filters.filter_priority}
       <tr>
         <td>{$labels.priority}</td>
@@ -328,7 +332,7 @@
                       selected=$control->filters.filter_assigned_user.selected}
         </select>
         {else}
-        <select class="chosen-select" name="filter_assigned_user" 
+        <select class="chosen-select" name="filter_assigned_user"
                 id="filter_assigned_user"
                 onchange="javascript: triggerAssignedBox('filter_assigned_user',
                                                                'filter_assigned_user_include_unassigned',
@@ -367,7 +371,7 @@
         </td>
       </tr>
     {/if}
-    
+
 
     {* custom fields are placed here *}
 
@@ -385,7 +389,7 @@
         <tr>
         <td>{$labels.filter_result}</td>
         <td>
-        <select class="chosen-select" id="filter_result_result" 
+        <select class="chosen-select" id="filter_result_result"
         {if $control->advanced_filter_mode}
               name="filter_result_result[]" multiple="multiple"
                 size="{$control->filter_item_quantity}">
@@ -436,7 +440,7 @@
              id="doResetTree"
              name="btn_reset_filters"
              style="font-size: 90%;" />
-      
+
       {if $control->filters.filter_custom_fields}
       <input type="submit"
              value="{$control->filters.filter_custom_fields.btn_label}"
@@ -444,18 +448,18 @@
              name="btn_toggle_cf"
              style="font-size: 90%;" />
       {/if}
-      
+
       {if $control->filter_mode_choice_enabled}
-      
+
         {if $control->advanced_filter_mode}
           <input type="hidden" name="btn_advanced_filters" value="1" />
         {/if}
-      
+
         <input type="submit" id="toggleFilterMode"  name="{$control->filter_mode_button_name}"
              value="{$control->filter_mode_button_label}"
              style="font-size: 90%;"  />
           {/if}
-          
+
     </div>
 
   </div> {* filters *}
@@ -467,236 +471,235 @@
 {* here the requirement part starts *}
 
 {if $control->display_req_settings}
-  <div id="settings_panel">
-    <div class="x-panel-header x-unselectable">
-      {$labels.caption_nav_settings}
+  <div class="card">
+    <div class="card-header" >
+        <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse" class="card-title text-center" style="cursor: pointer"> {$labels.caption_nav_settings}</h4>
+    </div>
+    <div id="collapse">
+        <div id="settings" class="card-body">
+            <input type='hidden' id="tpn_view_settings" name="tpn_view_status"  value="0" />
+
+            <table class="smallGrey" style="width:98%;">
+
+                {if $control->settings.setting_refresh_tree_on_action}
+                    <tr>
+                        <td class="text-secondary"><h5>{$labels.do_auto_update}</h5></td>
+                        <td>
+                            <input type="hidden"
+                                   id="hidden_setting_refresh_tree_on_action"
+                                   name="hidden_setting_refresh_tree_on_action"
+                                   value="{$control->settings.setting_refresh_tree_on_action.hidden_setting_refresh_tree_on_action}" />
+
+                            <input type="checkbox"
+                                   id="cbsetting_refresh_tree_on_action"
+                                   name="setting_refresh_tree_on_action"
+                                    {if $control->settings.setting_refresh_tree_on_action.selected} checked {/if}
+                                   style="font-size: 90%;" onclick="this.form.submit();" />
+                        </td>
+                    </tr>
+                {/if}
+
+            </table>
+        </div> {* settings *}
     </div>
 
-    <div id="settings" class="x-panel-body exec_additional_info" "style="padding-top: 3px;">
-      <input type='hidden' id="tpn_view_settings" name="tpn_view_status"  value="0" />
-
-      <table class="smallGrey" style="width:98%;">
-
-      {if $control->settings.setting_refresh_tree_on_action}
-        <tr>
-            <td>{$labels.do_auto_update}</td>
-            <td>
-               <input type="hidden" 
-                      id="hidden_setting_refresh_tree_on_action"
-                      name="hidden_setting_refresh_tree_on_action" 
-                      value="{$control->settings.setting_refresh_tree_on_action.hidden_setting_refresh_tree_on_action}" />
-
-               <input type="checkbox"
-                       id="cbsetting_refresh_tree_on_action"
-                       name="setting_refresh_tree_on_action"
-                       {if $control->settings.setting_refresh_tree_on_action.selected} checked {/if}
-                       style="font-size: 90%;" onclick="this.form.submit();" />
-            </td>
-          </tr>
-      {/if}
-
-      </table>
-    </div> {* settings *}
   </div> {* settings_panel *}
+    <br>
 {/if} {* display req settings *}
 
 {if $control->display_req_filters}
+    <div class="card">
+        <div class="card-header" >
+            <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="card-title text-center" style="cursor: pointer"> {$labels.caption_nav_filters}</h4>
+        </div>
+        <div id="collapse1">
+            <div id="filters" class="card-body">
 
-  <div id="filter_panel">
-  <div class="x-panel-header x-unselectable">
-    {$labels.caption_nav_filters}
-  </div>
 
-  <div id="filters" class="x-panel-body exec_additional_info" style="padding-top: 3px;">
+                    <table class="table" style="width:98%;">
 
-  <table class="smallGrey" style="width:98%;">
+                        {if $control->filters.filter_doc_id}
+                            <tr>
+                                <td>{$labels.document_id}</td>
+                                <td><input class="form-control" type="text" name="filter_doc_id"
+                                           size="{#REQ_DOCID_SIZE#}"
+                                           maxlength="{#REQ_DOCID_MAXLEN#}"
+                                           value="{$control->filters.filter_doc_id.selected|escape}" />
+                                </td>
+                            </tr>
+                        {/if}
 
-  {if $control->filters.filter_doc_id}
-    <tr>
-      <td>{$labels.document_id}</td>
-      <td><input type="text" name="filter_doc_id"
-                             size="{#REQ_DOCID_SIZE#}"
-                             maxlength="{#REQ_DOCID_MAXLEN#}"
-                             value="{$control->filters.filter_doc_id.selected|escape}" />
-      </td>
-    </tr>
-  {/if}
+                        {if $control->filters.filter_title}
+                            <tr>
+                                <td>{$labels.title}</td>
+                                <td><input class="form-control" type="text" name="filter_title"
+                                           size="{#REQ_NAME_SIZE#}"
+                                           maxlength="{#REQ_NAME_MAXLEN#}"
+                                           value="{$control->filters.filter_title.selected|escape}" />
+                                </td>
+                            </tr>
+                        {/if}
 
-  {if $control->filters.filter_title}
-    <tr>
-      <td>{$labels.title}</td>
-      <td><input type="text" name="filter_title"
-                             size="{#REQ_NAME_SIZE#}"
-                             maxlength="{#REQ_NAME_MAXLEN#}"
-                             value="{$control->filters.filter_title.selected|escape}" />
-      </td>
-    </tr>
-  {/if}
-  
-  {if $control->filters.filter_status}
-    <tr>
-      <td>{$labels.status}</td>
-      <td>
-         <select class="chosen-select" id="filter_status"
-        {if $control->advanced_filter_mode}
-                  name="filter_status[]"
-                  multiple="multiple"
-                  size="{$control->filter_item_quantity}" >
-        {else}
-                  name="filter_status">
-        {/if}
-          {html_options options=$control->filters.filter_status.items
-                        selected=$control->filters.filter_status.selected}
-          </select>
-          
-      </td>
-    </tr>
-  {/if}
-  
-  {if $control->filters.filter_type}
-    <tr>
-      <td>{$labels.req_type}</td>
-      <td>
-        <select class="chosen-select" id="filter_type" 
-        {if $control->advanced_filter_mode}
-                  name="filter_type[]"
-                  multiple="multiple"
-                  size="{$control->filter_item_quantity}" >
-        {else}
-                  name="filter_type">
-        {/if}
-          {html_options options=$control->filters.filter_type.items
-                        selected=$control->filters.filter_type.selected}
-          </select>
-      </td>
-    </tr>
-  {/if}
+                        {if $control->filters.filter_status}
+                            <tr>
+                                <td>{$labels.status}</td>
+                                <td>
+                                    <select  class="chosen-select form-control" id="filter_status"
+                                            {if $control->advanced_filter_mode}
+                                            name="filter_status[]"
+                                            multiple="multiple"
+                                            size="{$control->filter_item_quantity}" >
+                                        {else}
+                                        name="filter_status">
+                                        {/if}
+                                        {html_options options=$control->filters.filter_status.items
+                                        selected=$control->filters.filter_status.selected}
+                                    </select>
 
-  {if $control->filters.filter_spec_type}
-    <tr>
-      <td>{$labels.req_spec_type}</td>
-      <td>
-        <select class="chosen-select" id="filter_spec_type" 
-        {if $control->advanced_filter_mode}
-                  name="filter_spec_type[]"
-                  multiple="multiple"
-                  size="{$control->filter_item_quantity}" >
-        {else}
-                  name="filter_spec_type">
-        {/if}
-          {html_options options=$control->filters.filter_spec_type.items
-                        selected=$control->filters.filter_spec_type.selected}
-          </select>
-      </td>
-    </tr>
-  {/if}
+                                </td>
+                            </tr>
+                        {/if}
 
-  {if $control->filters.filter_coverage}
-    <tr>
-      <td>{$labels.req_expected_coverage}</td>
-      <td><input type="text" name="filter_coverage"
-                             size="{#COVERAGE_SIZE#}"
-                             maxlength="{#COVERAGE_MAXLEN#}"
-                             value="{$control->filters.filter_coverage.selected|escape}" />
-      </td>
-    </tr>
-  {/if}
-  
-  {if $control->filters.filter_relation}
-    <tr>
-      <td>{$labels.has_relation_type}</td>
-      <td>
-        <select class="chosen-select" id="filter_relation"
-        {if $control->advanced_filter_mode}
-                  name="filter_relation[]"
-                  multiple="multiple"
-                  size="{$control->filter_item_quantity}" >
-        {else}
-              name="filter_relation">
-        {/if}
-          {html_options options=$control->filters.filter_relation.items
-                        selected=$control->filters.filter_relation.selected}
-          </select>
-      </td>
-    </tr>
-  {/if}
-  
-  {if $control->filters.filter_tc_id}
-    <tr>
-      <td>{$labels.th_tcid}</td>
-      <td><input type="text" name="filter_tc_id"
-                             size="{#TC_ID_SIZE#}"
-                             maxlength="{#TC_ID_MAXLEN#}"
-                             value="{$control->filters.filter_tc_id.selected|escape}" />
-      </td>
-    </tr>
-  {/if}
-  
-  {if $control->filters.filter_custom_fields && !$control->filters.filter_custom_fields.collapsed}
-    <tr><td>&nbsp;</td></tr>
-    {$control->filters.filter_custom_fields.items}
-  {/if}
-  
-  </table>
-  
-  <div>
-    <input type="submit"
-           value="{$labels.btn_apply_filter}"
-           id="doUpdateTree"
-           name="doUpdateTree"
-           style="font-size: 90%;" />
+                        {if $control->filters.filter_type}
+                            <tr>
+                                <td>{$labels.req_type}</td>
+                                <td>
+                                    <select class="chosen-select form-control" id="filter_type"
+                                            {if $control->advanced_filter_mode}
+                                            name="filter_type[]"
+                                            multiple="multiple"
+                                            size="{$control->filter_item_quantity}" >
+                                        {else}
+                                        name="filter_type">
+                                        {/if}
+                                        {html_options options=$control->filters.filter_type.items
+                                        selected=$control->filters.filter_type.selected}
+                                    </select>
+                                </td>
+                            </tr>
+                        {/if}
 
-    <input type="submit"
-           value="{$labels.btn_reset_filters}"
-           id="doResetTree"
-           name="btn_reset_filters"
-           style="font-size: 90%;" />
-    
-    {if $control->filters.filter_custom_fields}
-      <input type="submit"
-             value="{$control->filters.filter_custom_fields.btn_label}"
-             id="doToggleCF"
-             name="btn_toggle_cf"
-             style="font-size: 90%;" />
-    {/if}
-    
-    {if $control->filter_mode_choice_enabled}
-      
-      {if $control->advanced_filter_mode}
-        <input type="hidden" name="btn_advanced_filters" value="1" />
-      {/if}
-      
-      <input type="submit" id="toggleFilterMode"  name="{$control->filter_mode_button_name}"
-           value="{$control->filter_mode_button_label}"
-           style="font-size: 90%;"  />
-        {/if}
+                        {if $control->filters.filter_spec_type}
+                            <tr>
+                                <td>{$labels.req_spec_type}</td>
+                                <td>
+                                    <select class="chosen-select form-control" id="filter_spec_type"
+                                            {if $control->advanced_filter_mode}
+                                            name="filter_spec_type[]"
+                                            multiple="multiple"
+                                            size="{$control->filter_item_quantity}" >
+                                        {else}
+                                        name="filter_spec_type">
+                                        {/if}
+                                        {html_options options=$control->filters.filter_spec_type.items
+                                        selected=$control->filters.filter_spec_type.selected}
+                                    </select>
+                                </td>
+                            </tr>
+                        {/if}
 
-  </div>
-  
-  </div> {* filters *}
-  </div> {* filter_panel *}
+                        {if $control->filters.filter_coverage}
+                            <tr>
+                                <td>{$labels.req_expected_coverage}</td>
+                                <td><input class="form-control" type="text" name="filter_coverage"
+                                           size="{#COVERAGE_SIZE#}"
+                                           maxlength="{#COVERAGE_MAXLEN#}"
+                                           value="{$control->filters.filter_coverage.selected|escape}" />
+                                </td>
+                            </tr>
+                        {/if}
+
+                        {if $control->filters.filter_relation}
+                            <tr>
+                                <td>{$labels.has_relation_type}</td>
+                                <td>
+                                    <select class="chosen-select form-control" id="filter_relation"
+                                            {if $control->advanced_filter_mode}
+                                            name="filter_relation[]"
+                                            multiple="multiple"
+                                            size="{$control->filter_item_quantity}" >
+                                        {else}
+                                        name="filter_relation">
+                                        {/if}
+                                        {html_options options=$control->filters.filter_relation.items
+                                        selected=$control->filters.filter_relation.selected}
+                                    </select>
+                                </td>
+                            </tr>
+                        {/if}
+
+                        {if $control->filters.filter_tc_id}
+                            <tr>
+                                <td>{$labels.th_tcid}</td>
+                                <td><input class="form-control" type="text" name="filter_tc_id"
+                                           size="{#TC_ID_SIZE#}"
+                                           maxlength="{#TC_ID_MAXLEN#}"
+                                           value="{$control->filters.filter_tc_id.selected|escape}" />
+                                </td>
+                            </tr>
+                        {/if}
+
+                        {if $control->filters.filter_custom_fields && !$control->filters.filter_custom_fields.collapsed}
+                            <tr><td>&nbsp;</td></tr>
+                            {$control->filters.filter_custom_fields.items}
+                        {/if}
+
+                    </table>
+                <br>
+                    <div class="text-center">
+                        <input class="btn btn-success" type="submit"
+                               value="{$labels.btn_apply_filter}"
+                               id="doUpdateTree"
+                               name="doUpdateTree"
+                               style="font-size: 90%;" />
+
+                        <input class="btn btn-secondary" type="submit"
+                               value="{$labels.btn_reset_filters}"
+                               id="doResetTree"
+                               name="btn_reset_filters"
+                               style="font-size: 90%;" />
+
+                        {if $control->filters.filter_custom_fields}
+                            <input class="btn btn-info" type="submit"
+                                   value="{$control->filters.filter_custom_fields.btn_label}"
+                                   id="doToggleCF"
+                                   name="btn_toggle_cf"
+                                   style="font-size: 90%;" />
+                        {/if}
+
+                        {if $control->filter_mode_choice_enabled}
+
+                            {if $control->advanced_filter_mode}
+                                <input type="hidden" name="btn_advanced_filters" value="1" />
+                            {/if}
+
+                            <input class="btn btn-info" type="submit" id="toggleFilterMode"  name="{$control->filter_mode_button_name}"
+                                   value="{$control->filter_mode_button_label}"
+                                   style="font-size: 90%;"  />
+                        {/if}
+
+                    </div>
+            </div> {* settings *}
+        </div>
+
+    </div>
+    <br>
 {/if} {* show requirement filters *}
+<div class="text-center">
+    {if $control->draw_tc_unassign_button}
+        <input class="btn btn-danger" type="button" style="font-size: 90%;"
+               name="removen_all_tester_assignments"
+               value="{$labels.btn_bulk_remove}"
+               onclick="delete_testers_from_build({$control->settings.setting_build.selected});"
+        />
+    {/if}
+    {if $control->draw_tc_assignment_bulk_copy_button}
+        <input class="btn btn-warning" type="button" style="font-size: 90%;"
+               name="copy_tester_assignments"
+               value="{$labels.btn_bulk_copy}"
+               onclick="copy_tester_assignments_from_build({$control->settings.setting_build.selected});"
+        />
+    {/if}
+</div>
 
-{if $control->draw_tc_unassign_button}
-  <input type="button" style="font-size: 90%;"
-         name="removen_all_tester_assignments"
-         value="{$labels.btn_bulk_remove}"
-         onclick="javascript:delete_testers_from_build({$control->settings.setting_build.selected});"
-  />
-{/if}
-{if $control->draw_tc_assignment_bulk_copy_button}
-  <input type="button" style="font-size: 90%;"
-         name="copy_tester_assignments"
-         value="{$labels.btn_bulk_copy}"
-         onclick="javascript:copy_tester_assignments_from_build({$control->settings.setting_build.selected});"
-  />
-{/if}
 </form>
-<p>
-
-<script>
-jQuery( document ).ready(function() {
-jQuery(".chosen-select").chosen({ width: "85%" , allow_single_deselect: true});
-jQuery('select[data-cfield="list"]').chosen({ width: "85%" , allow_single_deselect: true});
-});
-</script>

@@ -15,6 +15,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 {config_load file="input_dimensions.conf" section=$cfg_section}
 
 {include file="inc_head.tpl" popup='yes' openHead='yes'}
+{include file="../custom.tpl"}
 {if #ROUND_EXEC_HISTORY# || #ROUND_TC_TITLE# || #ROUND_TC_SPEC#}
   {$round_enabled=1}
   <script language="JavaScript" src="{$basehref}gui/niftycube/niftycube.js" type="text/javascript"></script>
@@ -22,32 +23,35 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 </head>
 <body>
 
-<h1 class="title">
-{$gui->pageTitlePrefix}  
-{$labels.testplan} {$gui->testplan_name|escape} {$title_sep_type3} {$labels.build} {$gui->build_name|escape}
-{if $gui->platform_info.name != ""}
-  {$title_sep_type3}{$labels.platform}{$title_sep}{$gui->platform_info.name|escape}
-{/if}
-</h1>
-<div id="main_content" class="workBack">
+<section class="jumbotron">
+    <h3 class="text-center">
+        {$gui->pageTitlePrefix}
+        {$labels.testplan} {$gui->testplan_name|escape} {$title_sep_type3} {$labels.build} {$gui->build_name|escape}
+        {if $gui->platform_info.name != ""}
+            {$title_sep_type3}{$labels.platform}{$title_sep}{$gui->platform_info.name|escape}
+        {/if}
+    </h3>
+</section>
+
+<section class="container container-fluid">
   {if $gui->build_is_open == 0}
-    <div class="messages" style="align:center;">
-    {$labels.build_is_closed}<br />
-    {$labels.test_cases_cannot_be_executed}
+    <div class="row">
+    <p class="text-danger">{$labels.build_is_closed}</p><br>
+    <p class="text-danger"> {$labels.test_cases_cannot_be_executed}</p>
     </div>
-    <br />
+    <br>
   {/if}
 
-  <div style="color: rgb(21, 66, 139);font-weight: bold;font-size: 11px;font-family: tahoma,arial,verdana,sans-serif;">
+  <div class="text-primary">
   {$labels.testplan} {$gui->testplan_name|escape}
   </div>
-  <div id="testplan_notes" class="exec_additional_info">
+  <div class="text-secondary">
   {if $gui->testPlanEditorType == 'none'}{$gui->testplan_notes|nl2br}{else}{$gui->testplan_notes}{/if}
-  {if $gui->testplan_cfields neq ''} <div id="cfields_testplan" class="custom_field_container">{$gui->testplan_cfields}</div>{/if}
+  {if $gui->testplan_cfields neq ''} <div class="text-dark">{$gui->testplan_cfields}</div>{/if}
   </div>
 
   {if $gui->platform_info.id > 0}
-    <div style="color: rgb(21, 66, 139);font-weight: bold;font-size: 11px;font-family: tahoma,arial,verdana,sans-serif;">
+    <div class="text-primary">
     {$labels.platform} {$gui->platform_info.name|escape}
     </div>
     <div id="platform_notes" class="exec_additional_info">
@@ -55,13 +59,13 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
     </div>
   {/if}
 
-  <div style="color: rgb(21, 66, 139);font-weight: bold;font-size: 11px;font-family: tahoma,arial,verdana,sans-serif;">
+  <div class="text-primary">
   {$labels.build} {$gui->build_name|escape}
   </div>
   <div id="build_notes" class="exec_additional_info">
   {if $gui->buildEditorType == 'none'}{$gui->build_notes|nl2br}{else}{$gui->build_notes}{/if}
   {if $gui->build_cfields != ''} <div id="cfields_build" class="custom_field_container">{$gui->build_cfields}</div>{/if}
   </div>
-</div>
+</section>
 </body>
 </html>

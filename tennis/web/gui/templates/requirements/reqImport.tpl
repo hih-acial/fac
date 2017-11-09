@@ -20,15 +20,20 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 
 {include file="inc_head.tpl" openHead="yes"}
 {include file="inc_del_onclick.tpl"}
+{include file="../custom.tpl"}
 </head>
 <body>
-<h1 class="title">{$gui->main_descr|escape}</h1>
+<section class="jumbotron">
+    <h2 class="text-center">{$gui->main_descr|escape}</h2>
+</section>
 
-<div class="workBack">
+<div class="container">
 {if  $gui->doAction == 'askFileName' || $gui->file_check.status_ok eq 0}
   <form method="post" enctype="multipart/form-data" action="{$SCRIPT_NAME}?req_spec_id={$gui->req_spec_id}">
-  	<input type="hidden" name="scope" id="scope" value="{$gui->scope}" />
-    {include file="inc_gui_import_file.tpl" args=$gui->importFileGui}
+      <fieldset>
+          <input type="hidden" name="scope" id="scope" value="{$gui->scope}" />
+          {include file="inc_gui_import_file.tpl" args=$gui->importFileGui}
+      </fieldset>
   </form>
 {else}
   {if $gui->importResult != '' && $gui->file_check.status_ok }

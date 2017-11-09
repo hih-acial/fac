@@ -19,6 +19,7 @@ Purpose: smarty template - create a new req document
 
 {include file="inc_head.tpl" openHead="yes" jsValidate="yes" editorType=$gui->editorType}
 {include file="inc_del_onclick.tpl"}
+{include file="../custom.tpl"}
 <script language="javascript" src="gui/javascript/ext_extensions.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -119,28 +120,31 @@ function validateForm(f)
 </head>
 
 <body>
-<h1 class="title">
-	{if $gui->action_descr != ''}{$gui->action_descr|escape}{/if} {$gui->main_descr|escape}
-	{include file="inc_help.tpl" helptopic="hlp_req_spec_edit" show_help_icon=true}
-</h1>
+<section class="jumbotron">
+    <h2 class="text-center">
+        {if $gui->action_descr != ''}{$gui->action_descr|escape}{/if} {$gui->main_descr|escape}
+        {include file="inc_help.tpl" helptopic="hlp_req_spec_edit" show_help_icon=true}
+    </h2>
+</section>
+
 
 {include file="inc_update.tpl" user_feedback=$gui->user_feedback}
 
-<div class="workBack">
-	<form name="reqSpecEdit" id="reqSpecEdit" method="post" 
+<div class="container">
+	<form class="form-horizontal" name="reqSpecEdit" id="reqSpecEdit" method="post"
 		  action="{$basehref}lib/requirements/reqSpecEdit.php"
-		  onSubmit="javascript:return validateForm(this);">
+		  onSubmit="return validateForm(this);">
 		  
 	    <input type="hidden" name="parentID" value="{$gui->parentID}" />
 	    <input type="hidden" name="req_spec_id" value="{$gui->req_spec_id}" />
 		<input type="hidden" name="req_spec_revision_id" value="{$gui->req_spec_revision_id}" />
 
-	<div class="groupBtn">
+	<div class="text-center">
 		<input type="hidden" name="doAction" value="{$gui->operation}" />
-		<input type="submit" name="createSRS" value="{$gui->submit_button_label}"
+		<input class="btn btn-success" type="submit" name="createSRS" value="{$gui->submit_button_label}"
 	       onclick="show_modified_warning = false; doAction.value='{$gui->operation}';" />
-		<input type="button" name="go_back" value="{$labels.cancel}" 
-			onclick="javascript: show_modified_warning = false; history.back();"/>
+		<input class="btn btn-secondary" type="button" name="go_back" value="{$labels.cancel}"
+			onclick="show_modified_warning = false; history.back();"/>
 
 		{* Revision Log Logic *}
 		<input type="hidden" name="save_rev" id="save_rev" value="0" />
@@ -150,12 +154,11 @@ function validateForm(f)
 		<input type="hidden" name="do_save" id="do_save" value="{$gui->askForRevision}" />
 		<input type="hidden" name="prompt4revision" id="prompt4revision" value="{$gui->askForRevision}" />
 
-
 	</div>
 	<br />
   	<div class="labelHolder"><label for="doc_id">{$labels.doc_id}</label>
   	</div>
-	  <div><input type="text" name="doc_id" id="doc_id"
+	  <div><input class="form-control" type="text" name="doc_id" id="doc_id"
   		        size="{#REQSPEC_DOCID_SIZE#}" maxlength="{#REQSPEC_DOCID_MAXLEN#}"
   		        value="{$gui->req_spec.doc_id|escape}" required />
   				{include file="error_icon.tpl" field="doc_id"}
@@ -169,7 +172,7 @@ function validateForm(f)
 			{/if}
 	   	</div>
 	   	<div>
-		    <input type="text" id="title" name="title"
+		    <input class="form-control" type="text" id="title" name="title"
 		           size="{#REQ_SPEC_TITLE_SIZE#}"
 				   maxlength="{#REQ_SPEC_TITLE_MAXLEN#}"
 		           value="{$gui->req_spec.title|escape}" required />
@@ -195,7 +198,7 @@ function validateForm(f)
 	  <br />
 		
   	<div class="labelHolder"> <label for="reqSpecType">{$labels.type}</label>
-     	<select name="reqSpecType">
+     	<select class="form-control" name="reqSpecType">
   			{html_options options=$gui->reqSpecTypeDomain selected=$gui->req_spec.type}
   		</select>
   	</div>
@@ -211,11 +214,11 @@ function validateForm(f)
 
 		{* BUGID 3854 *}
 		{* BUGID 4154 - when save or cancel is pressed do not show modification warning *}
-		<div class="groupBtn">
-			<input type="submit" name="createSRS" value="{$gui->submit_button_label}"
+		<div class="text-center">
+			<input class="btn btn-success" type="submit" name="createSRS" value="{$gui->submit_button_label}"
 		       onclick="show_modified_warning = false; doAction.value='{$gui->operation}';" />
-			<input type="button" name="go_back" value="{$labels.cancel}" 
-				onclick="javascript: show_modified_warning = false; history.back();"/>
+			<input class="btn btn-secondary" type="button" name="go_back" value="{$labels.cancel}"
+				onclick="show_modified_warning = false; history.back();"/>
 		</div>
 		
   {if isset($gui->askForLog) && $gui->askForLog}

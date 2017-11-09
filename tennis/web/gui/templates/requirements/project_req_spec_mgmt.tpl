@@ -20,31 +20,39 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 
 
 {include file="inc_head.tpl"}
-
+{include file="../custom.tpl"}
 {* ------------------------------------------------------------------------- *}
 <body>
-<h1 class="title">{$gui->main_descr|escape}</h1>
-<div class="workBack">
-  <div class="groupBtn">
-    <form method="post">
-      {if $gui->grants->modify}
-      <input type="button" id="new_req_spec" name="new_req_spec"
-             value="{$labels.btn_new_req_spec}"
-             onclick="location='{$req_spec_new_url}{$gui->tproject_id}'" />
-      {/if}
+<section class="jumbotron">
+  <h2 class="text-center">{$gui->main_descr|escape}</h2>
+</section>
 
-      <input type="button" id="export_all" name="export_all"
-             value="{$labels.btn_export_all_reqspec}"
-             onclick="location='{$req_export_url}{$gui->tproject_id}'" />
+<section>
+  <div class="container container-fluid">
+    <div class="col-12 text-center">
 
-      {if $gui->grants->modify}
-      <input type="button" id="import_all" name="import_all"
-             value="{$labels.btn_import}"
-             onclick="location='{$req_import_url}{$gui->tproject_id}'" />
-      {/if}
-    </form>
+        <form class="form-horizontal text-center" method="post">
+            {if $gui->grants->modify}
+              <input class="btn btn-success" type="button" id="new_req_spec" name="new_req_spec"
+                     value="{$labels.btn_new_req_spec}"
+                     onclick="location='{$req_spec_new_url}{$gui->tproject_id}'" />
+            {/if}
+
+          <input class="btn btn-secondary" type="button" id="export_all" name="export_all"
+                 value="{$labels.btn_export_all_reqspec}"
+                 onclick="location='{$req_export_url}{$gui->tproject_id}'" />
+
+            {if $gui->grants->modify}
+              <input class="btn btn-info" type="button" id="import_all" name="import_all"
+                     value="{$labels.btn_import}"
+                     onclick="location='{$req_import_url}{$gui->tproject_id}'" />
+            {/if}
+        </form>
+    </div>
+
+
   </div>
-</div>
+</section>
 
 {if $gui->refresh_tree == "yes"}
   {include file="inc_refreshTree.tpl"}

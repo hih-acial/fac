@@ -6,7 +6,7 @@ show requirement specifications tree menu
 
 {include file="inc_head.tpl" openHead="yes"}
 {include file="inc_ext_js.tpl" bResetEXTCss=1}
-
+{include file="../custom.tpl"}
 {* Ext Collapsible Panel *}
 <script type="text/javascript" src='gui/javascript/ext_extensions.js'></script>
 <script type="text/javascript">
@@ -65,8 +65,8 @@ var req_manager_url = '{$gui->req_manager_url}';
 
 </head>
 <body>
-<h1 class="title">{$gui->tree_title}</h1>
-
+  <h3 class="text-center">{$gui->tree_title}</h3>
+  <hr>
 {* include file for filter panel *}
 {include file='inc_filter_panel.tpl'}
 

@@ -118,11 +118,6 @@ $gui->grants.exec_ro_access == "yes")}
     <!-- Sidebar -->
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
-            <li class="sidebar-brand">
-                <a href="index.php" target="_parent">
-                    TESTLINK V.3.0
-                </a>
-            </li>
             {if $display_right_block_1}
             {$planView="lib/plan/planView.php"}
             {$buildView="lib/plan/buildView.php?tplan_id="}
@@ -130,26 +125,8 @@ $gui->grants.exec_ro_access == "yes")}
                 {$reqOverView="lib/requirements/reqOverview.php"}
                 {$reqMonOverView="lib/requirements/reqMonitorOverview.php?tproject_id="}
             <li>
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse" style="font-size: large">Espace campagne</a>
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse" style="font-size: large"> Exigences</a>
                 <ul id="collapse" class="panel-collapse collapse">
-
-                            {if $gui->grants.mgt_testplan_create == "yes"}
-                                <li>
-                                    <a href="{$planView}" >{$labels.href_plan_management}</a>
-                                </li>
-
-                            {/if}
-                            {if $gui->grants.testplan_create_build == "yes" and $gui->countPlans > 0}
-                                <li>
-                                    <a href="{$buildView}{$gui->testplanID}" >{$labels.href_build_new}</a>
-
-                                </li>
-                            {/if}
-                            {if $gui->grants.testplan_milestone_overview == "yes" and $gui->countPlans > 0}
-                                <li>
-                                    <a href="{$mileView}" >{$labels.href_plan_mstones}</a>
-                                </li>
-                            {/if}
                     {if $gui->grants.reqs_view == "yes"}
                         <li>
                             <a href="{$gui->launcher}?feature=reqSpecMgmt"  >{$labels.href_req_spec}</a>
@@ -185,8 +162,10 @@ $gui->grants.exec_ro_access == "yes")}
             {$tcCreatedUser="lib/results/tcCreatedPerUserOnTestProject.php?do_action=uinput&tproject_id="}
                 {$platformAssign="lib/platforms/platformsAssign.php?tplan_id="}
             <li>
-                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" style="font-size: large">Espace test</a>
+                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" style="font-size: large">test</a>
                 <ul id="collapseTwo" class="panel-collapse collapse">
+
+
                     <li>
                         <a href="{$gui->launcher}?feature=planAddTC" >{$labels.href_add_remove_test_cases}</a>
                     </li>
@@ -215,32 +194,28 @@ $gui->grants.exec_ro_access == "yes")}
                         <a href="{$tcCreatedUser}{$gui->testprojectID}"  >{$labels.link_report_test_cases_created_per_user}</a>
 
                     </li>
-                    {if $gui->grants.testplan_add_remove_platforms == "yes"}
-                      <li>
-                          <a href="{$platformAssign}{$gui->testplanID}"  >{$labels.href_platform_assign}</a>
-                      </li>
-                    {/if}
-
-                    {if $session['testprojectOptions']->testPriorityEnabled && $gui->grants.testplan_set_urgent_testcases == "yes"}
-                       <li>
-                           <a href="{$gui->launcher}?feature=test_urgency"  >{$labels.href_plan_assign_urgency}</a>
-                       </li>
-                    {/if}
-                    {if $gui->grants.testplan_update_linked_testcase_versions == "yes"}
+                    {if $gui->grants.mgt_testplan_create == "yes"}
                         <li>
-                            <a href="{$gui->launcher}?feature=planUpdateTC"  >{$labels.href_update_tplan}</a>
+                            <a href="{$planView}" >{$labels.href_plan_management}</a>
+                        </li>
+
+                    {/if}
+                    {if $gui->grants.testplan_create_build == "yes" and $gui->countPlans > 0}
+                        <li>
+                            <a href="{$buildView}{$gui->testplanID}" >{$labels.href_build_new}</a>
+
                         </li>
                     {/if}
-                    {if $gui->grants.testplan_show_testcases_newest_versions == "yes"}
+                    {if $gui->grants.testplan_milestone_overview == "yes" and $gui->countPlans > 0}
                         <li>
-                            <a href="{$gui->launcher}?feature=newest_tcversions" >{$labels.href_newest_tcversions}</a>
+                            <a href="{$mileView}" >{$labels.href_plan_mstones}</a>
                         </li>
                     {/if}
                 </ul>
             </li>
             {/if}
             <li>
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" style="font-size: large">Espace exécution</a>
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" style="font-size: large">Exécution</a>
                 <ul id="collapseThree" class="panel-collapse collapse">
                             {if $gui->grants.testplan_execute == "yes" ||$gui->grants.exec_ro_access == "yes"}
                                 {if $gui->grants.testplan_execute == "yes"}
@@ -262,14 +237,46 @@ $gui->grants.exec_ro_access == "yes")}
                             <li>
                                 <a href="{$gui->url.metrics_dashboard}">{$labels.href_metrics_dashboard}</a>
                             </li>
+                    {if $gui->grants.testplan_add_remove_platforms == "yes"}
+                        <li>
+                            <a href="{$platformAssign}{$gui->testplanID}"  >{$labels.href_platform_assign}</a>
+                        </li>
+                    {/if}
+
+                    {if $session['testprojectOptions']->testPriorityEnabled && $gui->grants.testplan_set_urgent_testcases == "yes"}
+                        <li>
+                            <a href="{$gui->launcher}?feature=test_urgency"  >{$labels.href_plan_assign_urgency}</a>
+                        </li>
+                    {/if}
+                    {if $gui->grants.testplan_update_linked_testcase_versions == "yes"}
+                        <li>
+                            <a href="{$gui->launcher}?feature=planUpdateTC"  >{$labels.href_update_tplan}</a>
+                        </li>
+                    {/if}
+                    {if $gui->grants.testplan_show_testcases_newest_versions == "yes"}
+                        <li>
+                            <a href="{$gui->launcher}?feature=newest_tcversions" >{$labels.href_newest_tcversions}</a>
+                        </li>
+                    {/if}
                 </ul>
             </li>
             {if $display_left_block_2 || $display_left_block_1}
             {$cfieldsView="lib/cfields/cfieldsView.php"}
             {$issueTrackerView="lib/issuetrackers/issueTrackerView.php"}
-            <li>
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" style="font-size: large">Projet de test</a>
+            <li style="margin-top: 150%;">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" style="font-size: large">Administration</a>
                 <ul id="collapseFive" class="panel-collapse collapse">
+                    {if $gui->grants.tproject_user_role_assignment == "yes"}
+                        <li>
+                            <a href="{$usersAssign}{$gui->testprojectID}" >{$labels.href_assign_user_roles}</a>
+                        </li>
+                    {/if}
+
+                    {if $gui->grants.cfield_management == "yes"}
+                        <li>
+                            <a href="{$cfAssignment}" >{$labels.href_cfields_tproject_assign}</a>
+                        </li>
+                    {/if}
                             {if $gui->grants.cfield_management == "yes"}
                                <li>
                                    <a href="{$cfieldsView}" >{$labels.href_cfields_management}</a>
@@ -285,16 +292,7 @@ $gui->grants.exec_ro_access == "yes")}
                             <a href="{$projectView}"  >{$labels.href_tproject_management}</a>
                         </li>
                     {/if}
-                    {if $gui->grants.tproject_user_role_assignment == "yes"}
-                        <li>
-                            <a href="{$usersAssign}{$gui->testprojectID}" >{$labels.href_assign_user_roles}</a>
-                        </li>
-                    {/if}
-                    {if $gui->grants.cfield_management == "yes"}
-                        <li>
-                            <a href="{$cfAssignment}" >{$labels.href_cfields_tproject_assign}</a>
-                        </li>
-                    {/if}
+
                     {if $gui->grants.keywords_view == "yes"}
 
                         <li>
