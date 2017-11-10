@@ -93,8 +93,11 @@ function validateForm(the_form)
 
 <body onLoad="{$opt_cfg->js_ot_name}.init(document.forms[0]);focusInputField('testcase_name')">
 {config_load file="input_dimensions.conf" section="tcNew"}
-<h1 class="title">{$labels.title_edit_tc}{$smarty.const.TITLE_SEP}{$gui->tc.name|escape}
-  {$smarty.const.TITLE_SEP_TYPE3}{$labels.version} {$gui->tc.version}</h1> 
+<section class="jumbotron">
+  <h2 class="title">{$labels.title_edit_tc}{$smarty.const.TITLE_SEP}{$gui->tc.name|escape}
+      {$smarty.const.TITLE_SEP_TYPE3}{$labels.version} {$gui->tc.version}</h2>
+</section>
+
 
 <div class="workBack" style="width:97%;">
 
@@ -120,7 +123,7 @@ function validateForm(the_form)
     
     <input type="button" name="go_back" value="{$labels.cancel}" 
            onclick="show_modified_warning=false; 
-                    javascript: {if isset($gui->cancelActionJS)}{$gui->cancelActionJS} {else} history.back() {/if};"/>
+           {if isset($gui->cancelActionJS)}{$gui->cancelActionJS} {else} history.back() {/if};"/>
   </div>  
   {include file="testcases/tcEdit_New_viewer.tpl"}
   
@@ -130,7 +133,7 @@ function validateForm(the_form)
            onclick="show_modified_warning=false; doAction.value='doUpdate'" value="{$labels.btn_save}" />
     <input type="button" name="go_back_bottom" value="{$labels.cancel}" 
            onclick="show_modified_warning=false; 
-                    javascript: {if isset($gui->cancelActionJS)}{$gui->cancelActionJS} {else} history.back() {/if};"/>
+                    {if isset($gui->cancelActionJS)}{$gui->cancelActionJS} {else} history.back() {/if};"/>
   </div>  
 </form>
 

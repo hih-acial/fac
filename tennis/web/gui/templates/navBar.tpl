@@ -15,7 +15,7 @@ title bar + menu
 {include file="inc_head.tpl" openHead="yes"}
 
 
-<body style="background-color: black">
+<body style="background-color: black; color: whitesmoke">
 <div class="container-fluid">
     <div class="menu_title">
 

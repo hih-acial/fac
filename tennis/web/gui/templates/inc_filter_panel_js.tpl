@@ -132,7 +132,7 @@ function copy_tester_assignments_from_build(destination)
 {* only add "onload" to <body> if we need these filtering capabilities *}
 
 {if $control->filters.filter_result || $control->filters.filter_assigned_user}
-  <body onload="javascript:
+  <body onload="
     {if $control->filters.filter_result}
 
       {if $control->filters.filter_result.filter_result_build.items|@count == 1}

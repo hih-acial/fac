@@ -24,7 +24,10 @@ rev: 20080924 - franciscom
 
 
 <body onload="init_drag_and_drop('{$basehref}','{$tree_id}');">
-<h1 class="title">{$gui->main_descr|escape}</h1>
+<section class="jumbotron">
+	<h1 class="title">{$gui->main_descr|escape}</h1>
+</section>
+
 
 <div class="workBack">
 <h1 class="title">{$labels.title_change_req_order}</h1>

@@ -30,8 +30,9 @@
 </head>
 
 <body>
-
-<h1 class="title">{$gui->pageTitle|escape}</h1>
+<section class="jumbotron">
+  <h1 class="title">{$gui->pageTitle|escape}</h1>
+</section>
 
 <div class="workBack" style="overflow-y: auto;">
 

@@ -28,7 +28,7 @@ $Id: reqCreateTestCases.tpl,v 1.18.2.1 2010/11/12 07:45:43 mx-julian Exp $
 {include file="inc_head.tpl" openHead="yes"}
 {include file="inc_jsCheckboxes.tpl"}
 {include file="inc_del_onclick.tpl"}
-
+{include file="../custom.tpl"}
 {literal}
 <script type="text/javascript">
 {/literal}
@@ -105,11 +105,12 @@ function cs_all_coverage_in_div(div_id, input_id_prefix, default_id_prefix, memo
 
 {assign var="cfg_section" value=$smarty.template|replace:".tpl":""}
 {config_load file="input_dimensions.conf" section=$cfg_section}
-
-<h1 class="title">
- 	{$gui->main_descr|escape}   
-	{include file="inc_help.tpl" helptopic="hlp_requirementsCoverage" show_help_icon=true}
-</h1>
+<section class="jumbotron">
+	<h1 class="text-center">
+        {$gui->main_descr|escape}
+        {include file="inc_help.tpl" helptopic="hlp_requirementsCoverage" show_help_icon=true}
+	</h1>
+</section>
 
 
 

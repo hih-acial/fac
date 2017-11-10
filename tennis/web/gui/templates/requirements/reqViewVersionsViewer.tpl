@@ -40,11 +40,12 @@ viewer for requirement
     <a href="{$gui->direct_link}&version={$args_req.version}" target="_blank">{$labels.specific_direct_link}</a><br/>
   </div>
 {/if}
-
-<div style="display: {$tlCfg->gui->op_area_display->req};" class="groupBtn" id="control_panel">
+<hr>
+<div class="text-center" id="control_panel">
   {if $args_grants->req_mgmt == "yes"}
-    <form style="display: inline;" id="reqViewF_{$req_version_id}" name="reqViewF_{$req_version_id}" 
+    <form class="form-inline" id="reqViewF_{$req_version_id}" name="reqViewF_{$req_version_id}"
           action="{$basehref}lib/requirements/reqEdit.php" method="post">
+      <fieldset class="center-block">
       <input type="hidden" name="requirement_id" value="{$args_req.id}" />
       <input type="hidden" name="req_version_id" value="{$args_req.version_id}" />
       <input type="hidden" name="doAction" value="" />
@@ -54,12 +55,12 @@ viewer for requirement
         
         
       {if $args_frozen_version eq null}
-        <input type="submit" name="edit_req" value="{$labels.btn_edit}" onclick="doAction.value='edit'"/>
+        <input class="btn btn-warning" type="submit" name="edit_req" value="{$labels.btn_edit}" onclick="doAction.value='edit'"/>
       {/if}
         
       {* If more than one version is displayed show "Delete" and "Delete this Version" button*}
       {if $args_can_delete_req && !$gui->version_option}
-        <input type="button" name="delete_req" value="{$labels.btn_delete}"
+        <input class="btn btn-danger" type="button" name="delete_req" value="{$labels.btn_delete}"
                onclick="delete_confirmation({$args_req.id},
                                             '{$args_req.req_doc_id|escape:'javascript'|escape}:{$args_req.title|escape:'javascript'|escape}',
                                             '{$del_msgbox_title}', '{$warning_msg}',pF_delete_req);"  />
@@ -67,7 +68,7 @@ viewer for requirement
         
       {* If a single version is displayed do only show "Delete this Version" button *}
       {if $args_can_delete_version || $gui->version_option}
-        <input type="button" name="delete_req_version" value="{$labels.btn_del_this_version}"
+        <input class="btn btn-outline-dark" type="button" name="delete_req_version" value="{$labels.btn_del_this_version}"
                onclick="delete_confirmation({$args_req.version_id},
                         '{$labels.version}:{$args_req.version}-{$args_req.req_doc_id|escape:'javascript'|escape}:{$args_req.title|escape:'javascript'|escape}',
                                             '{$del_msgbox_title}', '{$warning_msg}',pF_delete_req_version);"  />
@@ -75,14 +76,14 @@ viewer for requirement
       {/if}
 
       {if $args_frozen_version eq null}
-        <input type="button" name="freeze_req_version" value="{$labels.btn_freeze_this_version}"
+        <input class="btn btn-secondary" type="button" name="freeze_req_version" value="{$labels.btn_freeze_this_version}"
                onclick="delete_confirmation({$args_req.version_id},
                         '{$labels.version}:{$args_req.version}-{$args_req.req_doc_id|escape:'javascript'|escape}:{$args_req.title|escape:'javascript'|escape}',
                                             '{$freeze_msgbox_title}', '{$freeze_warning_msg}',pF_freeze_req_version);"  />
 
       {else}
         {if $args_grants->unfreeze_req}
-          <input type="button" name="unfreeze_req_version" value="{$labels.btn_unfreeze_this_version}"
+          <input class="btn btn-secondary" type="button" name="unfreeze_req_version" value="{$labels.btn_unfreeze_this_version}"
                onclick="delete_confirmation({$args_req.version_id},
                         '{$labels.version}:{$args_req.version}-{$args_req.req_doc_id|escape:'javascript'|escape}:{$args_req.title|escape:'javascript'|escape}',
                                             '{$unfreeze_msgbox_title}', '{$unfreeze_warning_msg}',pF_unfreeze_req_version);"  />
@@ -90,37 +91,44 @@ viewer for requirement
       {/if}
 
       {if $args_can_copy}                                         
-        <input type="submit" name="copy_req" value="{$labels.btn_cp}" onclick="doAction.value='copy'"/>
+        <input class="btn btn-primary" type="submit" name="copy_req" value="{$labels.btn_cp}" onclick="doAction.value='copy'"/>
       {/if}
-      <input type="button" name="new_revision" id="new_revision" value="{$labels.btn_new_revision}" 
-             onclick="doAction.value='doCreateRevision';javascript:ask4log('reqViewF','log_message','{$req_version_id}');"/>
-      <input type="button" name="new_version" id="new_version" value="{$labels.btn_new_version}" 
-               onclick="doAction.value='doCreateVersion';javascript:ask4log('reqViewF','log_message','{$req_version_id}');"/>
+      <input class="btn btn-info" type="button" name="new_revision" id="new_revision" value="{$labels.btn_new_revision}"
+             onclick="doAction.value='doCreateRevision';ask4log('reqViewF','log_message','{$req_version_id}');"/>
+      <input class="btn btn-success" type="button" name="new_version" id="new_version" value="{$labels.btn_new_version}"
+               onclick="doAction.value='doCreateVersion';ask4log('reqViewF','log_message','{$req_version_id}');"/>
+      </fieldset>
     </form>
+    <hr>
   {/if}
     
   {* compare versions *}
   {if $gui->req_has_history}
-    <form style="display: inline;" method="post" action="{$basehref}lib/requirements/reqCompareVersions.php" name="version_compare">
+    <form class="form-inline" method="post" action="{$basehref}lib/requirements/reqCompareVersions.php" name="version_compare">
+      <fieldset class="center-block">
         <input type="hidden" name="requirement_id" value="{$args_req.id}" />
-        <input type="submit" name="compare_versions" value="{$labels.btn_view_history}" />
+        <input class="btn btn-outline-secondary" type="submit" name="compare_versions" value="{$labels.btn_view_history}" />
+      </fieldset>
       </form>
   {/if}
 
   {* Option to print single requirement *}
-  <form style="display: inline;" method="post" 
+  <form class="form-inline" method="post"
      action="{$basehref}lib/requirements/reqEdit.php" name="reqPrinterFriendly">
-    <input type="hidden" id="rpfReqID" name="requirement_id" value="{$req_id}" />
-    <input type="hidden" id="rpfAction" name="doAction" value="" />
+    <fieldset class="center-block">
+      <input type="hidden" id="rpfReqID" name="requirement_id" value="{$req_id}" />
+      <input type="hidden" id="rpfAction" name="doAction" value="" />
 
-    <input type="button" name="printerFriendly" value="{$labels.btn_print_view}" 
-           onclick="javascript:openPrintPreview('req',{$args_req.id},{$args_req.version_id},
-                                                {$args_req.revision},'lib/requirements/reqPrint.php');"/>
-    <input type="submit" name="monitor" 
-      value="{$gui->btn_monitor_mgmt}" 
-      onclick="doAction.value='{$gui->btn_monitor_action}'"/> 
+      <input class="btn btn-light" type="button" name="printerFriendly" value="{$labels.btn_print_view}"
+             onclick="openPrintPreview('req',{$args_req.id},{$args_req.version_id},
+             {$args_req.revision},'lib/requirements/reqPrint.php');"/>
+      <input class="btn btn-outline-dark" type="submit" name="monitor"
+             value="{$gui->btn_monitor_mgmt}"
+             onclick="doAction.value='{$gui->btn_monitor_action}'"/>
+    </fieldset>
+
   </form>
-  <br/><br/>
+  <hr>
 </div> {* class="groupBtn" *}
 
 {* warning message when req is frozen *}
@@ -132,119 +140,140 @@ viewer for requirement
 {if $gui->version_option > 0}
   <div class="messages" align="center">{$labels.showing_version} {$args_req.version}</div>
 {/if}
-
-<table class="simple">
-  <tr>
-    <th>{$args_req.req_doc_id|escape}{$tlCfg->gui_title_separator_1}{$args_req.title|escape}</th>
-  </tr>
-
-  {if $args_show_version}
+<section class="well">
+  <h4>Informations sur l'exigence</h4>
+  <hr>
+  <table class="table table-bordered">
+    <thead class="thead-dark">
     <tr>
-      {if $args_req.revision_id gt 0}
-        {$tpt=$args_req.revision_id}
-      {else}
-        {$tpt=$args_req.version_id}
-      {/if}
-      <td class="bold" colspan="2" id="tooltip-{$tpt}">{$labels.version}
-      {$args_req.version} {$labels.revision} {$args_req.revision}
-      <img src="{$tlImages.log_message_small}" style="border:none" />
+      <th>Propriété</th>
+      <th>Info</th>
+    </tr>
+    </thead>
+    <tbody>
+    {if $args_show_version}
+      <tr>
+          {if $args_req.revision_id gt 0}
+              {$tpt=$args_req.revision_id}
+          {else}
+              {$tpt=$args_req.version_id}
+          {/if}
+        <td>
+            {$labels.version}
+        </td>
+        <td>
+            {$args_req.version}
+        </td>
+      </tr>
+        <tr class="bold" id="tooltip-{$tpt}">
+          <td>
+              {$labels.revision}
+          </td>
+          <td>
+              {$args_req.revision}
+            <img src="{$tlImages.log_message_small}" style="border:none" />
+          </td>
+        </tr>
+    {/if}
+    <tr>
+      <td>
+          {$labels.status}
+      </td>
+      <td>
+          {$args_gui->reqStatusDomain[$args_req.status]}
       </td>
     </tr>
-  {/if}
-
-  <tr>
-    <td>{$labels.status}{$smarty.const.TITLE_SEP}{$args_gui->reqStatusDomain[$args_req.status]}</td>
-  </tr>
-  <tr>
-    <td>{$labels.type}{$smarty.const.TITLE_SEP}{$args_gui->reqTypeDomain[$args_req.type]}</td>
-  </tr>
-  {if $args_gui->req_cfg->expected_coverage_management && $args_gui->attrCfg.expected_coverage[$args_req.type]} 
-  <tr>
-    <td>{$labels.expected_coverage}{$smarty.const.TITLE_SEP}{$args_req.expected_coverage}</td>
-  </tr>
-  {/if}
-
-  <tr>
-    <td>
-      <fieldset class="x-fieldset x-form-label-left"><legend class="legend_container">{$labels.scope}</legend>
-	  {if $gui->reqEditorType == 'none'}{$args_req.scope|nl2br}{else}{$args_req.scope}{/if}
-      </fieldset>
-    </td>
-  </tr>
-  <td>
-    <fieldset class="x-fieldset x-form-label-left"><legend class="legend_container">{$labels.coverage}</legend>
-    {if $gui->user_feedback != ''}
-      <img class="clickable" src="{$tlImages.warning}"/>
-      {$gui->user_feedback}<br><p>
+    <tr>
+      <td>{$labels.type}</td>
+      <td>{$args_gui->reqTypeDomain[$args_req.type]}</td>
+    </tr>
+    {if $args_gui->req_cfg->expected_coverage_management && $args_gui->attrCfg.expected_coverage[$args_req.type]}
+      <tr>
+        <td>{$labels.expected_coverage}</td>
+        <td>{$args_req.expected_coverage}</td>
+      </tr>
     {/if}
-    
-    {if $args_req_coverage != ''}
-      <form style="display: inline;" id="reqRemoveTestCase_{$req_version_id}" name="reqRemoveTestCase_{$req_version_id}" 
-            action="{$basehref}lib/requirements/reqEdit.php" method="post">
-        <input type="hidden" id="rtRID" name="requirement_id" value="{$args_req.id}" />
-        <input type="hidden" id="rtRVID" name="req_version_id" value="{$args_req.version_id}" />
-        <input type="hidden" id="rtAction" name="doAction" value="removeTestCase" />
-        <input type="hidden" id="rtTCID" name="tcaseIdentity" value="" />
+    <tr>
+      <td>{$labels.scope}</td>
+      <td>{if $gui->reqEditorType == 'none'}{$args_req.scope|nl2br}{else}{$args_req.scope}{/if}</td>
+    </tr>
+    <tr>
+      <td>{$labels.coverage}</td>
+      <td>{if $gui->user_feedback != ''}
+          <img class="clickable" src="{$tlImages.warning}"/>
+              {$gui->user_feedback}<br><p>
+          {/if}
+              {if $args_req_coverage != ''}
+        <form style="display: inline;" id="reqRemoveTestCase_{$req_version_id}" name="reqRemoveTestCase_{$req_version_id}"
+              action="{$basehref}lib/requirements/reqEdit.php" method="post">
+          <input type="hidden" id="rtRID" name="requirement_id" value="{$args_req.id}" />
+          <input type="hidden" id="rtRVID" name="req_version_id" value="{$args_req.version_id}" />
+          <input type="hidden" id="rtAction" name="doAction" value="removeTestCase" />
+          <input type="hidden" id="rtTCID" name="tcaseIdentity" value="" />
 
-      {section name=row loop=$args_req_coverage}
-        <span>
-        <input type="image"  class="clickable" src="{$tlImages.disconnect_small}" 
+            {section name=row loop=$args_req_coverage}
+              <span>
+        <input type="image"  class="clickable" src="{$tlImages.disconnect_small}"
                title="{$labels.removeLinkToTestCase}" onClick="tcaseIdentity.value={$args_req_coverage[row].id}">
-        &nbsp;&nbsp;       
+        &nbsp;&nbsp;
         <img class="clickable" src="{$tlImages.history_small}"
-             onclick="javascript:openExecHistoryWindow({$args_req_coverage[row].id});"
+             onclick="openExecHistoryWindow({$args_req_coverage[row].id});"
              title="{$labels.execution_history}" />
         <img class="clickable" src="{$tlImages.edit_icon}"
-             onclick="javascript:openTCaseWindow({$args_req_coverage[row].id});"
+             onclick="openTCaseWindow({$args_req_coverage[row].id});"
              title="{$labels.design}" />
-        {$args_gui->tcasePrefix|escape}{$args_gui->glueChar}{$args_req_coverage[row].tc_external_id}{$args_gui->pieceSep}{$args_req_coverage[row].name|escape}
+                  {$args_gui->tcasePrefix|escape}{$args_gui->glueChar}{$args_req_coverage[row].tc_external_id}{$args_gui->pieceSep}{$args_req_coverage[row].name|escape}
         </span><br />
-      {/section}
-      </form>
-    {/if}
-    {if is_null($args_frozen_version) || !$args_frozen_version}
-    <form style="display: inline;" id="reqAddTestCase_{$req_version_id}" name="reqAddTestCase_{$req_version_id}" 
-          action="{$basehref}lib/requirements/reqEdit.php" method="post">
-      <input type="hidden" id="atRID" name="requirement_id" value="{$args_req.id}" />
-      <input type="hidden" id="atRVID" name="req_version_id" value="{$args_req.version_id}" />
-      <input type="hidden" id="atAction" name="doAction" value="addTestCase" />
-    
-      <img class="clickable" src="{$tlImages.add}" onclick="javascript:toogleShowHide('addTestCase');"
-           title="{$labels.addLinkToTestCase}" /> 
-           
-      <div id="addTestCase"  name="addTestCase" style="display:none;">
-        <input type="input" name="tcaseIdentity" value=" " >
-        <input type="submit" name="sex" value="{$labels.btn_save}"/>
-      </div>
-    </form>   
-    {/if}
-        
-    </fieldset>
-    </td>
-   </tr>
-  <tr>
-      <td>&nbsp;</td>
-  </tr>
+            {/section}
+        </form>
+          {/if}
+          {if is_null($args_frozen_version) || !$args_frozen_version}
+            <form style="display: inline;" id="reqAddTestCase_{$req_version_id}" name="reqAddTestCase_{$req_version_id}"
+                  action="{$basehref}lib/requirements/reqEdit.php" method="post">
+              <input type="hidden" id="atRID" name="requirement_id" value="{$args_req.id}" />
+              <input type="hidden" id="atRVID" name="req_version_id" value="{$args_req.version_id}" />
+              <input type="hidden" id="atAction" name="doAction" value="addTestCase" />
 
-  <tr class="time_stamp_creation">
-      <td >
-          {$labels.title_created}&nbsp;{localize_timestamp ts=$args_req.creation_ts }&nbsp;
+              <img class="clickable" src="{$tlImages.add}" onclick="toogleShowHide('addTestCase');"
+                   title="{$labels.addLinkToTestCase}" />
+
+              <div id="addTestCase"  name="addTestCase" style="display:none;">
+                <input type="input" name="tcaseIdentity" value=" " >
+                <input type="submit" name="sex" value="{$labels.btn_save}"/>
+              </div>
+            </form>
+          {/if}
+      </td>
+    </tr>
+    <tr>
+      <td>
+          {$labels.title_created}
+      </td>
+      <td>
+          {localize_timestamp ts=$args_req.creation_ts }&nbsp;
           {$labels.by}&nbsp;{$args_req.author|escape}
       </td>
-  </tr>
-  {if $args_req.modifier != ""}
-  <tr class="time_stamp_creation">
-      <td >
-        {$labels.title_last_mod}&nbsp;{localize_timestamp ts=$args_req.modification_ts}
-        &nbsp;{$labels.by}&nbsp;{$args_req.modifier|escape}
-      </td>
-  </tr>
-  {/if}
-  <tr>
-  </tr>
-  <tr>
-  </tr>
-</table>
+    </tr>
+    {if $args_req.modifier != ""}
+      <tr class="time_stamp_creation">
+        <td >
+            {$labels.title_last_mod}
+        </td>
+        <td>{localize_timestamp ts=$args_req.modification_ts}
+          &nbsp;{$labels.by}&nbsp;{$args_req.modifier|escape}</td>
+      </tr>
+    {/if}
+    </tbody>
+  </table>
+  <table class="simple">
+
+    <tr>
+    </tr>
+    <tr>
+    </tr>
+  </table>
+</section>
+<hr>
 
   {if $args_cf neq ''}
   <div>

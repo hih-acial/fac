@@ -67,7 +67,7 @@ Purpose: view a requirement specification
 
 {include file="inc_head.tpl" openHead="yes" jsValidate="yes"}
 {include file="inc_del_onclick.tpl"}
-
+{include file="../custom.tpl"}
 <script type="text/javascript">
 /* All this stuff is needed for logic contained in inc_del_onclick.tpl */
 var del_action=fRoot+'{$req_module}reqSpecEdit.php?doAction=doDelete&req_spec_id=';
@@ -150,86 +150,146 @@ var pF_freeze_req_spec = freeze_req_spec;
 </head>
 
 <body {$body_onload} onUnload="storeWindowSize('ReqSpecPopup')" >
-<h1 class="title">
-  {if isset($gui->direct_link)}
-    {$tlImages.toggle_direct_link} &nbsp;
-  {/if}
-  {$gui->main_descr|escape}
-  {if $gui->req_spec.id}
-  {include file="inc_help.tpl" helptopic="hlp_requirementsCoverage" show_help_icon=true}
-  {/if}
-</h1>
+<section class="jumbotron">
+    <h2 class="text-center">
+        {if isset($gui->direct_link)}
+            {$tlImages.toggle_direct_link} &nbsp;
+        {/if}
+        {$gui->main_descr|escape}
+        {if $gui->req_spec.id}
+            {include file="inc_help.tpl" helptopic="hlp_requirementsCoverage" show_help_icon=true}
+        {/if}
+    </h2>
+</section>
 
-<div class="workBack">
+
+<div class="container">
   {if isset($gui->direct_link)}
     <div class="direct_link" style='display:none'><a href="{$gui->direct_link}" target="_blank">{$gui->direct_link}</a></div>
   {/if}
 {if $gui->req_spec.id}
-<img class="clickable" src="{$tlImages.cog}" onclick="javascript:toogleShowHide('control_panel');"
-     title="{$labels.actions}" />
-{include file="requirements/$buttons_template" args_reqspec_id=$reqSpecID}
+<section>
 
-<table class="simple">
-  <tr>
-    <th>{$gui->main_descr|escape}</th>
-  </tr>
-  <tr>
-    <td class="bold" id="tooltip-{$gui->req_spec.revision_id}">
-      {$labels.revision}{$smarty.const.TITLE_SEP}{$gui->req_spec.revision}
-       <img src="{$tlImages.log_message_small}" style="border:none" />
-      </td>
-  </tr>
-  <tr>
-    <td>{$labels.type}{$smarty.const.TITLE_SEP}
-    {$req_spec_type=$gui->req_spec.type}
-    {if isset($gui->reqSpecTypeDomain.$req_spec_type)}
-      {$gui->reqSpecTypeDomain.$req_spec_type}
-    {else}
-      {$labels.type_not_configured}  
-    {/if}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <fieldset class="x-fieldset x-form-label-left"><legend class="legend_container">{$labels.scope}</legend>
-	  {if $gui->reqSpecEditorType == 'none'}{$gui->req_spec.scope|nl2br}{else}{$gui->req_spec.scope}{/if}
-      </fieldset>
-    </td>
-  </tr>
-  {if $gui->external_req_management && $gui->req_spec.total_req != 0}
-    <tr>
-      <td>{$labels.req_total}{$smarty.const.TITLE_SEP}{$gui->req_spec.total_req}</td>
-    </tr>
-  {/if}
-  <tr>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <td>
-        {$gui->cfields}
-      </td>
-  </tr>
-  <tr class="time_stamp_creation">
-    <td colspan="2">
-          {$labels.title_created}&nbsp;{localize_timestamp ts=$gui->req_spec.creation_ts}&nbsp;
-          {$labels.by}&nbsp;{$gui->req_spec.author|escape}
-      </td>
-   </tr>
-  {if $gui->req_spec.modifier != ""}
-    <tr class="time_stamp_creation">
-      <td colspan="2">
-        {$labels.title_last_mod}&nbsp;{localize_timestamp ts=$gui->req_spec.modification_ts}
-        &nbsp;{$labels.by}&nbsp;{$gui->req_spec.modifier|escape}
-      </td>
-    </tr>
-  {/if}
-</table>
+    <div id="control_panel">
+        <form class="form-inline" id="req_spec" name="req_spec" action="lib/requirements/reqSpecEdit.php" method="post">
+            <input type="hidden" name="CSRFName" id="CSRFName" value="CSRFGuard_1601767869">
+            <input type="hidden" name="CSRFToken" id="CSRFToken" value="a05883ae275951c044cb922418090a15eb3081acab35a1e85716970369e68a01e09c10b6602c9d975af9c887e1723a7873aabbfc53dfa014cb8f7f489bf1883e">
+            <fieldset class="text-center center-block">
+                <h3>Opérations sur le dossier d’exigences</h3>
+                <hr>
+                <input type="hidden" name="req_spec_id" value="10">
+                <input type="hidden" name="req_spec_revision_id" value="11">
+                <input type="hidden" name="doAction" value="">
+                <input type="hidden" name="log_message" id="log_message" value="">
+                <input type="hidden" name="reqMgrSystemEnabled" id="reqMgrSystemEnabled" value="0">
 
+
+
+                <input class="btn btn-success" type="button" name="btn_new_req_spec" value="Créer" onclick="location='http://localhost/fac/tennis/web/lib/requirements/reqSpecEdit.php?doAction=createChild&amp;parentID=10'">
+                <input class="btn btn-warning" type="submit" name="edit_req_spec" value="Modifier" onclick="doAction.value='edit'">
+                <input class="btn btn-danger" type="button" name="deleteSRS" value="Supprimer" onclick="delete_confirmation(10,'Authentification',
+                                        'Supprimer','Etes-vous sûr de vouloir supprimer le dossier d’exigences %s ?');">
+
+                <input class="btn btn-info" type="button" name="importReqSpec" value="Importer" onclick="location='http://localhost/fac/tennis/web/lib/requirements/reqImport.php?scope=branch&amp;req_spec_id=10'">
+                <input class="btn btn-secondary" type="button" name="exportReq" value="Exporter" onclick="location='http://localhost/fac/tennis/web/lib/requirements/reqExport.php?scope=branch&amp;req_spec_id=10'">
+                <input class="btn btn-dark" type="button" name="freeze_req_spec" value="Verrouiller toutes exigences" onclick="delete_confirmation(10,'Authentification',
+                   'Verrouiller', 'Etes-vous sûr de vouloir verrouiller la version des exigences enfants de %s ?',
+                   pF_freeze_req_spec);">
+                <input class="btn btn-primary" type="button" name="new_revision" id="new_revision" value="Créer une nouvelle révision" onclick="doAction.value='doCreateRevision';ask4log('req_spec','log_message');">
+
+
+
+                <form>
+                    <input type="hidden" name="CSRFName" id="CSRFName" value="CSRFGuard_65126430">
+                    <input type="hidden" name="CSRFToken" id="CSRFToken" value="327e5ef892db4684ce55b3a4b7d391634a8fcfeed1c1b34271a1912abf530a81a62662eeb64598bb5df56ac4c2a2ff69535ad87d96dca72564a9efebf5a89abe">
+                    <input class="btn btn-light" type="button" name="printerFriendly" value="Aperçu avant impression" onclick="openPrintPreview('reqSpec',10,-1,-1,
+                                            'lib/requirements/reqSpecPrint.php');">
+                </form>
+            </fieldset>
+        </form>
+
+        <hr>
+        <form class="form-inline" id="req_operations" name="req_operations">
+            <input type="hidden" name="CSRFName" id="CSRFName" value="CSRFGuard_1441123527">
+            <input type="hidden" name="CSRFToken" id="CSRFToken" value="216bc200fed9d2c640716c41bea21e79a05c4fa1a745a347df6b3bd27261ef684e367ca493e978afa12be77182b924789fd1029c3afd2fd173195332367a9680">
+            <fieldset class="text-center center-block">
+                <h3>Opérations sur les exigences</h3>
+                <hr>
+                <input class="btn btn-outline-success" type="button" name="create_req" value="Créer" onclick="location='http://localhost/fac/tennis/web/lib/requirements/reqEdit.php?doAction=create&amp;req_spec_id=10'">
+                <input class="btn btn-outline-info" type="button" name="importReq" value="Importer" onclick="location='http://localhost/fac/tennis/web/lib/requirements/reqImport.php?req_spec_id=10'">
+                <input class="btn btn-outline-secondary" type="button" name="exportReq" value="Exporter" onclick="location='http://localhost/fac/tennis/web/lib/requirements/reqExport.php?req_spec_id=10'">
+                <input class="btn btn-outline-dark" type="button" name="createReqFromIssueXML" value="Créer Depuis Anomalies (XML)" onclick="location='http://localhost/fac/tennis/web/lib/requirements/reqCreateFromIssueMantisXML.php?scope=branch&amp;req_spec_id=10'">
+            </fieldset>
+        </form>
+    </div>
+    <br>
+    <hr>
+</section>
+    <section class="jumbotron">
+        <div class=" center-block">
+            <h4>Informations sur le dossier d'exigence</h4>
+            <hr>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Propriété</th>
+                        <th>Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bold" id="tooltip-{$gui->req_spec.revision_id}">
+                        <td>Révision</td>
+                        <td>{$gui->req_spec.revision}
+                            <img src="{$tlImages.log_message_small}" style="border:none" /></td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>{$req_spec_type=$gui->req_spec.type}
+                            {if isset($gui->reqSpecTypeDomain.$req_spec_type)}
+                                {$gui->reqSpecTypeDomain.$req_spec_type}
+                            {else}
+                                {$labels.type_not_configured}
+                            {/if}</td>
+                    </tr>
+                    <tr>
+                        <td>{$labels.scope}</td>
+                        <td>{if $gui->reqSpecEditorType == 'none'}{$gui->req_spec.scope|nl2br}{else}{$gui->req_spec.scope}{/if}</td>
+                    </tr>
+                    {if $gui->external_req_management && $gui->req_spec.total_req != 0}
+                        <tr>
+                            <td>{$labels.req_total}</td>
+                            <td>{$gui->req_spec.total_req}</td>
+                        </tr>
+                    {/if}
+                    <tr>
+                        <td>Date de création</td>
+                        <td>{localize_timestamp ts=$gui->req_spec.creation_ts}&nbsp;
+                            {$labels.by}&nbsp;{$gui->req_spec.author|escape}</td>
+                    </tr>
+                    {if $gui->req_spec.modifier != ""}
+                        <tr class="time_stamp_creation">
+                            <td>
+                                Dernière modification
+                            </td>
+                            <td>
+                                {localize_timestamp ts=$gui->req_spec.modification_ts}
+                                &nbsp;{$labels.by}&nbsp;{$gui->req_spec.modifier|escape}
+                            </td>
+                        </tr>
+                    {/if}
+                </tbody>
+            </table>
+            <div >
+            </div>
+        </div>
+
+    </section>
+    <hr>
 {$bDownloadOnly=true}
 {if $gui->grants->req_mgmt == 'yes'}
   {$bDownloadOnly=false}
 {/if}
-{include file="attachments.inc.tpl" 
+{include file="attachments.inc.tpl"
          attach_id=$gui->req_spec.id  
          attach_tableName="req_specs"
          attach_attachmentInfos=$gui->attachments  

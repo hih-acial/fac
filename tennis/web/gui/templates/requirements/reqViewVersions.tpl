@@ -33,7 +33,7 @@ Purpose: view requirement with version management
 {include file="inc_del_onclick.tpl"}
 
 {config_load file="input_dimensions.conf"}
-
+{include file="../custom.tpl"}
 <script type="text/javascript">
 // Requirement can not be deleted due to JS error -> label has to be escaped
 var alert_box_title = "{$labels.warning|escape:'javascript'}";
@@ -232,15 +232,18 @@ var {$gui->dialogName} = new std_dialog('&refreshTree');
 {$this_template_dir=$smarty.template|dirname}
 
 <body onLoad="viewElement(document.getElementById('other_versions'),false);{$gui->bodyOnLoad}" onUnload="{$gui->bodyOnUnload}">
-<h1 class="title">{$gui->main_descr|escape}{if isset($gui->show_match_count) && $gui->show_match_count} - {$labels.match_count}: {$gui->match_count}{/if}
-  {include file="inc_help.tpl" helptopic="hlp_req_view" show_help_icon=true}
-</h1>
+<section class="jumbotron">
+    <h2 class="text-center">{$gui->main_descr|escape}{if isset($gui->show_match_count) && $gui->show_match_count} - {$labels.match_count}: {$gui->match_count}{/if}
+        {include file="inc_help.tpl" helptopic="hlp_req_view" show_help_icon=true}
+    </h2>
+</section>
+
 {if !isset($refresh_tree) }
   {$refresh_tree=false}
 {/if}
 {include file="inc_update.tpl" user_feedback=$user_feedback refresh=$refresh_tree}
 
-<div class="workBack">
+<div class="container">
 
 {if isset($gui->current_version)}
 {section name=idx loop=$gui->current_version}
@@ -267,8 +270,6 @@ var {$gui->dialogName} = new std_dialog('&refreshTree');
         {$path_part|escape} /
       {/foreach}
   {/if}
-  <img class="clickable" src="{$tlImages.cog}" onclick="javascript:toogleShowHide('control_panel','inline');"
-       title="{$labels.actions}" />
 
     {if !$gui->show_title }
       {$gui->current_version[idx][0].req_doc_id|escape}:{$gui->current_version[idx][0].title|escape}</h2>
@@ -306,7 +307,7 @@ var {$gui->dialogName} = new std_dialog('&refreshTree');
   
     {* form to enter a new relation *}
     <form method="post" action="{$basehref}lib/requirements/reqEdit.php" 
-        onSubmit="javascript:return validate_req_docid_input('relation_destination_req_doc_id', 
+        onSubmit="return validate_req_docid_input('relation_destination_req_doc_id',
                                                              '{$labels.relation_destination_doc_id}');">
     
     <table class="simple" id="relations">

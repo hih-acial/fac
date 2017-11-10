@@ -21,7 +21,9 @@ tcSearchResults.tpl
 </head>
 
 <body>
-<h1 class="title">{$gui->pageTitle}</h1>
+<section class="jumbotron">
+  <h2 class="text-center">{$gui->pageTitle}</h2>
+</section>
 
 {include file="testcases/tcSearchGUI.inc.tpl"}
 

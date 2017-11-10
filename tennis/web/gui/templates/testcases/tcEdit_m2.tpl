@@ -6,7 +6,10 @@
 <body>
 
 <div class="workBack" style="font-weight: bold;">
-<h1 class="title">{lang_get s='title_edit_tc'} {$tc.id|escape}</h1> 
+	<section class="jumbotron">
+		<h1 class="text-center">{lang_get s='title_edit_tc'} {$tc.id|escape}</h1>
+	</section>
+
 <form method="post" action="{$basehref}lib/testcases/tcEdit.php?testcaseID={$testcaseID}">
 
 	<div style="float: right;">

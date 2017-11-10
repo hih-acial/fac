@@ -20,6 +20,7 @@ Purpose: smarty template - create / edit a req
 
 {include file="inc_head.tpl" openHead="yes" jsValidate="yes" editorType=$gui->editorType}
 {include file="inc_del_onclick.tpl"}
+{include file="../custom.tpl"}
 <script language="javascript" src="gui/javascript/ext_extensions.js" type="text/javascript"></script>
 
 <script type="text/javascript">
@@ -247,19 +248,22 @@ function insert_last_doc_id()
 </head>
 
 <body>
-<h1 class="title">{$gui->main_descr|escape}
-	{if $gui->action_descr != ''}
-		{$tlCfg->gui_title_separator_2}{$gui->action_descr|escape}
-	{/if}
-	{include file="inc_help.tpl" helptopic="hlp_req_edit" show_help_icon=true}
-</h1>
+<section class="jumbotron">
+	<h2 class="text-center">
+        {$gui->main_descr|escape}
+        {if $gui->action_descr != ''}
+            {$tlCfg->gui_title_separator_2}{$gui->action_descr|escape}
+        {/if}
+        {include file="inc_help.tpl" helptopic="hlp_req_edit" show_help_icon=true}
+	</h2>
+</section>
 
 {include file="inc_update.tpl" user_feedback=$gui->user_feedback}
-
-<div class="workBack">
-<form name="reqEdit" id="reqEdit" method="post" 
+<hr>
+<div class="container">
+<form class="form-horizontal" name="reqEdit" id="reqEdit" method="post"
       action="{$basehref}lib/requirements/reqEdit.php" 
-      onSubmit="javascript:return validateForm(this,js_attr_cfg,{$gui->req_cfg->expected_coverage_management});">
+      onSubmit="return validateForm(this,js_attr_cfg,{$gui->req_cfg->expected_coverage_management});">
 
 	<input type="hidden" name="req_spec_id" value="{$gui->req_spec_id}" />
 	<input type="hidden" name="requirement_id" value="{$gui->req_id}" />
@@ -274,12 +278,13 @@ function insert_last_doc_id()
 	
 	{* BUGID 4063 *}
 	{* BUGID 4153 - when save or cancel is pressed do not show modification warning *}
-	<div class="groupBtn">
-		<input type="submit" name="create_req" value="{$labels.btn_save}"
+	<div class="text-center">
+		<input class="btn btn-success" type="submit" name="create_req" value="{$labels.btn_save}"
 	         onclick="show_modified_warning = false; doAction.value='{$gui->operation}';"/>
-		<input type="button" name="go_back" value="{$labels.cancel}" 
-			onclick="javascript: show_modified_warning = false; history.back();"/>
+		<input class="btn btn-outline-dark" type="button" name="go_back" value="{$labels.cancel}"
+			onclick="show_modified_warning = false; history.back();"/>
 	</div>
+	<hr>
 	{* BUGID 3953 - Only show checkbox to create another requirement on req creation *}
 	{if $gui->doAction == 'create' || $gui->doAction == 'doCreate'}
 	<div class="groupBtn">
@@ -287,8 +292,7 @@ function insert_last_doc_id()
 	       {if $gui->stay_here} checked="checked" {/if}/>{$labels.stay_here_req}
 	</div>
 	{/if}
-	<br />
-	
+	<br>
   	<div class="labelHolder"><label for="reqDocId">{$labels.req_doc_id}</label>
   	   		{if $gui->grants->mgt_view_events eq "yes" and $gui->req_id}
 			<img style="margin-left:5px;" class="clickable" src="{$smarty.const.TL_THEME_IMG_DIR}/question.gif" 
@@ -297,7 +301,7 @@ function insert_last_doc_id()
 		{/if}
   	</div>
   	
-	<div><input type="text" name="reqDocId" id="reqDocId"
+	<div><input class="form-control" type="text" name="reqDocId" id="reqDocId"
   		        size="{#REQ_DOCID_SIZE#}" maxlength="{#REQ_DOCID_MAXLEN#}"
   		        value="{$gui->req.req_doc_id|escape}" required />
   				{include file="error_icon.tpl" field="reqDocId"}
@@ -312,24 +316,20 @@ function insert_last_doc_id()
   				{/if}
   				
   	</div>
- 	<br />
  	<div class="labelHolder"> <label for="req_title">{$labels.title}</label></div>
-  	<div><input type="text" name="req_title" id="req_title"
+  	<div><input class="form-control" type="text" name="req_title" id="req_title"
   		        size="{#REQ_TITLE_SIZE#}" maxlength="{#REQ_TITLE_MAXLEN#}"
   		        value="{$gui->req.title|escape}" required />
   		    {include file="error_icon.tpl" field="req_title"}
  	 </div>
-  	<br />
   	<div class="labelHolder"> <label for="scope">{$labels.scope}</label></div>
 	<div>{$gui->scope}</div>
  	<br />
   	<div class="labelHolder"> <label for="reqStatus">{$labels.status}</label>
-     	<select name="reqStatus" id="reqStatus">
+     	<select class="form-control" name="reqStatus" id="reqStatus">
   			{html_options options=$gui->reqStatusDomain selected=$gui->req.status}
   		</select>
   	</div>
-  	<br />
- 	<br />
 
 	{if $gui->req.type}
 		{assign var="preSelectedType" value=$gui->req.type}
@@ -338,7 +338,7 @@ function insert_last_doc_id()
 	{/if}
 
   	<div class="labelHolder" id="reqType_container"> <label for="reqType">{$labels.type}</label>
-     	<select name="reqType" id="reqType"
+     	<select class="form-control" name="reqType" id="reqType"
      	{* BUGID 3307 - disable this check if coverage management is disabled, to avoid javascript errors *}
      	{if $gui->req_cfg->expected_coverage_management}
      	     	  onchange="configure_attr('reqType',js_attr_cfg);"
@@ -366,26 +366,23 @@ function insert_last_doc_id()
   	
  		</div>
  	{/if}
- 	
-  	<br />
-    
+
    	{* Custom fields *}
    	{if $gui->cfields != ""}
    	  {* ID is used on logic to validate CF contain according to CF type *}
     	<div id="custom_field_container" class="custom_field_container">
     	{$gui->cfields}
      	</div>
-     <br />
   	{/if}
-
+	<hr>
 	{* BUGID 3854 *}
 	{* BUGID 4153 - when save or cancel is pressed do not show modification warning *}
-	<div class="groupBtn">
+	<div class="text-center">
 		<input type="hidden" name="doAction" id="doAction" value="{$gui->operation}" />
-		<input type="submit" name="create_req" value="{$labels.btn_save}"
+		<input class="btn btn-success" type="submit" name="create_req" value="{$labels.btn_save}"
 	         onclick="show_modified_warning = false; doAction.value='{$gui->operation}';"/>
-		<input type="button" name="go_back" value="{$labels.cancel}" 
-			onclick="javascript: show_modified_warning = false; history.back();"/>
+		<input class="btn btn-outline-dark" type="button" name="go_back" value="{$labels.cancel}"
+			onclick="show_modified_warning = false; history.back();"/>
 	</div>
 
   {if isset($gui->askForLog) && $gui->askForLog}

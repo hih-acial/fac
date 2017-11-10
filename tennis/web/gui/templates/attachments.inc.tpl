@@ -120,16 +120,20 @@ var warning_delete_attachment = "{lang_get s='warning_delete_attachment'}";
 </table>
 
 {if $attach_show_upload_btn && !$attach_downloadOnly}
-<div  style="text-align:left;margin:3px;background:#CDE;padding: 3px 3px 3px 3px;border-style: groove;border-width: thin;">
-  <form action="{$gui->fileUploadURL}" method="post" enctype="multipart/form-data" id="aForm" 
-        onsubmit="javascript:return checkFileSize();">
+<div  class="jumbotron">
+  <form class="form-horizontal" action="{$gui->fileUploadURL}" method="post" enctype="multipart/form-data" id="aForm"
+        onsubmit="return checkFileSize();">
     <label for="uploadedFile" class="labelHolder">{$labels.local_file} </label>
     <img class="clickable" src="{$tlImages.activity}" title="{$labels.max_size_file_upload}: {$gui->import_limit} Bytes)">
       <input type="hidden" name="MAX_FILE_SIZE" value="{$gui->import_limit}" /> {* restrict file size *}
-      <input type="file" name="uploadedFile" id="uploadedFile" size="{#UPLOAD_FILENAME_SIZE#}" />
-      &nbsp;&nbsp;&nbsp;&nbsp;
+    <label class="custom-file">
+      <input type="file"  class="custom-file-input" name="uploadedFile" id="uploadedFile" size="{#UPLOAD_FILENAME_SIZE#}">
+      <span class="custom-file-control"></span>
+    </label>
+    <br>
+    <hr>
       <span class="labelHolder">{$labels.attachment_title}:</span>
-      <input type="text" id="fileTitle" name="fileTitle" maxlength="{#ATTACHMENT_TITLE_MAXLEN#}" 
+    <input type="text" id="fileTitle" name="fileTitle" maxlength="{#ATTACHMENT_TITLE_MAXLEN#}"
              size="{#ATTACHMENT_TITLE_SIZE#}" />
       <input type="submit" value="{$labels.btn_upload_file}"/>
   </form>

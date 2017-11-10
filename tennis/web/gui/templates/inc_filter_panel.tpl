@@ -76,107 +76,101 @@
 </style>
 
 {if $control->display_settings}
+    <div class="card">
+        <div class="card-header" >
+            <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse" class="card-title text-center" style="cursor: pointer"> {$labels.caption_nav_settings}</h4>
+        </div>
+        <div id="collapse">
+            <div id="settings" class="card-body">
+                <input type='hidden' id="tpn_view_settings" name="tpn_view_status"  value="0" />
 
-  <div id="settings_panel" style="overflow: visible;">
-    <div class="x-panel-header x-unselectable" style="overflow: visible;">
-      {$labels.caption_nav_settings}
-    </div>
+                <table class="table" style="width:98%;">
+                    {if $control->settings.setting_testplan}
+                        <tr>
+                            <td>{$labels.test_plan}</td>
+                            <td>
+                                <select class="chosen-select form-control" name="setting_testplan" onchange="this.form.submit()">
+                                    {html_options options=$control->settings.setting_testplan.items
+                                    selected=$control->settings.setting_testplan.selected}
+                                </select>
+                            </td>
+                        </tr>
+                    {/if}
+                    {if $control->settings.setting_platform}
+                        {$platformID=$control->settings.setting_platform.selected}
+                        <tr>
+                            <td>{$labels.platform}</td>
+                            <td>
+                                <select name="setting_platform" class="chosen-select form-control" onchange="this.form.submit()">
+                                    {html_options options=$control->settings.setting_platform.items
+                                    selected=$control->settings.setting_platform.selected}
+                                </select>
+                            </td>
+                        </tr>
+                    {/if}
+                    {if $control->settings.setting_build}
+                        <tr>
+                            <td>{$control->settings.setting_build.label}</td>
+                            <td>
+                                <select name="setting_build" class="chosen-select form-control" onchange="this.form.submit()">
+                                    {html_options options=$control->settings.setting_build.items
+                                    selected=$control->settings.setting_build.selected}
+                                </select>
+                            </td>
+                        </tr>
+                    {/if}
+                    {if $control->settings.setting_refresh_tree_on_action}
+                        <tr>
+                            <td>{$labels.do_auto_update}</td>
+                            <td>
+                                <input type="hidden"
+                                       id="hidden_setting_refresh_tree_on_action"
+                                       name="hidden_setting_refresh_tree_on_action"
+                                       value="{$control->settings.setting_refresh_tree_on_action.hidden_setting_refresh_tree_on_action}" />
 
-    <div id="settings" class="x-panel-body" style="padding-top: 3px;overflow: visible;">
-      <input type='hidden' id="tpn_view_settings" name="tpn_view_status"  value="0" />
+                                <input type="checkbox"
+                                       id="cbsetting_refresh_tree_on_action"
+                                       name="setting_refresh_tree_on_action"
+                                        {if $control->settings.setting_refresh_tree_on_action.selected} checked {/if}
+                                       style="font-size: 90%;" onclick="this.form.submit()"/>
+                            </td>
+                        </tr>
+                    {/if}
+                    {if $control->draw_export_testplan_button || $control->draw_import_xml_results_button}
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>
+                                {if $control->draw_export_testplan_button}
+                                    <image src="{$tlImages.export}" title="{$labels.btn_export_testplan_tree}"
+                                           onclick="javascript: openExportTestPlan('export_testplan','{$session.testprojectID}',
+                                                   '{$control->settings.setting_testplan.selected}','{$platformID}',
+                                                   '{$control->settings.setting_build.selected}','tree',
+                                                   '{$control->form_token}');" />
+                                    &nbsp;
+                                    <image src="{$tlImages.export_for_results_import}" title="{$labels.btn_export_testplan_tree_for_results}"
+                                           onclick="javascript: openExportTestPlan('export_testplan','{$session.testprojectID}',
+                                                   '{$control->settings.setting_testplan.selected}',
+                                                   '{$platformID}',
+                                                   '{$control->settings.setting_build.selected}','4results',
+                                                   '{$control->form_token}');" />
 
-      <table class="smallGrey" style="width:98%;overflow: visible;">
+                                    &nbsp;
+                                {/if}
+                                {if $control->draw_import_xml_results_button}
+                                    <image src="{$tlImages.import_results}" title="{$labels.import_xml_results}"
+                                           onclick="javascript: openImportResult('import_xml_results',{$session.testprojectID},
+                                           {$control->settings.setting_testplan.selected},
+                                           {$control->settings.setting_build.selected},{$platformID});" />
+                                {/if}
+                            </td>
+                        </tr>
+                    {/if}
+                </table>
+            </div> {* settings *}
+        </div>
 
-      {if $control->settings.setting_testplan}
-        <tr>
-          <td>{$labels.test_plan}</td>
-          <td>
-            <select class="chosen-select" name="setting_testplan" onchange="this.form.submit()">
-            {html_options options=$control->settings.setting_testplan.items
-                          selected=$control->settings.setting_testplan.selected}
-            </select>
-          </td>
-        </tr>
-      {/if}
-
-      {if $control->settings.setting_platform}
-        {$platformID=$control->settings.setting_platform.selected}
-        <tr>
-          <td>{$labels.platform}</td>
-          <td>
-            <select name="setting_platform" class="chosen-select" onchange="this.form.submit()">
-            {html_options options=$control->settings.setting_platform.items
-                          selected=$control->settings.setting_platform.selected}
-            </select>
-          </td>
-        </tr>
-      {/if}
-
-      {if $control->settings.setting_build}
-        <tr>
-          <td>{$control->settings.setting_build.label}</td>
-          <td>
-            <select name="setting_build" class="chosen-select" onchange="this.form.submit()">
-            {html_options options=$control->settings.setting_build.items
-                          selected=$control->settings.setting_build.selected}
-            </select>
-          </td>
-        </tr>
-      {/if}
-
-      {if $control->settings.setting_refresh_tree_on_action}
-        <tr>
-            <td>{$labels.do_auto_update}</td>
-            <td>
-               <input type="hidden"
-                      id="hidden_setting_refresh_tree_on_action"
-                      name="hidden_setting_refresh_tree_on_action"
-                      value="{$control->settings.setting_refresh_tree_on_action.hidden_setting_refresh_tree_on_action}" />
-
-               <input type="checkbox"
-                       id="cbsetting_refresh_tree_on_action"
-                       name="setting_refresh_tree_on_action"
-                       {if $control->settings.setting_refresh_tree_on_action.selected} checked {/if}
-                       style="font-size: 90%;" onclick="this.form.submit()"/>
-            </td>
-          </tr>
-      {/if}
-
-      {if $control->draw_export_testplan_button || $control->draw_import_xml_results_button}
-        <tr>
-          <td>&nbsp;</td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>
-            {if $control->draw_export_testplan_button}
-            <image src="{$tlImages.export}" title="{$labels.btn_export_testplan_tree}"
-                   onclick="javascript: openExportTestPlan('export_testplan','{$session.testprojectID}',
-                                                           '{$control->settings.setting_testplan.selected}','{$platformID}',
-                                                           '{$control->settings.setting_build.selected}','tree',
-                                                           '{$control->form_token}');" />
-            &nbsp;
-            <image src="{$tlImages.export_for_results_import}" title="{$labels.btn_export_testplan_tree_for_results}"
-                   onclick="javascript: openExportTestPlan('export_testplan','{$session.testprojectID}',
-                                                           '{$control->settings.setting_testplan.selected}',
-                                                           '{$platformID}',
-                                                           '{$control->settings.setting_build.selected}','4results',
-                                                           '{$control->form_token}');" />
-
-            &nbsp;
-            {/if}
-            {if $control->draw_import_xml_results_button}
-            <image src="{$tlImages.import_results}" title="{$labels.import_xml_results}"
-                   onclick="javascript: openImportResult('import_xml_results',{$session.testprojectID},
-                                                           {$control->settings.setting_testplan.selected},
-                                                           {$control->settings.setting_build.selected},{$platformID});" />
-            {/if}
-          </td>
-        </tr>
-      {/if}
-      </table>
-    </div> {* settings *}
-  </div> {* settings_panel *}
+    </div> {* settings_panel *}
+    <br>
 {/if} {* display settings *}
 
 {if $control->display_filters}

@@ -61,7 +61,7 @@ View test specification containers
 <link rel="stylesheet" type="text/css" href="{$basehref}{$ext_location}/css/ext-all.css" />
 
 {include file="inc_del_onclick.tpl" openHead="yes"}
-
+{include file="../custom.tpl"}
 <script type="text/javascript">
 /**
  * Be Carefull this TRUST on existence of $gui->delAttachmentURL
@@ -79,7 +79,9 @@ function jsCallDeleteFile(btn, text, o_id)
 </head>
 
 <body>
-<h1 class="title">{$gui->page_title}{$tlCfg->gui_title_separator_1}{$gui->container_data.name|escape}</h1>
+<section class="jumbotron">
+  <h2 class="text-center">{$gui->page_title}{$tlCfg->gui_title_separator_1}{$gui->container_data.name|escape}</h2>
+</section>
 <div class="workBack">
 {include file="inc_update.tpl" result=$gui->sqlResult item=$gui->level
          name=$gui->moddedItem.name refresh=$gui->refreshTree user_feedback=$gui->user_feedback}

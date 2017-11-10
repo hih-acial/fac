@@ -52,8 +52,11 @@ var {$gui->dialogName} = new std_dialog('&refreshTree');
 {/if}
 
 <body onLoad="viewElement(document.getElementById('other_versions'),false);{$gui->bodyOnLoad}" onUnload="{$gui->bodyOnUnload}">
-<h1 class="title">{$gui->pageTitle}{if $gui->show_match_count} - {$labels.match_count}:{$gui->match_count}{/if}
-</h1>
+<section class="jumbotron">
+    <h2 class="title">{$gui->pageTitle}{if $gui->show_match_count} - {$labels.match_count}:{$gui->match_count}{/if}
+    </h2>
+</section>
+
 
 {include file="inc_update.tpl" user_feedback=$gui->user_feedback refresh=$gui->refreshTree}
 <div class="workBack">

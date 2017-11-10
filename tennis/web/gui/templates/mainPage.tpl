@@ -125,7 +125,7 @@ $gui->grants.exec_ro_access == "yes")}
                 {$reqOverView="lib/requirements/reqOverview.php"}
                 {$reqMonOverView="lib/requirements/reqMonitorOverview.php?tproject_id="}
             <li>
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse" style="font-size: large"> Exigences</a>
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse"> Exigences</a>
                 <ul id="collapse" class="panel-collapse collapse">
                     {if $gui->grants.reqs_view == "yes"}
                         <li>
@@ -162,17 +162,9 @@ $gui->grants.exec_ro_access == "yes")}
             {$tcCreatedUser="lib/results/tcCreatedPerUserOnTestProject.php?do_action=uinput&tproject_id="}
                 {$platformAssign="lib/platforms/platformsAssign.php?tplan_id="}
             <li>
-                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" style="font-size: large">test</a>
+                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" >test</a>
                 <ul id="collapseTwo" class="panel-collapse collapse">
 
-
-                    <li>
-                        <a href="{$gui->launcher}?feature=planAddTC" >{$labels.href_add_remove_test_cases}</a>
-                    </li>
-
-                    <li>
-                        <a href="{$gui->launcher}?feature=tc_exec_assignment"  >{$labels.href_tc_exec_assignment}</a>
-                    </li>
                     <li>
                         <a href="{$gui->launcher}?feature=editTc" >
                             {if $gui->grants.modify_tc eq "yes"}
@@ -182,6 +174,14 @@ $gui->grants.exec_ro_access == "yes")}
                             {/if}
                         </a>
                     </li>
+                    <li>
+                        <a href="{$gui->launcher}?feature=planAddTC" >{$labels.href_add_remove_test_cases}</a>
+                    </li>
+
+                    <li>
+                        <a href="{$gui->launcher}?feature=tc_exec_assignment"  >{$labels.href_tc_exec_assignment}</a>
+                    </li>
+
                     <li>
                         <a href="{$tcSearch}{$gui->testprojectID}"  >{$labels.href_search_tc}</a>
 
@@ -215,7 +215,7 @@ $gui->grants.exec_ro_access == "yes")}
             </li>
             {/if}
             <li>
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" style="font-size: large">Exécution</a>
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" >Exécution</a>
                 <ul id="collapseThree" class="panel-collapse collapse">
                             {if $gui->grants.testplan_execute == "yes" ||$gui->grants.exec_ro_access == "yes"}
                                 {if $gui->grants.testplan_execute == "yes"}
@@ -264,7 +264,7 @@ $gui->grants.exec_ro_access == "yes")}
             {$cfieldsView="lib/cfields/cfieldsView.php"}
             {$issueTrackerView="lib/issuetrackers/issueTrackerView.php"}
             <li style="margin-top: 150%;">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" style="font-size: large">Administration</a>
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" >Administration</a>
                 <ul id="collapseFive" class="panel-collapse collapse">
                     {if $gui->grants.tproject_user_role_assignment == "yes"}
                         <li>

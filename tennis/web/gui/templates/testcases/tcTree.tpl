@@ -12,7 +12,7 @@ Purpose: smarty template - show test specification tree menu
 
 {include file="inc_head.tpl" openHead="yes"}
 {include file="inc_ext_js.tpl" bResetEXTCss=1}
-
+{include file="../custom.tpl"}
 {* Ext Collapsible Panel *}
 <script type="text/javascript" src='gui/javascript/ext_extensions.js'></script>
 <script type="text/javascript">
@@ -80,7 +80,7 @@ var filtersPanel = new Ext.ux.CollapsiblePanel({
  *}
 
 
-<h1 class="title">{$gui->treeHeader}</h1>
+<h3 class="text-center">{$gui->treeHeader}</h3>
 {include file='inc_filter_panel.tpl'}
 {include file="inc_tree_control.tpl"}
 <div id="tree_div" style="overflow:auto; height:100%;border:1px solid #c3daf9;"></div>
