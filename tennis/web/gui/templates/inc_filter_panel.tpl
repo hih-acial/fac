@@ -174,291 +174,291 @@
 {/if} {* display settings *}
 
 {if $control->display_filters}
+    <div class="card">
+        <div class="card-header" >
+            <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="card-title text-center" style="cursor: pointer"> {$labels.caption_nav_filters}</h4>
+        </div>
+        <div id="collapse1">
+            <div id="filters" class="card-body">
 
-  <div id="filter_panel">
-    <div class="x-panel-header x-unselectable">
-      {$labels.caption_nav_filters}
+
+                <table class="table" style="width:98%;">
+                    {if $control->filters.filter_tc_id}
+                        <tr>
+                            <td>{$labels.th_tcid}</td>
+                            <td><input class="form-control" type="text" name="filter_tc_id"
+                                       size="{#TC_ID_SIZE#}"
+                                       maxlength="{#TC_ID_MAXLEN#}"
+                                       value="{$control->filters.filter_tc_id.selected|escape}" />
+                            </td>
+                        </tr>
+                    {/if}
+
+                    {if $control->filters.filter_testcase_name}
+                        <tr>
+                            <td>{$labels.tc_title}</td>
+                            <td><input class="form-control" type="text" name="filter_testcase_name"
+                                       size="{#TC_TITLE_SIZE#}"
+                                       maxlength="{#TC_TITLE_MAXLEN#}"
+                                       value="{$control->filters.filter_testcase_name.selected|escape}" />
+                            </td>
+                        </tr>
+                    {/if}
+
+                    {if $control->filters.filter_toplevel_testsuite}
+                        <tr>
+                            <td>{$labels.testsuite}</td>
+                            <td>
+                                <select class="chosen-select form-control" name="filter_toplevel_testsuite">
+                                    {html_options options=$control->filters.filter_toplevel_testsuite.items
+                                    selected=$control->filters.filter_toplevel_testsuite.selected}
+                                </select>
+                            </td>
+                        </tr>
+                    {/if}
+
+                    {if $control->filters.filter_keywords}
+                        <tr>
+                            <td>{$labels.keyword}</td>
+                            <td><select class="chosen-select form-control" name="filter_keywords[]"
+                                        title="{$labels.keywords_filter_help}"
+                                        multiple="multiple"
+                                        size="{$control->filters.filter_keywords.size}">
+                                    {html_options options=$control->filters.filter_keywords.items
+                                    selected=$control->filters.filter_keywords.selected}
+                                </select>
+                                <div>
+                                    {html_radios name='filter_keywords_filter_type'
+                                    options=$control->filters.filter_keywords.filter_keywords_filter_type.items
+                                    selected=$control->filters.filter_keywords.filter_keywords_filter_type.selected}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr><td>&nbsp;</td></tr>
+                    {/if}
+
+                    {* TICKET 4353: added filter for active/inactive test cases *}
+                    {if isset($control->filters.filter_active_inactive) && $control->filters.filter_active_inactive}
+                        <tr>
+                            <td>{$labels.filter_active_inactive}</td>
+                            <td>
+                                <select class="form-control" name="filter_active_inactive">
+                                    {html_options options=$control->filters.filter_active_inactive.items
+                                    selected=$control->filters.filter_active_inactive.selected}
+                                </select>
+                            </td>
+                        </tr>
+                    {/if}
+
+                    {if $control->filters.filter_workflow_status}
+                        <tr>
+                            <td>{$labels.status}</td>
+                            <td>
+                                <select class="chosen-select form-control" id="filter_workflow_status"
+                                        {if $control->advanced_filter_mode}
+                                        name="filter_workflow_status[]" multiple="multiple"
+                                        size="{$control->filter_item_quantity}">
+                                    {else}
+                                    name="filter_workflow_status">
+                                    {/if}
+                                    {html_options options=$control->filters.filter_workflow_status.items
+                                    selected=$control->filters.filter_workflow_status.selected}
+                                </select>
+                            </td>
+                        </tr>
+                    {/if}
+
+                    {if $control->filters.filter_importance}
+                        <tr>
+                            <td>{$labels.importance}</td>
+                            <td>
+                                <select class="chosen-select form-control" id="filter_importance"
+                                        {if $control->advanced_filter_mode}
+                                        name="filter_importance[]" multiple="multiple"
+                                        size="{$control->filters.filter_importance.size}">
+                                    {else}
+                                    name="filter_importance">
+                                    {/if}
+                                    {html_options options=$control->filters.filter_importance.items
+                                    selected=$control->filters.filter_importance.selected}
+                                </select>
+                            </td>
+                        </tr>
+                    {/if}
+
+                    {if $control->filters.filter_priority}
+                        <tr>
+                            <td>{$labels.priority}</td>
+                            <td>
+                                <select class="chosen-select form-control" name="filter_priority">
+                                    <option value="">{$control->option_strings.any}</option>
+                                    {html_options options=$gsmarty_option_importance
+                                    selected=$control->filters.filter_priority.selected}
+                                </select>
+                            </td>
+                        </tr>
+                    {/if}
+
+                    {if $control->filters.filter_execution_type}
+                        <tr>
+                            <td>{$labels.execution_type}</td>
+                            <td>
+                                <select class="chosen-select form-control" name="filter_execution_type">
+                                    {html_options options=$control->filters.filter_execution_type.items
+                                    selected=$control->filters.filter_execution_type.selected}
+                                </select>
+                            </td>
+                        </tr>
+                    {/if}
+
+                    {if $control->filters.filter_assigned_user}
+                        <tr>
+                            <td>{$labels.filter_owner}<img src="{$tlImages.info_small}" title="{$labels.tester_works_with_settings}"></td>
+                            <td>
+
+                                {if $control->advanced_filter_mode}
+                                    <select class="chosen-select form-control" name="filter_assigned_user[]"
+                                            id="filter_assigned_user"
+                                            multiple="multiple"
+                                            size="{$control->filter_item_quantity}" >
+                                        {html_options options=$control->filters.filter_assigned_user.items
+                                        selected=$control->filters.filter_assigned_user.selected}
+                                    </select>
+                                {else}
+                                    <select class="chosen-select form-control" name="filter_assigned_user"
+                                            id="filter_assigned_user"
+                                            onchange="javascript: triggerAssignedBox('filter_assigned_user',
+                                                    'filter_assigned_user_include_unassigned',
+                                                    '{$control->option_strings.any}',
+                                                    '{$control->option_strings.none}',
+                                                    '{$control->option_strings.somebody}');">
+                                        {html_options options=$control->filters.filter_assigned_user.items
+                                        selected=$control->filters.filter_assigned_user.selected}
+                                    </select>
+
+                                    <br/>
+                                    <br />
+                                    <input type="checkbox"
+                                           id="filter_assigned_user_include_unassigned"
+                                           name="filter_assigned_user_include_unassigned"
+                                           value="1"
+                                            {if $control->filters.filter_assigned_user.filter_assigned_user_include_unassigned}
+                                                checked="checked"
+                                            {/if}
+                                    />
+                                    {$labels.include_unassigned_testcases}
+                                {/if}
+
+                            </td>
+                        </tr>
+                    {/if}
+
+                    {* 20131226 *}
+                    {if $control->filters.filter_bugs}
+                        <tr>
+                            <td>{$labels.bugs_on_context}</td>
+                            <td><input class="form-control" type="text" name="filter_bugs" size="{#BUGS_FILTER_SIZE#}"
+                                       maxlength="{#BUGS_FILTER_MAXLEN#}"
+                                       placeholder="{$labels.hint_list_of_bugs}"
+                                       value="{$control->filters.filter_bugs.selected|escape}" />
+                            </td>
+                        </tr>
+                    {/if}
+
+
+                    {* custom fields are placed here *}
+
+                    {if $control->filters.filter_custom_fields && !$control->filters.filter_custom_fields.collapsed}
+                        <tr><td>&nbsp;</td></tr>
+                        {$control->filters.filter_custom_fields.items}
+                    {/if}
+
+
+                    {* result filtering parts *}
+                    {if $control->filters.filter_result}
+
+                        <tr><td>&nbsp;</td></tr> {* empty row for a little separation *}
+
+                        <tr>
+                            <td>{$labels.filter_result}</td>
+                            <td>
+                                <select class="chosen-select form-control" id="filter_result_result"
+                                        {if $control->advanced_filter_mode}
+                                        name="filter_result_result[]" multiple="multiple"
+                                        size="{$control->filter_item_quantity}">
+                                    {else}
+                                    name="filter_result_result">
+                                    {/if}
+                                    {html_options options=$control->filters.filter_result.filter_result_result.items
+                                    selected=$control->filters.filter_result.filter_result_result.selected}
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>{$labels.filter_on}</td>
+                            <td>
+                                <select class="chosen-select form-control" name="filter_result_method" id="filter_result_method"
+                                        onchange="triggerBuildChooser('filter_result_build_row',
+                                                'filter_result_method',
+                                        {$control->configuration->filter_methods.status_code.specific_build});">
+                                    {html_options options=$control->filters.filter_result.filter_result_method.items
+                                    selected=$control->filters.filter_result.filter_result_method.selected}
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr id="filter_result_build_row">
+                            <td>{$labels.build}</td>
+                            <td><select class="chosen-select form-control" id="filter_result_build" name="filter_result_build">
+                                    {html_options options=$control->filters.filter_result.filter_result_build.items
+                                    selected=$control->filters.filter_result.filter_result_build.selected}
+                                </select>
+                            </td>
+                        </tr>
+
+                    {/if}
+
+
+                </table>
+                <br>
+                <div class="text-center">
+                    <input class="btn btn-info" type="submit"
+                           value="{$labels.btn_apply_filter}"
+                           id="doUpdateTree"
+                           name="doUpdateTree"
+                           style="font-size: 90%;" />
+
+                    <input class="btn btn-secondary" type="submit"
+                           value="{$labels.btn_reset_filters}"
+                           id="doResetTree"
+                           name="btn_reset_filters"
+                           style="font-size: 90%;" />
+
+                    {if $control->filters.filter_custom_fields}
+                        <input class="btn btn-warning" type="submit"
+                               value="{$control->filters.filter_custom_fields.btn_label}"
+                               id="doToggleCF"
+                               name="btn_toggle_cf"
+                               style="font-size: 90%;" />
+                    {/if}
+
+                    {if $control->filter_mode_choice_enabled}
+
+                        {if $control->advanced_filter_mode}
+                            <input type="hidden" name="btn_advanced_filters" value="1" />
+                        {/if}
+
+                        <input class="btn btn-primary" type="submit" id="toggleFilterMode"  name="{$control->filter_mode_button_name}"
+                               value="{$control->filter_mode_button_label}"
+                               style="font-size: 90%;"  />
+                    {/if}
+                </div>
+            </div> {* settings *}
+        </div>
+
     </div>
-
-  <div id="filters" class="x-panel-body exec_additional_info" style="padding-top: 3px;overflow: visible;">
-
-    <table class="smallGrey" style="width:98%;">
-
-    {if $control->filters.filter_tc_id}
-      <tr>
-        <td>{$labels.th_tcid}</td>
-        <td><input type="text" name="filter_tc_id"
-                               size="{#TC_ID_SIZE#}"
-                               maxlength="{#TC_ID_MAXLEN#}"
-                               value="{$control->filters.filter_tc_id.selected|escape}" />
-        </td>
-      </tr>
-    {/if}
-
-    {if $control->filters.filter_testcase_name}
-      <tr>
-        <td>{$labels.tc_title}</td>
-        <td><input type="text" name="filter_testcase_name"
-                               size="{#TC_TITLE_SIZE#}"
-                               maxlength="{#TC_TITLE_MAXLEN#}"
-                               value="{$control->filters.filter_testcase_name.selected|escape}" />
-        </td>
-      </tr>
-    {/if}
-
-    {if $control->filters.filter_toplevel_testsuite}
-      <tr>
-          <td>{$labels.testsuite}</td>
-          <td>
-            <select class="chosen-select" name="filter_toplevel_testsuite">
-              {html_options options=$control->filters.filter_toplevel_testsuite.items
-                            selected=$control->filters.filter_toplevel_testsuite.selected}
-            </select>
-          </td>
-        </tr>
-      {/if}
-
-    {if $control->filters.filter_keywords}
-      <tr>
-        <td>{$labels.keyword}</td>
-        <td><select class="chosen-select" name="filter_keywords[]"
-                    title="{$labels.keywords_filter_help}"
-                    multiple="multiple"
-                    size="{$control->filters.filter_keywords.size}">
-            {html_options options=$control->filters.filter_keywords.items
-                          selected=$control->filters.filter_keywords.selected}
-          </select>
-      <div>
-      {html_radios name='filter_keywords_filter_type'
-                     options=$control->filters.filter_keywords.filter_keywords_filter_type.items
-                     selected=$control->filters.filter_keywords.filter_keywords_filter_type.selected}
-      </div>
-      </td>
-      </tr>
-      <tr><td>&nbsp;</td></tr>
-    {/if}
-
-    {* TICKET 4353: added filter for active/inactive test cases *}
-    {if isset($control->filters.filter_active_inactive) && $control->filters.filter_active_inactive}
-      <tr>
-        <td>{$labels.filter_active_inactive}</td>
-          <td>
-            <select name="filter_active_inactive">
-                   {html_options options=$control->filters.filter_active_inactive.items
-                   selected=$control->filters.filter_active_inactive.selected}
-            </select>
-          </td>
-      </tr>
-    {/if}
-
-    {if $control->filters.filter_workflow_status}
-      <tr>
-        <td>{$labels.status}</td>
-        <td>
-          <select class="chosen-select" id="filter_workflow_status"
-          {if $control->advanced_filter_mode}
-             name="filter_workflow_status[]" multiple="multiple"
-             size="{$control->filter_item_quantity}">
-          {else}
-             name="filter_workflow_status">
-          {/if}
-            {html_options options=$control->filters.filter_workflow_status.items
-                          selected=$control->filters.filter_workflow_status.selected}
-          </select>
-        </td>
-      </tr>
-    {/if}
-
-    {if $control->filters.filter_importance}
-      <tr>
-        <td>{$labels.importance}</td>
-        <td>
-          <select class="chosen-select" id="filter_importance"
-          {if $control->advanced_filter_mode}
-             name="filter_importance[]" multiple="multiple"
-             size="{$control->filters.filter_importance.size}">
-          {else}
-             name="filter_importance">
-          {/if}
-             {html_options options=$control->filters.filter_importance.items
-              selected=$control->filters.filter_importance.selected}
-          </select>
-        </td>
-      </tr>
-    {/if}
-
-    {if $control->filters.filter_priority}
-      <tr>
-        <td>{$labels.priority}</td>
-        <td>
-          <select class="chosen-select" name="filter_priority">
-          <option value="">{$control->option_strings.any}</option>
-          {html_options options=$gsmarty_option_importance
-                                  selected=$control->filters.filter_priority.selected}
-          </select>
-        </td>
-      </tr>
-    {/if}
-
-    {if $control->filters.filter_execution_type}
-      <tr>
-        <td>{$labels.execution_type}</td>
-          <td>
-        <select class="chosen-select" name="filter_execution_type">
-          {html_options options=$control->filters.filter_execution_type.items
-                        selected=$control->filters.filter_execution_type.selected}
-          </select>
-        </td>
-      </tr>
-    {/if}
-
-    {if $control->filters.filter_assigned_user}
-    <tr>
-      <td>{$labels.filter_owner}<img src="{$tlImages.info_small}" title="{$labels.tester_works_with_settings}"></td>
-      <td>
-
-      {if $control->advanced_filter_mode}
-        <select class="chosen-select" name="filter_assigned_user[]"
-                id="filter_assigned_user"
-                multiple="multiple"
-                size="{$control->filter_item_quantity}" >
-        {html_options options=$control->filters.filter_assigned_user.items
-                      selected=$control->filters.filter_assigned_user.selected}
-        </select>
-        {else}
-        <select class="chosen-select" name="filter_assigned_user"
-                id="filter_assigned_user"
-                onchange="javascript: triggerAssignedBox('filter_assigned_user',
-                                                               'filter_assigned_user_include_unassigned',
-                                                               '{$control->option_strings.any}',
-                                                               '{$control->option_strings.none}',
-                                                               '{$control->option_strings.somebody}');">
-        {html_options options=$control->filters.filter_assigned_user.items
-                              selected=$control->filters.filter_assigned_user.selected}
-        </select>
-
-        <br/>
-        <br />
-        <input type="checkbox"
-               id="filter_assigned_user_include_unassigned"
-               name="filter_assigned_user_include_unassigned"
-                   value="1"
-                   {if $control->filters.filter_assigned_user.filter_assigned_user_include_unassigned}
-                      checked="checked"
-                   {/if}
-            />
-        {$labels.include_unassigned_testcases}
-      {/if}
-
-      </td>
-    </tr>
-      {/if}
-
-    {* 20131226 *}
-    {if $control->filters.filter_bugs}
-      <tr>
-        <td>{$labels.bugs_on_context}</td>
-        <td><input type="text" name="filter_bugs" size="{#BUGS_FILTER_SIZE#}"
-                               maxlength="{#BUGS_FILTER_MAXLEN#}"
-                               placeholder="{$labels.hint_list_of_bugs}"
-                               value="{$control->filters.filter_bugs.selected|escape}" />
-        </td>
-      </tr>
-    {/if}
-
-
-    {* custom fields are placed here *}
-
-    {if $control->filters.filter_custom_fields && !$control->filters.filter_custom_fields.collapsed}
-      <tr><td>&nbsp;</td></tr>
-      {$control->filters.filter_custom_fields.items}
-    {/if}
-
-
-  {* result filtering parts *}
-  {if $control->filters.filter_result}
-
-    <tr><td>&nbsp;</td></tr> {* empty row for a little separation *}
-
-        <tr>
-        <td>{$labels.filter_result}</td>
-        <td>
-        <select class="chosen-select" id="filter_result_result"
-        {if $control->advanced_filter_mode}
-              name="filter_result_result[]" multiple="multiple"
-                size="{$control->filter_item_quantity}">
-        {else}
-              name="filter_result_result">
-        {/if}
-        {html_options options=$control->filters.filter_result.filter_result_result.items
-                      selected=$control->filters.filter_result.filter_result_result.selected}
-        </select>
-        </td>
-      </tr>
-
-      <tr>
-        <td>{$labels.filter_on}</td>
-        <td>
-            <select class="chosen-select" name="filter_result_method" id="filter_result_method"
-                    onchange="javascript: triggerBuildChooser('filter_result_build_row',
-                                                            'filter_result_method',
-                  {$control->configuration->filter_methods.status_code.specific_build});">
-          {html_options options=$control->filters.filter_result.filter_result_method.items
-                        selected=$control->filters.filter_result.filter_result_method.selected}
-            </select>
-        </td>
-      </tr>
-
-      <tr id="filter_result_build_row">
-        <td>{$labels.build}</td>
-        <td><select class="chosen-select" id="filter_result_build" name="filter_result_build">
-          {html_options options=$control->filters.filter_result.filter_result_build.items
-                        selected=$control->filters.filter_result.filter_result_build.selected}
-          </select>
-        </td>
-      </tr>
-
-  {/if}
-
-    </table>
-
-    <div>
-      <input type="submit"
-             value="{$labels.btn_apply_filter}"
-             id="doUpdateTree"
-             name="doUpdateTree"
-             style="font-size: 90%;" />
-
-      <input type="submit"
-             value="{$labels.btn_reset_filters}"
-             id="doResetTree"
-             name="btn_reset_filters"
-             style="font-size: 90%;" />
-
-      {if $control->filters.filter_custom_fields}
-      <input type="submit"
-             value="{$control->filters.filter_custom_fields.btn_label}"
-             id="doToggleCF"
-             name="btn_toggle_cf"
-             style="font-size: 90%;" />
-      {/if}
-
-      {if $control->filter_mode_choice_enabled}
-
-        {if $control->advanced_filter_mode}
-          <input type="hidden" name="btn_advanced_filters" value="1" />
-        {/if}
-
-        <input type="submit" id="toggleFilterMode"  name="{$control->filter_mode_button_name}"
-             value="{$control->filter_mode_button_label}"
-             style="font-size: 90%;"  />
-          {/if}
-
-    </div>
-
-  </div> {* filters *}
-
-  </div> {* filter_panel *}
+    <br>
 
 {/if} {* show filters *}
 
