@@ -28,13 +28,13 @@ viewer for test case in test specification
 	  </tr>
 
 	  <tr class="ghostTC" style="display:none;">
-	  	<td colspan="{$inc_tcbody_tableColspan}">{$inc_tcbody_testcase.ghost}</td>	
+	  	<td colspan="{$inc_tcbody_tableColspan}">{$inc_tcbody_testcase.ghost}</td>
 	  </tr>
 	  <tr class="ghostTC" style="display:none;">
-	  	<td colspan="{$inc_tcbody_tableColspan}">&nbsp;</td>	
+	  	<td colspan="{$inc_tcbody_tableColspan}">&nbsp;</td>
 	  </tr>
 
-	{if $inc_tcbody_author_userinfo != ''}  
+	{if $inc_tcbody_author_userinfo != ''}
 	<tr class="time_stamp_creation" style="display:none;">
   		<td colspan="{$inc_tcbody_tableColspan}">
       		{$inc_tcbody_labels.title_created}&nbsp;{localize_timestamp ts=$inc_tcbody_testcase.creation_ts}&nbsp;
@@ -42,7 +42,7 @@ viewer for test case in test specification
   		</td>
     </tr>
   {/if}
-  
+
  {if $inc_tcbody_testcase.updater_id != ''}
 	<tr class="time_stamp_creation" style="display:none;">
   		<td colspan="{$inc_tcbody_tableColspan}">

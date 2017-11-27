@@ -1,4 +1,4 @@
-{* 
+{*
 TestLink Open Source Project - http://testlink.sourceforge.net/
 @filesource tcView.tpl
 Purpose: smarty template - view test case in test specification
@@ -8,7 +8,7 @@ Purpose: smarty template - view test case in test specification
 *}
 
 {config_load file="input_dimensions.conf"}
-{lang_get var='labels' 
+{lang_get var='labels'
           s='no_records_found,other_versions,show_hide_reorder,version,title_test_case,match_count,actions'}
 
 {* Configure Actions *}
@@ -25,14 +25,14 @@ var del_action=fRoot+'{$deleteStepAction}';
 
 
 function jsCallDeleteFile(btn, text, o_id)
-{ 
+{
   var my_action='';
   if( btn == 'yes' )
   {
     my_action='{$gui->delAttachmentURL}'+o_id;
     window.location=my_action;
   }
-}         
+}
 </script>
 
 {include file="inc_ext_js.tpl" css_only=1}
@@ -41,7 +41,7 @@ function jsCallDeleteFile(btn, text, o_id)
 {if $gui->bodyOnLoad != ''}
 <script language="JavaScript">
 var {$gui->dialogName} = new std_dialog('&refreshTree');
-</script>  
+</script>
 {/if}
 
 </head>
@@ -86,59 +86,59 @@ var {$gui->dialogName} = new std_dialog('&refreshTree');
       {$gui->tc_current_version[idx][0].tc_external_id|escape}:{$gui->tc_current_version[idx][0].name|escape}</h2>
     {/if}
     <div class="direct_link" style='display:none'><a href="{$gui->direct_link}" target="_blank">{$gui->direct_link}</a></div>
-    {include file="testcases/tcView_viewer.tpl" 
+    {include file="testcases/tcView_viewer.tpl"
              args_testcase=$gui->tc_current_version[idx][0]
-             args_keywords_map=$gui->keywords_map[idx] 
-             args_reqs=$gui->arrReqs[idx] 
+             args_keywords_map=$gui->keywords_map[idx]
+             args_reqs=$gui->arrReqs[idx]
              args_status_quo=$gui->status_quo[idx]
              args_read_only="no"
              args_can_do=$gui->can_do
              args_can_move_copy="yes"
-             args_can_delete_testcase="yes" 
+             args_can_delete_testcase="yes"
              args_can_delete_version=$my_delete_version
 
-             args_show_version="yes" 
+             args_show_version="yes"
              args_show_title=$gui->show_title
              args_activate_deactivate_name='activate'
              args_activate_deactivate='bnt_activate'
-             args_cf=$gui->cf_current_version[idx] 
+             args_cf=$gui->cf_current_version[idx]
              args_tcase_cfg=$gui->tcase_cfg
              args_users=$gui->users
              args_tproject_name=$gui->tprojectName
              args_tsuite_name=$gui->parentTestSuiteName
              args_linked_versions=$gui->linked_versions[idx]
              args_has_testplans=$gui->has_testplans}
-    
-    
+
+
     {$bDownloadOnly=false}
     {if $gui->can_do->edit != 'yes'}
       {$bDownloadOnly=true}
     {/if}
-    
+
     {if !isset($gui->loadOnCancelURL)}
       {$loadOnCancelURL=""}
-    {/if} 
-    
-  {include file="attachments.inc.tpl" 
-           attach_id=$tcID  
+    {/if}
+
+  {include file="attachments.inc.tpl"
+           attach_id=$tcID
            attach_tableName="nodes_hierarchy"
-           attach_attachmentInfos=$gui->attachments[$tcID]  
+           attach_attachmentInfos=$gui->attachments[$tcID]
            attach_downloadOnly=$bDownloadOnly
            attach_loadOnCancelURL=$gui->loadOnCancelURL}
-  
+
   {* Other Versions *}
     {if $gui->testcase_other_versions[idx] neq null}
         {$vid=$gui->tc_current_version[idx][0].id}
         {$div_id="vers_$vid"}
         {$memstatus_id="mem_$div_id"}
         <br />
-        {include file="inc_show_hide_mgmt.tpl" 
+        {include file="inc_show_hide_mgmt.tpl"
                  show_hide_container_title=$labels.other_versions
                  show_hide_container_id=$div_id
                  show_hide_container_draw=false
                  show_hide_container_class='exec_additional_info'
                  show_hide_container_view_status_id=$memstatus_id}
-               
+
         <div id="vers_{$vid}" class="workBack">
 
         {foreach from=$gui->testcase_other_versions[idx] item=my_testcase key=tdx}
@@ -150,37 +150,37 @@ var {$gui->dialogName} = new std_dialog('&refreshTree');
           {$div_id="v_$vid"}
           {$div_id="$div_id$sep$version_num"}
           {$memstatus_id="mem_$div_id"}
-          {include file="inc_show_hide_mgmt.tpl" 
+          {include file="inc_show_hide_mgmt.tpl"
                      show_hide_container_title=$title
                      show_hide_container_id=$div_id
                      show_hide_container_draw=false
                      show_hide_container_class='exec_additional_info'
                      show_hide_container_view_status_id=$memstatus_id}
-                     
+
               <div id="{$div_id}" class="workBack">
               {*
               BE CAREFUL
               args_cf=$gui->cf_other_versions[idx][tdx]  - KO
               args_cf=$gui->cf_other_versions[$idx][$tdx]  - KO
               args_cf=$gui->cf_other_versions[$idx][tdx]  - KO
-              args_cf=$gui->cf_other_versions[idx][$tdx] - OK 
+              args_cf=$gui->cf_other_versions[idx][$tdx] - OK
               - do not know if there is info on smarty manuals
               *}
 
               {* Setting args_can_do makes other versions
                  READONLY *}
-              {include file="testcases/tcView_viewer.tpl" 
-                       args_testcase=$my_testcase 
-                       args_keywords_map=$gui->keywords_map[idx] 
+              {include file="testcases/tcView_viewer.tpl"
+                       args_testcase=$my_testcase
+                       args_keywords_map=$gui->keywords_map[idx]
                        args_reqs=$gui->arrReqs[idx]
                        args_status_quo=$gui->status_quo[idx]
                        args_can_do=$gui->can_do
-                       args_can_move_copy="no" 
+                       args_can_move_copy="no"
                        args_can_delete_testcase='no'
                        args_can_delete_version="yes"
                        args_read_only="yes"
 
-                       args_show_version="no" 
+                       args_show_version="no"
                        args_show_title="no"
                        args_users=$gui->users
                        args_cf=$gui->cf_other_versions[idx][$tdx]
@@ -188,10 +188,10 @@ var {$gui->dialogName} = new std_dialog('&refreshTree');
                        args_has_testplans=$gui->has_testplans}
              </div>
              <br />
-             
+
         {/foreach}
         </div>
-  
+
         {* ---------------------------------------------------------------- *}
         {* Force the div of every old version to show closed as first state *}
         {literal}

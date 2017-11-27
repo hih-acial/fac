@@ -5,7 +5,7 @@ $Id: inc_testsuite_viewer_rw.tpl
 <p>
 <div class="labelHolder"><label for="name">{lang_get s='comp_name'}</label></div> 
 <div>
-  <input type="text" id="name" name="container_name" title="{lang_get s='comp_alt_name'}"
+  <input class="form-control" type="text" id="name" name="container_name" title="{lang_get s='comp_alt_name'}"
          value="{$name|escape}" 
          onchange="content_modified = true"  onkeypress="content_modified = true"
          size="{#CONTAINER_NAME_SIZE#}" maxlength="{#CONTAINER_NAME_MAXLEN#}" required />

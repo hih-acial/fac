@@ -53,7 +53,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
                    '{$step_info.step_number|escape:'javascript'|escape}',
                    '{$del_msgbox_title}','{$warning_msg}');"
            src="{$tlImages.delete}"/>
-      <img style="border:none;cursor: pointer;"  title="{$inc_steps_labels.insert_step}"    
+      <img style="border:none;cursor: pointer;"  title="{$inc_steps_labels.insert_step}"
            alt="{$inc_steps_labels.insert_step}"
            onclick="launchInsertStep({$step_info.id});" src="{$tlImages.insert_step}"/>
 

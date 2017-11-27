@@ -15,7 +15,7 @@ Scope: show test plan tree for execution
 
 {include file="inc_head.tpl" openHead="yes"}
 {include file="inc_ext_js.tpl" bResetEXTCss=1}
-
+{include file="../custom.tpl"}
 {* includes Ext.ux.CollapsiblePanel *}
 <script type="text/javascript" src='gui/javascript/ext_extensions.js'></script>
 <script type="text/javascript">
@@ -89,7 +89,7 @@ function update2latest(id)
 {$cfg_section=$smarty.template|basename|replace:".tpl":""}
 {config_load file="input_dimensions.conf" section=$cfg_section}
 
-<h1 class="title">{$gui->title_navigator} {$gui->additional_string|escape}</h1>
+<h3 class="text-center">{$gui->title_navigator} {$gui->additional_string|escape}</h3>
 
 {include file='inc_filter_panel.tpl'}
 {include file="inc_tree_control.tpl"}

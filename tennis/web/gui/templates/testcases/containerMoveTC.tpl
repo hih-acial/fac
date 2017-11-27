@@ -61,7 +61,7 @@ function check_action_precondition(container_id,action,msg)
 <h1 class="title">{$level_translated}{$smarty.const.TITLE_SEP}{$object_name|escape} </h1>
 
 <div class="workBack">
-{if !$gui->testCasesTableView}    
+{if !$gui->testCasesTableView}
   <h1 class="title">{$labels.title_move_cp_testcases}</h1>
 {/if}
 
@@ -73,7 +73,7 @@ function check_action_precondition(container_id,action,msg)
 
     <input type="hidden" name="form_token" id="form_token" value="{$gui->form_token}" />
 
-    {if !$gui->testCasesTableView}    
+    {if !$gui->testCasesTableView}
       {if $user_feedback != ''}
         <div class="user_feedback">{$user_feedback}</div>
         <br />
@@ -88,7 +88,7 @@ function check_action_precondition(container_id,action,msg)
   			{$labels.copy_keywords}
   		</p>
       <p>
-        <input type="checkbox" name="copyRequirementAssignments" id='copyRequirementAssignments' 
+        <input type="checkbox" name="copyRequirementAssignments" id='copyRequirementAssignments'
                checked="checked" value="1">
         {$labels.copy_requirement_assignments}
       </p>
@@ -142,11 +142,11 @@ function check_action_precondition(container_id,action,msg)
     </div>
 
     {if $gui->testCasesTableView}
-    {lang_get s='zero_testcase_selected' var="check_msg"}    
+    {lang_get s='zero_testcase_selected' var="check_msg"}
     <div>
       <span class="labelHolder">{$labels.status}</span>
       <span>
-      <select name="tc_status" id="tc_status" 
+      <select name="tc_status" id="tc_status"
           onchange="content_modified = true">
       {html_options options=$gui->domainTCStatus}
       </select>
@@ -170,14 +170,14 @@ function check_action_precondition(container_id,action,msg)
 
       {if $gui->cf != ''}
         <p>
-        <div id="cfields_design_time" class="custom_field_container">        
+        <div id="cfields_design_time" class="custom_field_container">
         {$gui->cf}
         </div>
       {/if}
 
       <p>
       <input type="submit" name="doBulkSet" id="doBulkSet" value="{$labels.btn_save}"
-             onclick="return check_action_precondition('move_copy_checkboxes','doBulkSet','{$check_msg}');"  />      
+             onclick="return check_action_precondition('move_copy_checkboxes','doBulkSet','{$check_msg}');"  />
     </div>
 
 

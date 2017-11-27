@@ -40,7 +40,7 @@ Purpose: smarty template - move/copy test case
           size="{#TESTCASE_NAME_SIZE#}" maxlength="{#TESTCASE_NAME_MAXLEN#}"
           value ="{$gui->testcase_name}" >
   <br />
-  
+
   <p>
    <input type="checkbox" name="keyword_assignments" id='keyword_assignments'>
      {$labels.copy_keyword_assignments}
@@ -49,7 +49,7 @@ Purpose: smarty template - move/copy test case
      {$labels.copy_requirement_assignments}
   </p>
 
-	 
+
 	<p><input type="radio" name="target_position"
 	          value="top" {$gui->top_checked} />{$labels.as_first_testcase}
 	<br /><input type="radio" name="target_position"

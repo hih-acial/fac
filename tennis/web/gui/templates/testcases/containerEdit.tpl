@@ -1,7 +1,7 @@
-{* 
-TestLink Open Source Project - http://testlink.sourceforge.net/ 
+{*
+TestLink Open Source Project - http://testlink.sourceforge.net/
 
-Edit test specification: containers 
+Edit test specification: containers
 
 @filesource containerEdit.tpl
 @internal revisions
@@ -15,10 +15,10 @@ Edit test specification: containers
 
 {include file="inc_head.tpl" openHead='yes' jsValidate="yes" editorType=$editorType}
 {include file="inc_del_onclick.tpl"}
-
+{include file="../custom.tpl"}
 <script language="javascript" src="gui/javascript/ext_extensions.js" type="text/javascript"></script>
 
-{if $gui->hasKeywords} 
+{if $gui->hasKeywords}
 <script language="JavaScript" src="gui/javascript/OptionTransfer.js" type="text/javascript"></script>
 <script language="JavaScript" type="text/javascript">
 var {$opt_cfg->js_ot_name} = new OptionTransfer("{$opt_cfg->from->name}","{$opt_cfg->to->name}");
@@ -36,13 +36,13 @@ var alert_box_title = "{$labels.warning|escape:'javascript'}";
 var warning_empty_container_name = "{$labels.warning_empty_testsuite_name|escape:'javascript'}";
 function validateForm(f)
 {
-  if (isWhitespace(f.container_name.value)) 
+  if (isWhitespace(f.container_name.value))
   {
       alert_message(alert_box_title,warning_empty_container_name);
       selectField(f, 'container_name');
       return false;
   }
-  
+
   /* Validation of a limited type of custom fields */
   var cf_designTime = document.getElementById('cfields_design_time');
   if (cf_designTime)
@@ -68,7 +68,7 @@ function validateForm(f)
 
   // Found minor issue, if submit is done with input of type submit, the php script
   // will not receive it
-  // 
+  //
   return Ext.ux.requireSessionAndSubmit(f);
 }
 </script>
@@ -84,23 +84,26 @@ function validateForm(f)
 </head>
 
 <body onLoad="{$opt_cfg->js_ot_name}.init(document.forms[0]);focusInputField('name')">
-<h1 class="title">{lang_get s=$level}{$smarty.const.TITLE_SEP}{$name|escape}</h1> 
+<section class="jumbotron">
+  <h2 class="text-center">{lang_get s=$level}{$smarty.const.TITLE_SEP}{$name|escape}</h2>
+</section>
 
-<div class="workBack">
-  <h1 class="title">{$labels.title_edit_level} {lang_get s=$level}</h1> 
-  <form method="post" action="{$basehref}lib/testcases/containerEdit.php?testsuiteID={$containerID}" 
+<div class="container">
+  <h3 class="text-center">{$labels.title_edit_level} {lang_get s=$level}</h3>
+  <hr>
+  <form method="post" action="{$basehref}lib/testcases/containerEdit.php?testsuiteID={$containerID}"
         name="container_edit" id="container_edit"
-        onSubmit="javascript:return validateForm(this);">
-  
-  <div>
+        onSubmit="return validateForm(this);">
+
+  <div class="text-center center-block">
     <input type="hidden" name="containerType" id="containerType" value="testsuite" />
     <input type="hidden" name="doAction" value="" />
-    <input type="submit" name="update_testsuite" value="{$labels.btn_save}" 
+    <input class="btn btn-primary" type="submit" name="update_testsuite" value="{$labels.btn_save}"
            onclick="show_modified_warning = false; doAction.value='update_testsuite'" />
-    <input type="button" name="go_back" value="{$labels.cancel}" 
-           onclick="javascript: show_modified_warning = false; history.back();"/>
+    <input class="btn btn-secondary" type="button" name="go_back" value="{$labels.cancel}"
+           onclick=" show_modified_warning = false; history.back();"/>
   </div>
-   
+
   {include file="testcases/inc_testsuite_viewer_rw.tpl"}
 
    {* Custom fields *}
@@ -111,22 +114,22 @@ function validateForm(f)
      </div>
      <p>
    {/if}
-  
+
   {if $gui->hasKeywords}
-  {$kwView = $gsmarty_href_keywordsView|replace:'%s%':$gui->tproject_id} 
+  {$kwView = $gsmarty_href_keywordsView|replace:'%s%':$gui->tproject_id}
   <div>
    <a href={$kwView}>{$labels.tc_keywords}</a>
    {include file="opt_transfer.inc.tpl" option_transfer=$opt_cfg}
   </div>
   {/if}
-  
-  <br></br>
-  
-  <div>
-    <input type="submit" name="update_testsuite" id="update_testsuite_bottom" value="{$labels.btn_save}" 
+
+
+
+  <div class="text-center center-block">
+    <input class="btn btn-primary" type="submit" name="update_testsuite" id="update_testsuite_bottom" value="{$labels.btn_save}"
            onclick="show_modified_warning = false; doAction.value='update_testsuite'" />
-    <input type="button" name="go_back" value="{$labels.cancel}" 
-           onclick="javascript: show_modified_warning = false; history.back();"/>
+    <input class="btn btn-secondary" type="button" name="go_back" value="{$labels.cancel}"
+           onclick=" show_modified_warning = false; history.back();"/>
   </div>
   </form>
 </div>

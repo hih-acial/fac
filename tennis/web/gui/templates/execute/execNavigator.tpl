@@ -14,7 +14,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 
 {include file="inc_head.tpl" openHead="yes"}
 {include file="inc_ext_js.tpl" bResetEXTCss=1}
-
+{include file="../custom.tpl"}
 {* includes Ext.ux.CollapsiblePanel *}
 <script type="text/javascript" src='gui/javascript/ext_extensions.js'></script>
 
@@ -122,7 +122,7 @@ treeCfg.cookiePrefix='{$gui->ajaxTree->cookiePrefix}';
 {$build_number=$control->settings.setting_build.selected}
 {config_load file="input_dimensions.conf" section=$cfg_section}
 
-<h1 class="title">{$gui->pageTitle}</h1>
+<h3 class="text-center">{$gui->pageTitle}</h3>
 {include file='inc_filter_panel.tpl'}
 {include file="inc_tree_control.tpl"}
 <div id="tree_div" style="overflow:auto; height:100%;border:1px solid #c3daf9;"></div>

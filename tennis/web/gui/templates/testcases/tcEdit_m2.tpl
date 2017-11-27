@@ -15,7 +15,7 @@
 	<div style="float: right;">
 		<input id="submit" type="submit" name="updateTC" value="Update" />
 		<input type="hidden" name="version" value="{$tc.version}" />
-	</div>	
+	</div>
 
 	<p>{lang_get s='tc_title'}<br />
 		<input type="text" name="name" size="40" value="{$tc.name|escape}"
@@ -30,7 +30,7 @@
   <tr><td>{lang_get s='steps'}</td><td>{lang_get s='expected_results'}</td></tr>
 	<tr><td>{$steps}</td><td>{$exresult}</td></tr>
 	</table>
-	
+
 	<p><a href="lib/keywords/viewKeywords.php" target="mainframe">{lang_get s='tc_keywords'}</a><br />
 		<select name="keywords[]" style="width: 30%" size="{$keySize}" multiple="multiple">
 		{section name=oneKey loop=$keys}

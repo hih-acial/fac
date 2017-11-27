@@ -1,5 +1,5 @@
-{* 
-TestLink Open Source Project - http://testlink.sourceforge.net/ 
+{*
+TestLink Open Source Project - http://testlink.sourceforge.net/
 @filesource tcImport.tpl
 Purpose: smarty template - manage import of test cases and test suites
 
@@ -16,59 +16,59 @@ Purpose: smarty template - manage import of test cases and test suites
 
 {include file="inc_head.tpl" openHead="yes"}
 {include file="inc_del_onclick.tpl"}
+{include file="../custom.tpl"}
 </head>
 <body>
+<section class="jumbotron">
+	<h2 class="text-center">{$gui->container_description}{$smarty.const.TITLE_SEP}{$gui->container_name|escape}</h2>
+</section>
 
-<h1 class="title">{$gui->container_description}{$smarty.const.TITLE_SEP}{$gui->container_name|escape}</h1>
+<div class="container">
 
-<div class="workBack">
-<h1 class="title">{$gui->import_title}</h1>
-
+<h1 class="text-center">{$gui->import_title}</h1>
+	<hr>
 {if $gui->resultMap eq null}
 <form method="post" enctype="multipart/form-data" action="{$SCRIPT_NAME}">
+	<fieldset>
+        <div class="form-group">
+            <label for="{$labels.file_type}">{$labels.file_type}</label>
+            <select class="form-control" id="{$labels.file_type}" name="importType">
+                {html_options options=$gui->importTypes}
+            </select>
+            <a href={$basehref}{$smarty.const.PARTIAL_URL_TL_FILE_FORMATS_DOCUMENT}>{$labels.view_file_format_doc}</a>
+        </div>
+        <div class="form-group">
+            <label for="{$labels.local_file}">{$labels.local_file}</label>
+            <input id="{$labels.local_file}" type="file" name="uploadedFile" size="{#FILENAME_SIZE#}" maxlength="{#FILENAME_MAXLEN#}"/>
+            <p>{$labels.max_size_cvs_file1} {$gui->importLimitKB|escape} {$labels.max_size_cvs_file2}</p>
+        </div>
+        {if $gui->hitOptions != ''}
+        <div class="form-group">
+            <label for="hit_criteria">{$labels.duplicate_criteria}</label>
+            <select class="form-control" name="hit_criteria" id="hit_criteria">
+                {html_options options=$gui->hitOptions selected=$gui->hitCriteria}
+            </select>
+        </div>
+        {/if}
+        {if $gui->actionOptions != ''}
+            <div class="form-group">
+                <label for="{$labels.action_for_duplicates}">{$labels.action_for_duplicates}</label>
+                <select class="form-control" id="{$labels.action_for_duplicates}" name="action_on_duplicated_name">
+                    {html_options options=$gui->actionOptions selected=$gui->action_on_duplicated_name}
+                </select>
+            </div>
+        {/if}
 
-  <table>
-  <tr>
-  <td> {$labels.file_type} </td>
-  <td> <select name="importType">
-         {html_options options=$gui->importTypes}
-	     </select>
-	<a href={$basehref}{$smarty.const.PARTIAL_URL_TL_FILE_FORMATS_DOCUMENT}>{$labels.view_file_format_doc}</a>
-	</td>
-	</tr>
-	<tr><td>{$labels.local_file} </td>
-	    <td><input type="file" name="uploadedFile" 
-	                           size="{#FILENAME_SIZE#}" maxlength="{#FILENAME_MAXLEN#}"/></td>
-	</tr>
-	{if $gui->hitOptions != ''}
-	  <tr><td>{$labels.duplicate_criteria} </td>
-	      <td><select name="hit_criteria" id="hit_criteria">
-	  			  {html_options options=$gui->hitOptions selected=$gui->hitCriteria}
-	  		    </select>
-      </td>
-	  </tr>
-	{/if}
-
-	{if $gui->actionOptions != ''}
-	<tr><td>{$labels.action_for_duplicates} </td>
-	    <td><select name="action_on_duplicated_name">
-				  {html_options options=$gui->actionOptions selected=$gui->action_on_duplicated_name}
-			    </select>
-    </td>
-	</tr>
-	{/if}
-
-	</table>
-	<p>{$labels.max_size_cvs_file1} {$gui->importLimitKB|escape} {$labels.max_size_cvs_file2}</p>
-	<div class="groupBtn">
+	<div class="text-center center-block">
 		<input type="hidden" name="useRecursion" value="{$gui->useRecursion|escape}" />
 		<input type="hidden" name="bIntoProject" value="{$gui->bIntoProject|escape}" />
 		<input type="hidden" name="containerID" value="{$gui->containerID|escape}" />
 		<input type="hidden" name="MAX_FILE_SIZE" value="{$gui->importLimitBytes|escape}" /> {* restrict file size *}
-		<input type="submit" name="UploadFile" value="{$labels.btn_upload_file}" />
-		<input type="button" name="cancel" value="{$labels.btn_cancel}" 
-			                   onclick="javascript:history.back();" />
+		<input class="btn btn-primary" type="submit" name="UploadFile" value="{$labels.btn_upload_file}" />
+		<input class="btn btn-secondary" type="button" name="cancel" value="{$labels.btn_cancel}"
+			                   onclick="history.back();" />
 	</div>
+	</fieldset>
 </form>
 {else}
   {foreach item=result from=$gui->resultMap}
@@ -86,7 +86,7 @@ Purpose: smarty template - manage import of test cases and test suites
   <script type="text/javascript">
   alert_message("{$labels.warning|escape:'javascript'}","{$gui->file_check.msg|escape:'javascript'}");
   </script>
-{/if}  
+{/if}
 
 
 </div>

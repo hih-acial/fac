@@ -1,5 +1,5 @@
 {*
-TestLink Open Source Project - http://testlink.sourceforge.net/ 
+TestLink Open Source Project - http://testlink.sourceforge.net/
 @filesource tcStepEdit.tpl
 Purpose: create/edit test case step
 
@@ -15,7 +15,7 @@ Purpose: create/edit test case step
 {$tcversion_id=$gui->tcversion_id}
 
 {* Used on several operations to implement goback *}
-{$showMode=$gui->show_mode} 
+{$showMode=$gui->show_mode}
 
 {$tcViewAction="lib/testcases/archiveData.php?tcase_id=$tcase_id&show_mode=$showMode"}
 {$goBackAction="$basehref$tcViewAction"}
@@ -89,7 +89,7 @@ var tc_editor = "{$gui->editorType}";
 {/if}
 
 <body onLoad="scrollToShowMe('{$scrollPosition}')">
-<h1 class="title">{$gui->main_descr}</h1> 
+<h1 class="title">{$gui->main_descr}</h1>
 
 <div class="workBack" style="width:98.6%;">
 
@@ -116,7 +116,7 @@ var tc_editor = "{$gui->editorType}";
   <input type="hidden" name="goback_url" value="{$goBackAction}" />
 
 
-    {include file="testcases/inc_tcbody.tpl" 
+    {include file="testcases/inc_tcbody.tpl"
              inc_tcbody_close_table=true
              inc_tcbody_testcase=$gui->testcase
              inc_tcbody_show_title="yes"
@@ -131,26 +131,26 @@ var tc_editor = "{$gui->editorType}";
 
   {* when save or cancel is pressed do not show modification warning *}
   <div class="groupBtn">
-    <input id="do_update_step" type="submit" name="do_update_step" 
-           onclick="show_modified_warning=false; doAction.value='{$gui->operation}'" 
+    <input id="do_update_step" type="submit" name="do_update_step"
+           onclick="show_modified_warning=false; doAction.value='{$gui->operation}'"
            value="{$labels.btn_save}" />
 
-    <input id="do_update_step_and_exit" type="submit" name="do_update_step_and_exit" 
-           onclick="show_modified_warning=false; doAction.value='{$gui->operation}AndExit'" 
+    <input id="do_update_step_and_exit" type="submit" name="do_update_step_and_exit"
+           onclick="show_modified_warning=false; doAction.value='{$gui->operation}AndExit'"
            value="{$labels.btn_save_and_exit}" />
 
     {if $gui->operation == 'doUpdateStep'}
-      <input id="do_create_step" type="submit" name="do_create_step" 
+      <input id="do_create_step" type="submit" name="do_create_step"
              onclick="doAction.value='createStep'" value="{$labels.btn_create_step}" />
 
-      <input id="do_copy_step" type="submit" name="do_copy_step" 
+      <input id="do_copy_step" type="submit" name="do_copy_step"
              onclick="doAction.value='doCopyStep'" value="{$labels.btn_copy_step}" />
     {/if}
 
     <input type="button" name="cancel" value="{$labels.btn_cancel}"
            {if $gui->goback_url != ''}  onclick="show_modified_warning=false; location='{$gui->goback_url}';"
            {else}  onclick="show_modified_warning=false; javascript:history.back();" {/if} />
-  </div>  
+  </div>
 
   <table class="simple">
   {if $gui->steps_results_layout == "horizontal"}
@@ -164,42 +164,42 @@ var tc_editor = "{$gui->editorType}";
       <th>{$labels.expected_results}</th>
       {if $session['testprojectOptions']->automationEnabled}
         <th width="25">{$labels.execution_type_short_descr}</th>
-      {/if}  
+      {/if}
     </tr>
-  
+
   {* this means we have steps to display *}
   {if $gui->tcaseSteps != ''}
-    {$rowCount=$gui->tcaseSteps|@count} 
+    {$rowCount=$gui->tcaseSteps|@count}
     {$row=0}
-    
+
     {foreach from=$gui->tcaseSteps item=step_info}
       <tr id="step_row_{$step_info.step_number}">
       {if $step_info.step_number == $gui->step_number}
       <td style="text-align:left;">{$gui->step_number}</td>
         <td>{$steps}
       <div class="groupBtn">
-        <input id="do_update_step" type="submit" name="do_update_step" 
-               onclick="show_modified_warning=false; doAction.value='{$gui->operation}'" 
+        <input id="do_update_step" type="submit" name="do_update_step"
+               onclick="show_modified_warning=false; doAction.value='{$gui->operation}'"
                value="{$labels.btn_save}" />
 
-        <input type="submit" id="do_update_step_and_insert" name="do_update_step_and_insert" 
-               onclick="show_modified_warning=false; doAction.value='{$gui->operation}AndInsert'" 
+        <input type="submit" id="do_update_step_and_insert" name="do_update_step_and_insert"
+               onclick="show_modified_warning=false; doAction.value='{$gui->operation}AndInsert'"
                value="{$labels.btn_save_and_insert}" />
 
-        <input id="do_update_step_and_exit" type="submit" name="do_update_stepand_exit" 
-               onclick="show_modified_warning=false; doAction.value='{$gui->operation}AndExit'" 
+        <input id="do_update_step_and_exit" type="submit" name="do_update_stepand_exit"
+               onclick="show_modified_warning=false; doAction.value='{$gui->operation}AndExit'"
                value="{$labels.btn_save_and_exit}" />
 
         {if $gui->operation == 'doUpdateStep'}
-          <input id="do_copy_step" type="submit" name="do_copy_step" 
+          <input id="do_copy_step" type="submit" name="do_copy_step"
                  onclick="doAction.value='doCopyStep'" value="{$labels.btn_cp}" />
         {/if}
 
         <input type="button" name="cancel" value="{$labels.btn_cancel}"
                {if $gui->goback_url != ''}  onclick="show_modified_warning=false; location='{$gui->goback_url}';"
                {else}  onclick="show_modified_warning=false; javascript:history.back();" {/if} />
-      </div>  
-    
+      </div>
+
 
         </td>
         <td>{$expected_results}</td>
@@ -216,7 +216,7 @@ var tc_editor = "{$gui->editorType}";
         <td ><a href="{$hrefEditStep}{$step_info.id}">{$step_info.expected_results}</a></td>
         {if $session['testprojectOptions']->automationEnabled}
           <td><a href="{$hrefEditStep}{$step_info.id}">{$gui->execution_types[$step_info.execution_type]}</a></td>
-        {/if}  
+        {/if}
       {/if}
     {$rCount=$row+$step_info.step_number}
     {if ($rCount < $rowCount) && ($rowCount>=1)}
@@ -233,7 +233,7 @@ var tc_editor = "{$gui->editorType}";
       </tr>
     {/foreach}
   {/if}
-  {else} 
+  {else}
 
   {* Vertical layout *}
     {foreach from=$gui->tcaseSteps item=step_info}
@@ -297,7 +297,7 @@ var tc_editor = "{$gui->editorType}";
           </td>
           {/if}
       </tr>
-    
+
     {else}
       <tr id="new_step">
         <th width="20">{$args_labels.step_number} {$gui->step_number}</th>
@@ -324,29 +324,29 @@ var tc_editor = "{$gui->editorType}";
       <tr>
     {/if}
   {/if}
-  </table>  
+  </table>
   <p>
   {* when save or cancel is pressed do not show modification warning *}
   <div class="groupBtn">
-    <input id="do_update_step" type="submit" name="do_update_step" 
+    <input id="do_update_step" type="submit" name="do_update_step"
            onclick="show_modified_warning=false; doAction.value='{$gui->operation}'" value="{$labels.btn_save}" />
 
-    <input id="do_update_step_and_exit" type="submit" name="do_update_step_and_exit" 
-           onclick="show_modified_warning=false; doAction.value='{$gui->operation}AndExit'" 
+    <input id="do_update_step_and_exit" type="submit" name="do_update_step_and_exit"
+           onclick="show_modified_warning=false; doAction.value='{$gui->operation}AndExit'"
            value="{$labels.btn_save_and_exit}" />
 
     {if $gui->operation == 'doUpdateStep'}
-      <input id="do_create_step" type="submit" name="do_create_step" 
+      <input id="do_create_step" type="submit" name="do_create_step"
              onclick="doAction.value='createStep'" value="{$labels.btn_create_step}" />
 
-      <input id="do_copy_step" type="submit" name="do_copy_step" 
+      <input id="do_copy_step" type="submit" name="do_copy_step"
              onclick="doAction.value='doCopyStep'" value="{$labels.btn_copy_step}" />
     {/if}
 
     <input type="button" name="cancel" value="{$labels.btn_cancel}"
            {if $gui->goback_url != ''}  onclick="show_modified_warning=false; location='{$gui->goback_url}';"
            {else}  onclick="show_modified_warning=false; javascript:history.back();" {/if} />
-  </div>  
+  </div>
 </form>
 
 </div>

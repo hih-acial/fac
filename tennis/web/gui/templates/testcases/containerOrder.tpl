@@ -6,10 +6,12 @@ rev :
      20070216 - franciscom - added cancel button
 *}
 {include file="inc_head.tpl"}
-
+{include file="../custom.tpl"}
 <body>
 {config_load file="input_dimensions.conf" section="containerOrder"} {* Constant definitions *}
-<h1 class="title">{lang_get s=$level}{$smarty.const.TITLE_SEP}{$object_name|escape}</h1>
+<section class="jumbotron">
+	<h2 class="text-center">{lang_get s=$level}{$smarty.const.TITLE_SEP}{$object_name|escape}</h2>
+</section>
 
 <div class="workBack">
 <h1 class="title">{lang_get s='title_change_node_order'}</h1>

@@ -1,14 +1,14 @@
-{* 
+{*
 TestLink Open Source Project - http://testlink.sourceforge.net/
 $Id: tcEdit_New_viewer.tpl,v 1.27 2010/10/11 18:11:29 franciscom Exp $
 Purpose: smarty template - create new testcase
 
 @internal revisions
- 
+
 *}
 
 {* ---------------------------------------------------------------- *}
-{lang_get var='labels' 
+{lang_get var='labels'
           s='tc_title,alt_add_tc_name,summary,steps,expected_results,
              preconditions,status,estimated_execution_duration,importance,
              execution_type,test_importance,tc_keywords,assign_requirements'}
@@ -24,33 +24,36 @@ Purpose: smarty template - create new testcase
   {$layout3="</td></tr></table><br />"}
 {/if}
 {* ---------------------------------------------------------------- *}
-  <p />
-  <div class="labelHolder"><label for="testcase_name">{$labels.tc_title}</label></div>
-  <div> 
-    <input type="text" name="testcase_name" id="testcase_name"
-      size="{#TESTCASE_NAME_SIZE#}" required 
-      maxlength="{#TESTCASE_NAME_MAXLEN#}"
-      onchange="content_modified = true"
-      onkeypress="content_modified = true"
-      onkeyup="javascript:checkTCaseDuplicateName(Ext.get('testcase_id').getValue(),Ext.get('testcase_name').getValue(),
-                                                  Ext.get('testsuite_id').getValue(),'testcase_name_warning')"
-      {if isset($gui->tc.name)}
-           value="{$gui->tc.name|escape}"
-      {else}
-          value=""
-        {/if}
-      title="{$labels.alt_add_tc_name}"/>
-        {include file="error_icon.tpl" field="testcase_name"}
-      <span id="testcase_name_warning" class="warning"></span>
-    <p />
 
-    <div class="labelHolder">{$labels.summary}</div>
+<div class="form-group">
+  <label for="testcase_name">{$labels.tc_title}</label>
+  <input class="form-control" type="text" name="testcase_name" id="testcase_name"
+         size="{#TESTCASE_NAME_SIZE#}" required
+         maxlength="{#TESTCASE_NAME_MAXLEN#}"
+         onchange="content_modified = true"
+         onkeypress="content_modified = true"
+         onkeyup="checkTCaseDuplicateName(Ext.get('testcase_id').getValue(),Ext.get('testcase_name').getValue(),
+                                                  Ext.get('testsuite_id').getValue(),'testcase_name_warning')"
+          {if isset($gui->tc.name)}
+            value="{$gui->tc.name|escape}"
+          {else}
+            value=""
+          {/if}
+         title="{$labels.alt_add_tc_name}"/>
+    {include file="error_icon.tpl" field="testcase_name"}
+  <span id="testcase_name_warning" class="warning"></span>
+</div>
+
+  <div class="labelHolder"></div>
+  <div>
+
+    <div class="labelHolder" style="font-weight: bold">{$labels.summary}</div>
     <div>{$summary}</div>
     <br />
 
-    <div class="labelHolder">{$labels.preconditions}</div>
+    <div class="labelHolder" style="font-weight: bold">{$labels.preconditions}</div>
     <div>{$preconditions}</div>
-    
+
     {* Custom fields - with before steps & results location *}
     <br />
     {if $gui->cf.before_steps_results neq ""}
@@ -63,7 +66,7 @@ Purpose: smarty template - create new testcase
          <div id="cfields_design_time" class="custom_field_container">
          {$gui->cf.before_steps_results}
          </div>
-         
+
     {/if}
     {$layout1}
     {include file="testcases/attributesLinear.inc.tpl"}
@@ -84,10 +87,10 @@ Purpose: smarty template - create new testcase
   <a href={$kwView}>{$labels.tc_keywords}</a>
   {include file="opt_transfer.inc.tpl" option_transfer=$gui->opt_cfg}
   </div>
-  
+
   {if $gui->opt_requirements==TRUE && $gui->grants->requirement_mgmt=='yes' && isset($gui->tc.testcase_id)}
     <br />
     <div>
-    <a href="javascript:openReqWindow({$gui->tc.testcase_id})">{$labels.assign_requirements}</a>    
+    <a href="javascript:openReqWindow({$gui->tc.testcase_id})">{$labels.assign_requirements}</a>
     </div>
   {/if}

@@ -1,11 +1,11 @@
-{* 
+{*
 TestLink Open Source Project - http://testlink.sourceforge.net/
 @filesource relations.inc.tpl
 @internal revisions
 @since 1.9.13
 *}
 
-{lang_get var='rel_labels' 
+{lang_get var='rel_labels'
           s='relation_id, relation_type, relation_status, relation_project,
              relation_set_by, relation_delete, relations, new_relation, by, title_created,
              in, btn_add, img_title_delete_relation,no_records_found,other_versions,version,
@@ -23,29 +23,29 @@ var delete_rel_msgbox_msg = '{$delete_rel_msgbox_msg|escape:'javascript'}';
 var delete_rel_msgbox_title = '{$delete_rel_msgbox_title|escape:'javascript'}';
 
 /**
- * 
+ *
  *
  */
-function relation_delete_confirmation(item_id, relation_id, title, msg, pFunction) 
+function relation_delete_confirmation(item_id, relation_id, title, msg, pFunction)
 {
   var my_msg = msg.replace('%i',relation_id);
   var safe_title = title.escapeHTML();
   Ext.Msg.confirm(safe_title, my_msg,
-                  function(btn, text) { 
+                  function(btn, text) {
                     pFunction(btn,text,item_id, relation_id);
                   });
 }
 
 
 /**
- * 
+ *
  *
  */
-function delete_relation(btn, text, item_id, relation_id) 
+function delete_relation(btn, text, item_id, relation_id)
 {
   var my_action = fRoot + 'lib/testcases/tcEdit.php?doAction=doDeleteRelation&tcase_id='
                      + item_id + '&relation_id=' + relation_id;
-  if( btn == 'yes' ) 
+  if( btn == 'yes' )
   {
     window.location=my_action;
   }
@@ -61,11 +61,11 @@ var pF_delete_relation = delete_relation;
         <input type="hidden" name="tcversion_id" id="tcversion_id" value="{$gui->tcversion_id}" />
 
     <table class="simple" id="relations">
-    
+
       {if $args_edit_enabled}
-        <tr><th colspan="7">{$rel_labels.relations} 
+        <tr><th colspan="7">{$rel_labels.relations}
             {if $gui->relations.num_relations > 0} ({$gui->relations.num_relations}) {/if}</th></tr>
-      
+
         {if $gui->add_relation_feedback_msg != ''}
           <tr style="height:40px; vertical-align: middle;">
             <td style="height:40px; vertical-align: middle;" colspan="7">
@@ -73,35 +73,35 @@ var pF_delete_relation = delete_relation;
             </td>
           </tr>
         {/if}
-    
+
         <tr style="height:40px; vertical-align: middle;"><td style="height:40px; vertical-align: middle;" colspan="7">
-        
+
           <span class="bold">{$rel_labels.new_relation}:</span> {$rel_labels.current_testcase}
-            
+
           <select name="relation_type">
           {html_options options=$gui->relation_domain.items selected=$gui->relation_domain.selected}
           </select>
-      
+
           <input type="text" name="relation_destination_tcase" id="relation_destination_tcase"
                  placeholder="{$rel_labels.tcase_relation_hint}"
                  title="{$rel_labels.tcase_relation_help}"
-                 size="{#TC_EXTERNAL_ID_SIZE#}" maxlength="{#TC_EXTERNAL_ID_MAXLEN#}" 
+                 size="{#TC_EXTERNAL_ID_SIZE#}" maxlength="{#TC_EXTERNAL_ID_MAXLEN#}"
                  onclick="javascript:this.value=''" required />
           <input type="submit" name="relation_submit_btn" value="{$rel_labels.btn_add}" />
-          
+
           </td>
         </tr>
       {/if}
 
     {if $gui->relations.num_relations > 0}
-      
+
       <tr>
         <th><nobr>{$rel_labels.relation_id} / {$rel_labels.relation_type}</nobr></th>
         <th colspan="1">{$rel_labels.test_case}</th>
         <th><nobr>{$rel_labels.relation_set_by}</nobr></th>
         <th><nobr>&nbsp;</nobr></th>
       </tr>
-      
+
       {foreach item=rx from=$gui->relations.relations}
         <tr>
           <td class="bold"><nobr>{$rx.id} / {$rx.type_localized|escape}</nobr></td>
@@ -113,14 +113,14 @@ var pF_delete_relation = delete_relation;
              {$rx.author|escape}</span></nobr></td>
 
           <td align="center">
-            <a href="javascript:relation_delete_confirmation({$gui->relations.item.testcase_id}, {$rx.id}, 
-                                                              delete_rel_msgbox_title, delete_rel_msgbox_msg, 
+            <a href="javascript:relation_delete_confirmation({$gui->relations.item.testcase_id}, {$rx.id},
+                                                              delete_rel_msgbox_title, delete_rel_msgbox_msg,
                                                               pF_delete_relation);">
            <img src="{$tlImages.delete}" title="{$rel_labels.img_title_delete_relation}"  style="border:none" /></a>
           </td>
         </tr>
       {/foreach}
     {/if}
-    
+
     </table>
     </form>

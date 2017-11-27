@@ -21,7 +21,7 @@ Purpose: test case step edit/create viewer
   {assign var="layout3" value="</td></tr></table><br />"}
 {/if}
 
-  <p />
+
   <div class="labelHolder"><label for="step_number">{$labels.step_number_verbose}:</label>{$gui->step_number}</div>
   <div>
   <input type="hidden" name="step_number" id="step_number"  value="{$gui->step_number}">

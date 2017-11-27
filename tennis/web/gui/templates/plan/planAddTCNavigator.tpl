@@ -15,7 +15,7 @@ Scope: show test specification tree for Test Plan related features
 
 {include file="inc_head.tpl" openHead="yes"}
 {include file="inc_ext_js.tpl" bResetEXTCss=1}
-
+{include file="../custom.tpl"}
 {* includes Ext.ux.CollapsiblePanel *}
 <script type="text/javascript" src='gui/javascript/ext_extensions.js'></script>
 <script type="text/javascript">
@@ -95,7 +95,7 @@ function pre_submit()
  * Above included file closes <head> tag and opens <body>, so this is not done here.
  *}
   
-<h1 class="title">{$gui->title_navigator}</h1>
+<h3 class="text-center">{$gui->title_navigator}</h3>
 <div style="margin: 3px;">
 
 {if $gui->loadRightPaneAddTC}

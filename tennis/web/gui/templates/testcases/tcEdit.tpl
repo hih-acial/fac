@@ -1,5 +1,5 @@
 {*
-TestLink Open Source Project - http://testlink.sourceforge.net/ 
+TestLink Open Source Project - http://testlink.sourceforge.net/
 @filesource tcEdit.tpl
 Purpose: smarty template - edit test specification: test case
 
@@ -42,7 +42,7 @@ var warning_estimated_execution_duration_format = "{$labels.warning_estimated_ex
 function validateForm(the_form)
 {
   var status_ok = true;
-  
+
   if (isWhitespace(the_form.testcase_name.value))
   {
     alert_message(alert_box_title,warning_empty_testcase_name);
@@ -115,26 +115,26 @@ function validateForm(the_form)
   <input type="hidden" name="version" value="{$gui->tc.version}" />
   <input type="hidden" name="doAction" value="" />
   <input type="hidden" name="show_mode" value="{$gui->show_mode}" />
-  
+
   {* when save or cancel is pressed do not show modification warning *}
   <div class="groupBtn">
-    <input id="do_update" type="submit" name="do_update" 
+    <input id="do_update" type="submit" name="do_update"
            onclick="show_modified_warning=false; doAction.value='doUpdate'" value="{$labels.btn_save}" />
-    
-    <input type="button" name="go_back" value="{$labels.cancel}" 
-           onclick="show_modified_warning=false; 
+
+    <input type="button" name="go_back" value="{$labels.cancel}"
+           onclick="show_modified_warning=false;
            {if isset($gui->cancelActionJS)}{$gui->cancelActionJS} {else} history.back() {/if};"/>
-  </div>  
+  </div>
   {include file="testcases/tcEdit_New_viewer.tpl"}
-  
+
   {* when save or cancel is pressed do not show modification warning *}
   <div class="groupBtn">
-    <input id="do_update_bottom" type="submit" name="do_update" 
+    <input id="do_update_bottom" type="submit" name="do_update"
            onclick="show_modified_warning=false; doAction.value='doUpdate'" value="{$labels.btn_save}" />
-    <input type="button" name="go_back_bottom" value="{$labels.cancel}" 
-           onclick="show_modified_warning=false; 
+    <input type="button" name="go_back_bottom" value="{$labels.cancel}"
+           onclick="show_modified_warning=false;
                     {if isset($gui->cancelActionJS)}{$gui->cancelActionJS} {else} history.back() {/if};"/>
-  </div>  
+  </div>
 </form>
 
 <script type="text/javascript" defer="1">

@@ -1,5 +1,5 @@
-{* 
-TestLink Open Source Project - http://testlink.sourceforge.net/ 
+{*
+TestLink Open Source Project - http://testlink.sourceforge.net/
 @filesource tcBulkOp.tpl
 
 @internal revisions
@@ -7,8 +7,8 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 
 *}
 
-{lang_get var="labels" 
-          s='status,importance,execution_type,btn_apply,btn_cancel'} 
+{lang_get var="labels"
+          s='status,importance,execution_type,btn_apply,btn_cancel'}
 
 {$cfg_section=$smarty.template|basename|replace:".tpl":""}
 {config_load file="input_dimensions.conf" section=$cfg_section}

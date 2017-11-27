@@ -14,7 +14,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
     {$inExec = 1}
   {else}
     {$inExec = 0}
-  {/if}  
+  {/if}
 
   <tr>
     <th width="40px"><nobr>
@@ -42,21 +42,21 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
     {if $inExec}
       <th>{if $tlCfg->exec_cfg->steps_exec_notes_default == 'latest'}{$inc_steps_labels.latest_exec_notes}
           {else}{$inc_steps_labels.step_exec_notes}{/if}
-          <img class="clickable" src="{$tlImages.clear_notes}" 
+          <img class="clickable" src="{$tlImages.clear_notes}"
           onclick="javascript:clearTextAreaByClassName('step_note_textarea');" title="{$inc_steps_labels.clear_all_notes}"></th>
 
       <th>{$inc_steps_labels.step_exec_status}
-       <img class="clickable" src="{$tlImages.reset}" 
+       <img class="clickable" src="{$tlImages.reset}"
           onclick="javascript:clearSelectByClassName('step_status');" title="{$inc_steps_labels.clear_all_status}"></th>
-    {/if}    
+    {/if}
 
 
   </tr>
-  
-  {$rowCount=$steps|@count} 
+
+  {$rowCount=$steps|@count}
   {$row=0}
 
-  {$att_ena = $inExec && 
+  {$att_ena = $inExec &&
               $tlCfg->exec_cfg->steps_exec_attachments}
 
   {foreach from=$steps item=step_info}
@@ -89,18 +89,18 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
                                          '{$del_msgbox_title}','{$warning_msg}');"
            src="{$tlImages.delete}"/>
     </td>
-    
+
     <td class="clickable_icon">
-      <img style="border:none;cursor: pointer;"  title="{$inc_steps_labels.insert_step}"    
+      <img style="border:none;cursor: pointer;"  title="{$inc_steps_labels.insert_step}"
            alt="{$inc_steps_labels.insert_step}"
            onclick="launchInsertStep({$step_info.id});"    src="{$tlImages.insert_step}"/>
     </td>
-    
+
     {/if}
 
     {if $inExec}
       <td class="exec_tcstep_note">
-        <textarea class="step_note_textarea" name="step_notes[{$step_info.id}]" id="step_notes_{$step_info.id}" 
+        <textarea class="step_note_textarea" name="step_notes[{$step_info.id}]" id="step_notes_{$step_info.id}"
                   cols="40" rows="5">{$step_info.execution_notes|escape}</textarea>
       </td>
 
@@ -109,25 +109,25 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
           {html_options options=$gui->execStatusValues selected=$step_info.execution_status}
 
         </select> <br>
-        
+
         {if $gui->tlCanCreateIssue}
-          {include file="execute/add_issue_on_step.inc.tpl" 
+          {include file="execute/add_issue_on_step.inc.tpl"
                    args_labels=$labels
                    args_step_id=$step_info.id}
         {/if}
       </td>
 
     {/if}
-   
+
   </tr>
-  {if $inExec && $gui->tlCanCreateIssue} 
+  {if $inExec && $gui->tlCanCreateIssue}
     <tr>
       <td colspan=6>
       {include file="execute/issue_inputs_on_step.inc.tpl"
                args_labels=$labels
                args_step_id=$step_info.id}
       </td>
-    </tr> 
+    </tr>
   {/if}
 
   {if $gui->allowStepAttachments && $att_ena}
@@ -135,11 +135,11 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
       <td colspan=6>
       {include file="attachments_simple.inc.tpl" attach_id=$step_info.id}
       </td>
-    </tr> 
-  {/if} 
+    </tr>
+  {/if}
 
   {if $ghost_control}
-    <tr class='ghost' style='display:none'><td></td><td>{$step_info.ghost_action}</td><td>{$step_info.ghost_result}</td></tr>    
+    <tr class='ghost' style='display:none'><td></td><td>{$step_info.ghost_action}</td><td>{$step_info.ghost_result}</td></tr>
   {/if}
 
     {$rCount=$row+$step_info.step_number}
