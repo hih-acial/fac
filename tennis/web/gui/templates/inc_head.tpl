@@ -23,7 +23,7 @@ editorType: used to understand if code for tinymce need to be loaded
 	<link rel="icon" href="{$basehref}{$smarty.const.TL_THEME_IMG_DIR}favicon.ico" type="image/x-icon" />
 	
 {* ----- load CSS ------------------------------------------------------------------- *}
-	<link rel="stylesheet" href="http://127.0.0.1/bootstrap/cerulean.css">
+	<link rel="stylesheet" href="third_party/bootstrap/bootstrap/cerulean.css">
 	{if $use_custom_css}
 	<style media="all" type="text/css">@import "{$custom_css}";</style>
 	{/if}

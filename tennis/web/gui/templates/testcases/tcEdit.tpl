@@ -13,6 +13,7 @@ Purpose: smarty template - edit test specification: test case
 {include file="inc_head.tpl" openHead='yes' jsValidate="yes" editorType=$gui->editorType}
 
 {include file="inc_del_onclick.tpl"}
+{include file="../custom.tpl"}
 <script language="JavaScript" src="gui/javascript/OptionTransfer.js" type="text/javascript"></script>
 <script language="JavaScript" src="gui/javascript/expandAndCollapseFunctions.js" type="text/javascript"></script>
 <script language="javascript" src="gui/javascript/ext_extensions.js" type="text/javascript"></script>
@@ -94,12 +95,12 @@ function validateForm(the_form)
 <body onLoad="{$opt_cfg->js_ot_name}.init(document.forms[0]);focusInputField('testcase_name')">
 {config_load file="input_dimensions.conf" section="tcNew"}
 <section class="jumbotron">
-  <h2 class="title">{$labels.title_edit_tc}{$smarty.const.TITLE_SEP}{$gui->tc.name|escape}
+  <h2 class="text-center">{$labels.title_edit_tc}{$smarty.const.TITLE_SEP}{$gui->tc.name|escape}
       {$smarty.const.TITLE_SEP_TYPE3}{$labels.version} {$gui->tc.version}</h2>
 </section>
 
 
-<div class="workBack" style="width:97%;">
+<div class="container">
 
 {if $gui->has_been_executed}
     {lang_get s='warning_editing_executed_tc' var="warning_edit_msg"}
@@ -117,21 +118,21 @@ function validateForm(the_form)
   <input type="hidden" name="show_mode" value="{$gui->show_mode}" />
 
   {* when save or cancel is pressed do not show modification warning *}
-  <div class="groupBtn">
-    <input id="do_update" type="submit" name="do_update"
+  <div class="text-center center-block">
+    <input class="btn btn-info" id="do_update" type="submit" name="do_update"
            onclick="show_modified_warning=false; doAction.value='doUpdate'" value="{$labels.btn_save}" />
 
-    <input type="button" name="go_back" value="{$labels.cancel}"
+    <input class="btn btn-secondary" type="button" name="go_back" value="{$labels.cancel}"
            onclick="show_modified_warning=false;
            {if isset($gui->cancelActionJS)}{$gui->cancelActionJS} {else} history.back() {/if};"/>
   </div>
   {include file="testcases/tcEdit_New_viewer.tpl"}
 
   {* when save or cancel is pressed do not show modification warning *}
-  <div class="groupBtn">
-    <input id="do_update_bottom" type="submit" name="do_update"
+  <div class="text-center center-block">
+    <input class="btn btn-info" id="do_update_bottom" type="submit" name="do_update"
            onclick="show_modified_warning=false; doAction.value='doUpdate'" value="{$labels.btn_save}" />
-    <input type="button" name="go_back_bottom" value="{$labels.cancel}"
+    <input class="btn btn-secondary" type="button" name="go_back_bottom" value="{$labels.cancel}"
            onclick="show_modified_warning=false;
                     {if isset($gui->cancelActionJS)}{$gui->cancelActionJS} {else} history.back() {/if};"/>
   </div>

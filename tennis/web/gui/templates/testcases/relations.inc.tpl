@@ -86,8 +86,8 @@ var pF_delete_relation = delete_relation;
                  placeholder="{$rel_labels.tcase_relation_hint}"
                  title="{$rel_labels.tcase_relation_help}"
                  size="{#TC_EXTERNAL_ID_SIZE#}" maxlength="{#TC_EXTERNAL_ID_MAXLEN#}"
-                 onclick="javascript:this.value=''" required />
-          <input type="submit" name="relation_submit_btn" value="{$rel_labels.btn_add}" />
+                 onclick="this.value=''" required />
+          <input class="btn btn-info" type="submit" name="relation_submit_btn" value="{$rel_labels.btn_add}" />
 
           </td>
         </tr>

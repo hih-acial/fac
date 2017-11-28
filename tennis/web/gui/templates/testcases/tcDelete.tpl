@@ -11,11 +11,14 @@ delete test case in test specification
           s='btn_yes_iw2del,btn_no,th_version,th_linked_to_tplan,title_delete_testcases,
              th_executed,question_del_tc,platform'}
 {include file="inc_head.tpl"}
-
+{include file="../custom.tpl"}
 <body>
-<h1 class="title">{$gui->main_descr|escape}</h1>
 
-<div class="workBack">
+<section class="jumbotron">
+	<h2 class="text-center">{$gui->main_descr|escape}</h2>
+</section>
+
+<div class="container">
 {include file="inc_update.tpl" user_feedback=$gui->user_feedback 
          result=$gui->sqlResult action=$gui->action item="test case"
          refresh=$gui->refreshTree}
@@ -23,13 +26,13 @@ delete test case in test specification
 {if $gui->sqlResult == ''}
 	{if $gui->delete_mode == 'single'}
 	  {if $gui->exec_status_quo != ''}
-	      <table class="simple" >
+	      <table class="table" >
 	  		<tr>
 	  			<th>{$labels.th_version}</th>
 	  			<th>{$labels.th_linked_to_tplan}</th>
 	  			{if $gui->display_platform}<th>{$labels.platform}</th> {/if}
 	  			<th>{$labels.th_executed}</th>
-	  			</tr>
+            </tr>
 	  		{foreach from=$gui->exec_status_quo key=testcase_version_id item=on_tplan_status}
 	  			{foreach from=$on_tplan_status key=tplan_id item=status_on_platform}
 	  				{foreach from=$status_on_platform key=platform_id item=status}
@@ -46,16 +49,17 @@ delete test case in test specification
 	  			{/foreach}
 	  		{/foreach}
 	      </table>
-      	{$gui->delete_message}
+
+          <h3>{$gui->delete_message}</h3>
     {/if}
     
     {if $gui->delete_enabled}
-	  <p>{$labels.question_del_tc}</p>
+	  <h3>{$labels.question_del_tc}</h3>
 	  <form method="post" 
 	        action="{$basehref}lib/testcases/tcEdit.php?testcase_id={$gui->testcase_id}&tcversion_id={$gui->tcversion_id}">
-	  	<input type="submit" id="do_delete" name="do_delete" value="{$labels.btn_yes_iw2del}" />
-	  	<input type="button" name="cancel_delete"
-	  	                     onclick="javascript:{$gui->cancelActionJS};" value="{$labels.btn_no}" />
+	  	<input class="btn btn-danger" type="submit" id="do_delete" name="do_delete" value="{$labels.btn_yes_iw2del}" />
+	  	<input class="btn btn-secondary" type="button" name="cancel_delete"
+	  	                     onclick="{$gui->cancelActionJS};" value="{$labels.btn_no}" />
 	  </form>
     {/if}
  
@@ -88,9 +92,9 @@ delete test case in test specification
 	  <p>{$labels.question_del_tc}</p>
 	  <form method="post" 
 	        action="{$basehref}lib/testcases/tcEdit.php?testcase_id={$gui->testcase_id}&tcversion_id={$gui->tcversion_id}">
-	  	<input type="submit" id="do_delete" name="do_delete" value="{$labels.btn_yes_iw2del}" />
-	  	<input type="button" name="cancel_delete"
-	  	                     onclick='javascript: location.href=fRoot+"lib/testcases/archiveData.php?version_id=undefined&edit=testcase&id={$gui->testcase_id}";'
+	  	<input class="btn btn-danger" type="submit" id="do_delete" name="do_delete" value="{$labels.btn_yes_iw2del}" />
+	  	<input class="btn btn-secondary" type="button" name="cancel_delete"
+	  	                     onclick='location.href=fRoot+"lib/testcases/archiveData.php?version_id=undefined&edit=testcase&id={$gui->testcase_id}";'
 	  	                     value="{$labels.btn_no}" />
 	  </form>
   	{/if}

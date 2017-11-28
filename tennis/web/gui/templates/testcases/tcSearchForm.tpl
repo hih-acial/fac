@@ -92,7 +92,7 @@ Purpose: show form for search through test cases in test specification
         <img title="{$labels.show_calender}" src="{$smarty.const.TL_THEME_IMG_DIR}/calendar.gif"
              onclick="showCal('creation_date_from-cal','creation_date_from','{$gsmarty_datepicker_format}');" >
         <img title="{$labels.clear_date}" src="{$smarty.const.TL_THEME_IMG_DIR}/trash.png"
-               onclick="javascript:var x = document.getElementById('creation_date_from'); x.value = '';" >
+               onclick="var x = document.getElementById('creation_date_from'); x.value = '';" >
         <div id="creation_date_from-cal" style="position:absolute;width:240px;left:300px;z-index:1;"></div>
       </td>
     </tr>
@@ -106,7 +106,7 @@ Purpose: show form for search through test cases in test specification
         <img title="{$labels.show_calender}" src="{$smarty.const.TL_THEME_IMG_DIR}/calendar.gif"
              onclick="showCal('creation_date_to-cal','creation_date_to','{$gsmarty_datepicker_format}');" >
         <img title="{$labels.clear_date}" src="{$smarty.const.TL_THEME_IMG_DIR}/trash.png"
-               onclick="javascript:var x = document.getElementById('creation_date_to'); x.value = '';" >
+               onclick="var x = document.getElementById('creation_date_to'); x.value = '';" >
         <div id="creation_date_to-cal" style="position:absolute;width:240px;left:300px;z-index:1;"></div>
       </td>
     </tr>   
@@ -119,7 +119,7 @@ Purpose: show form for search through test cases in test specification
         <img title="{$labels.show_calender}" src="{$smarty.const.TL_THEME_IMG_DIR}/calendar.gif"
              onclick="showCal('modification_date_from-cal','modification_date_from','{$gsmarty_datepicker_format}');" >
         <img title="{$labels.clear_date}" src="{$smarty.const.TL_THEME_IMG_DIR}/trash.png"
-             onclick="javascript:var x = document.getElementById('modification_date_from'); x.value = '';" >
+             onclick="var x = document.getElementById('modification_date_from'); x.value = '';" >
         <div id="modification_date_from-cal" style="position:absolute;width:240px;left:300px;z-index:1;"></div>
       </td>
     </tr>
@@ -132,7 +132,7 @@ Purpose: show form for search through test cases in test specification
         <img title="{$labels.show_calender}" src="{$smarty.const.TL_THEME_IMG_DIR}/calendar.gif"
              onclick="showCal('modification_date_to-cal','modification_date_to','{$gsmarty_datepicker_format}');" >
         <img title="{$labels.clear_date}" src="{$smarty.const.TL_THEME_IMG_DIR}/trash.png"
-             onclick="javascript:var x = document.getElementById('modification_date_to'); x.value = '';" >
+             onclick="var x = document.getElementById('modification_date_to'); x.value = '';" >
         <div id="modification_date_to-cal" style="position:absolute;width:240px;left:300px;z-index:1;"></div>
       </td>
     </tr>

@@ -12,12 +12,15 @@ Purpose: smarty template - move/copy test case
              choose_container,as_first_testcase,as_last_testcase,btn_mv,btn_cp,copy_new_name"}
 
 {include file="inc_head.tpl"}
-
+{include file="../custom.tpl"}
 <body>
-<h1 class="title">{$labels.test_case}{$smarty.const.TITLE_SEP}{$gui->name|escape}</h1>
+<section class="jumbotron">
+    <h2 class="text-center">{$labels.test_case}{$smarty.const.TITLE_SEP}{$gui->name|escape}</h2>
+</section>
 
-<div class="workBack">
-<h1 class="title">{$labels.title_mv_cp_tc}</h1>
+<div class="container">
+<h3 class="text-center">{$labels.title_mv_cp_tc}</h3>
+    <hr>
 <form method="post" action="{$basehref}lib/testcases/tcEdit.php?testcase_id={$gui->testcase_id}">
   <input type="hidden" name="testcase_id" id="testcase_id" value="{$gui->testcase_id}">
 
@@ -55,12 +58,12 @@ Purpose: smarty template - move/copy test case
 	<br /><input type="radio" name="target_position"
 	          value="bottom" {$gui->bottom_checked} />{$labels.as_last_testcase}
 
-		<div class="groupBtn">
+		<div class="text-center center-block">
 		  {if $gui->move_enabled}
-			  <input id="do_move" type="submit" name="do_move" value="{$labels.btn_mv}" />
+			  <input class="btn btn-info" id="do_move" type="submit" name="do_move" value="{$labels.btn_mv}" />
 			{/if}
-			<input id="do_copy" type="submit" name="do_copy" value="{$labels.btn_cp}" />
-      <input id="do_copy_ghost_zone" type="submit" name="do_copy_ghost_zone" value="{$labels.btn_copy_ghost_zone}" />
+			<input class="btn btn-warning" id="do_copy" type="submit" name="do_copy" value="{$labels.btn_cp}" />
+      <input class="btn btn-primary" id="do_copy_ghost_zone" type="submit" name="do_copy_ghost_zone" value="{$labels.btn_copy_ghost_zone}" />
 			<input type="hidden" name="old_container" value="{$gui->old_container}" />
 	</div>
 

@@ -43,11 +43,11 @@ switch($args->feature)
 {
   case 'testproject':
   case 'testsuite':
-
     $item_mgr = new $args->feature($db);
     $gui->id = $args->id;
     if($args->feature == 'testproject')
     {
+
       $gui->id = $args->id = $args->tproject_id;
       $item_mgr->show($smarty,$gui,$templateCfg->template_dir,$args->id);
     }
@@ -63,6 +63,7 @@ switch($args->feature)
   case 'testcase':
     try
     {
+
       processTestCase($db,$smarty,$args,$gui,$grants,$cfg);
     }
     catch (Exception $e)

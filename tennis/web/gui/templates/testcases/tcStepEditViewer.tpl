@@ -1,12 +1,12 @@
-{* 
+{*
 TestLink Open Source Project - http://testlink.sourceforge.net/
 $Id: tcStepEditViewer.tpl
 Purpose: test case step edit/create viewer
 
 @internal revision
 *}
-{lang_get var='labels' 
-          s='tc_title,alt_add_tc_name,expected_results,step_details, 
+{lang_get var='labels'
+          s='tc_title,alt_add_tc_name,expected_results,step_details,
              step_number_verbose,execution_type,step_number,execution_type_short_descr'}
 
 

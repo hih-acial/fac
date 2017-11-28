@@ -65,8 +65,8 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 </form>
 {/if}
 
-<br>
-<form style="display:inline;" id="estimatedExecDurationForm_{$args_testcase.id}" 
+    <hr>
+    <form style="display:inline;" id="estimatedExecDurationForm_{$args_testcase.id}"
       name="estimatedExecDurationForm_{$args_testcase.id}" method="post"
       action="{$basehref}lib/testcases/tcEdit.php">
   <input type="hidden" name="doAction" id="doAction" value="setEstimatedExecDuration">
@@ -82,7 +82,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
        size="{#EXEC_DURATION_SIZE#}" maxlength="{#EXEC_DURATION_MAXLEN#}"
        title="{$tcView_viewer_labels.estimated_execution_duration}" 
        value="{$args_testcase.estimated_exec_duration}" {$tlCfg->testcase_cfg->estimated_execution_duration->required}>
-  <input type="submit" name="setEstimated" value="{$tcView_viewer_labels.btn_save}" />
+  <input class="btn btn-success" type="submit" name="setEstimated" value="{$tcView_viewer_labels.btn_save}" />
   </span>
   {else}
     {$args_testcase.estimated_exec_duration}
