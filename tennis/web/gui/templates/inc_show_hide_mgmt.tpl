@@ -27,7 +27,8 @@ Rev:
 </div>
 
 {if $show_hide_container_draw}
-	<div id="{$show_hide_container_id}" class="{$show_hide_container_class}">
+	<div id="{$show_hide_container_id}" class="jumbotron">
 		{$show_hide_container_html}
 	</div>
 {/if}
+<br>

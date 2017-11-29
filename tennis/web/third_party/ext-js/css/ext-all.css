@@ -6672,9 +6672,7 @@ a.x-menu-item {
     color:#15428b;
 	font-weight:bold; 
     font-size: 11px;
-    font-family: tahoma,arial,verdana,sans-serif;
-    border-color:#99bbe8;
-    background-image: url(../images/default/panel/white-top-bottom.gif);
+    border-color:#99b;
 }
 
 .x-panel-body {

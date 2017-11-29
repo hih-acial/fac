@@ -33,7 +33,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
     </h3>
 </section>
 
-<section class="container container-fluid">
+<section class="container">
   {if $gui->build_is_open == 0}
     <div class="row">
     <p class="text-danger">{$labels.build_is_closed}</p><br>

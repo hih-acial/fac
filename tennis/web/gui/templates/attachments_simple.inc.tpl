@@ -57,7 +57,7 @@ var warning_delete_attachment = "{lang_get s='warning_delete_attachment'}";
 
 {if $gsmarty_attachments->enabled && $attach_show_upload_btn}
   {if $attach_show_upload_btn && !$attach_downloadOnly}
-  <div  style="text-align:left;margin:3px;background:#CDE;padding: 3px 3px 3px 3px;border-style: groove;border-width: thin;">
+  <div class="well">
       <label for="uploadedFile_[{$attach_id}]" class="labelHolder">{$labels.local_file} </label>
       <img class="clickable" src="{$tlImages.activity}" title="{$labels.max_size_file_upload}: {$gui->import_limit} Bytes)">
         <input type="file" name="uploadedFile[{$attach_id}][]" id="uploadedFile_{$attach_id}" multiple 

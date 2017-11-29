@@ -15,19 +15,22 @@ Testlink Open Source Project - http://testlink.sourceforge.net/
 {/if}
 {* -------------------------------------------------------------------------------------- *}
 {lang_get var="l10nb"
-          s="build,caption_bugtable,bug_id,delete_bug,del_bug_warning_msg,
-             add_issue_note,step"}
+    s="build,caption_bugtable,bug_id,delete_bug,del_bug_warning_msg,add_issue_note,step"}
 
-<table class="simple">
-  <tr>
-	  <th style="text-align:left">{$l10nb.build}</th>
-	  <th style="text-align:left;width:35px">{$l10nb.step}</th>
-	  <th style="text-align:left">{$l10nb.caption_bugtable}</th>
-	  {if $gui->tlCanAddIssueNote} <th style="text-align:left">&nbsp;</th> {/if}
-      {if $gui->tlCanCreateIssue}<th style="text-align:left">&nbsp;</th> {/if}
-      {if $gui->issueTrackerIntegrationOn}<th style="text-align:left">&nbsp;</th> {/if}
-	  {if $can_delete} <th style="text-align:left">&nbsp;</th> {/if}
-  </tr>
+
+<table class="table">
+    <thead class="bg-info">
+    <tr>
+        <th >{$l10nb.build}</th>
+        <th >{$l10nb.step}</th>
+        <th >{$l10nb.caption_bugtable}</th>
+        {if $gui->tlCanAddIssueNote} <th style="text-align:left">&nbsp;</th> {/if}
+        {if $gui->tlCanCreateIssue}<th style="text-align:left">&nbsp;</th> {/if}
+        {if $gui->issueTrackerIntegrationOn}<th style="text-align:left">&nbsp;</th> {/if}
+        {if $can_delete} <th style="text-align:left">&nbsp;</th> {/if}
+    </tr>
+    </thead>
+
   
  	{foreach from=$bugs_map key=bug_id item=bug_elem}
 	<tr>

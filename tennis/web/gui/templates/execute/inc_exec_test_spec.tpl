@@ -15,23 +15,27 @@ Author : franciscom
     {$tcversion_id=$args_tc_exec.id}
     
      
-    <div class="exec_test_spec">
-    <table class="simple">
-    <tr>
-      <th colspan="{$tableColspan}" class="title">{$args_labels.test_exec_summary}</th>
-    </tr>
-    <tr>
-      <td colspan="{$tableColspan}">{if $gui->testDesignEditorType == 'none'}{$args_tc_exec.summary|nl2br}{else}{$args_tc_exec.summary}{/if}</td>
-    </tr>
-    <tr>
-      <th colspan="{$tableColspan}" class="title">{$args_labels.preconditions}</th>
-    </tr>
-    <tr>
-      <td colspan="{$tableColspan}">{if $gui->testDesignEditorType == 'none'}{$args_tc_exec.preconditions|nl2br}{else}{$args_tc_exec.preconditions}{/if}</td>
-    </tr>
-    <tr>
-      <td colspan="{$tableColspan}">&nbsp;</td>
-    </tr>
+    <div class="">
+    </div>
+    <table class="table">
+        <thead class="bg-primary">
+
+        </thead>
+        <tr>
+            <th colspan="{$tableColspan}" class="title">{$args_labels.test_exec_summary}</th>
+        </tr>
+        <tr>
+            <td colspan="{$tableColspan}">{if $gui->testDesignEditorType == 'none'}{$args_tc_exec.summary|nl2br}{else}{$args_tc_exec.summary}{/if}</td>
+        </tr>
+        <tr>
+            <th colspan="{$tableColspan}" class="title">{$args_labels.preconditions}</th>
+        </tr>
+        <tr>
+            <td colspan="{$tableColspan}">{if $gui->testDesignEditorType == 'none'}{$args_tc_exec.preconditions|nl2br}{else}{$args_tc_exec.preconditions}{/if}</td>
+        </tr>
+        <tr>
+            <td colspan="{$tableColspan}">&nbsp;</td>
+        </tr>
 
     {if $args_design_time_cf[$testcase_id].before_steps_results != ''}
     <tr>
@@ -127,7 +131,7 @@ Author : franciscom
     {/if}
 
     </table>
-    </div>
+
 
     <br />
     {if isset($args_req_details)}

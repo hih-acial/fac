@@ -15,7 +15,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 {else}
     {$inExec = 0}
 {/if}
-<thead class="thead-dark">
+<thead class="bg-primary">
 <tr>
   <th>{if $edit_enabled && $steps != '' && !is_null($steps)}
       <img class="clickable" src="{$tlImages.reorder}" align="left"
@@ -55,7 +55,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 $tlCfg->exec_cfg->steps_exec_attachments}
 {foreach from=$steps item=step_info}
     <tr id="step_row_{$step_info.step_number}">
-        <td style="text-align:left;">
+        <td >
       <span class="order_info" style='display:none'>
       {if $edit_enabled}
           <input type="text" class="step_number{$args_testcase.id}" name="step_set[{$step_info.id}]" id="step_set_{$step_info.id}"
