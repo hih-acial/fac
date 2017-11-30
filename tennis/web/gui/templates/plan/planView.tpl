@@ -1,11 +1,11 @@
 {*
-TestLink Open Source Project - http://testlink.sourceforge.net/ 
+TestLink Open Source Project - http://testlink.sourceforge.net/
 
 @filesource planView.tpl
 
 @internal development hint:
 some smarty and javascript variables are created on the inc_*.tpl files.
-     
+
 @internal revisions
 @since 1.9.15
 *}
@@ -24,7 +24,7 @@ some smarty and javascript variables are created on the inc_*.tpl files.
 
 
 
-{lang_get var="labels" 
+{lang_get var="labels"
           s='testplan_title_tp_management,testplan_txt_empty_list,sort_table_by_column,
           testplan_th_name,testplan_th_notes,testplan_th_active,testplan_th_delete,
           testplan_alt_edit_tp,alt_active_testplan,testplan_alt_delete_tp,public,
@@ -77,13 +77,13 @@ var del_action=fRoot+'{$deleteAction}';
   <table id='item_view'class="simple_tableruler sortable">
     <thead>
     <tr>
-      <th>{$tlImages.toggle_api_info}{$tlImages.sort_hint}{$labels.testplan_th_name}</th>       
+      <th>{$tlImages.toggle_api_info}{$tlImages.sort_hint}{$labels.testplan_th_name}</th>
       <th class="{$noSortableColumnClass}">{$labels.testplan_th_notes}</th>
       <th title="{$labels.testcase_number_help}">{$tlImages.sort_hint}{$labels.testcase_qty}</th>
       <th title="{$labels.build_number_help}">{$tlImages.sort_hint}{$labels.build_qty}</th>
       {if $gui->drawPlatformQtyColumn}
         <th title="{$labels.platform_number_help}">{$tlImages.sort_hint}{$labels.platform_qty}</th>
-      {/if} 
+      {/if}
       <th class="{$noSortableColumnClass}">{$labels.testplan_th_active}</th>
       <th class="{$noSortableColumnClass}">{$labels.public}</th>
       <th class="{$noSortableColumnClass}">&nbsp;</th>
@@ -92,14 +92,14 @@ var del_action=fRoot+'{$deleteAction}';
     <tbody>
     {foreach item=testplan from=$gui->tplans}
     <tr>
-      <td><a href="{$editAction}{$testplan.id}"> 
+      <td><a href="{$editAction}{$testplan.id}">
              {$testplan.name|escape}
              <span class="api_info" style='display:none'>{$tlCfg->api->id_format|replace:"%s":$testplan.id}</span>
-           
+
              {if $gsmarty_gui->show_icon_edit}
-                 <img title="{$labels.testplan_alt_edit_tp}"  alt="{$labels.testplan_alt_edit_tp}" 
+                 <img title="{$labels.testplan_alt_edit_tp}"  alt="{$labels.testplan_alt_edit_tp}"
                       src="{$tlImages.edit}"/>
-             {/if}  
+             {/if}
           </a>
       </td>
 	  <td>{if $gui->editorType == 'none'}{$testplan.notes|nl2br}{else}{$testplan.notes}{/if}</td>
@@ -113,54 +113,54 @@ var del_action=fRoot+'{$deleteAction}';
         <td align="right" style="width:10%;">
           {$testplan.platform_qty}
         </td>
-      {/if} 
+      {/if}
 
       <td class="clickable_icon">
-        {if $testplan.active==1} 
-            <input type="image" style="border:none" 
-                   title="{$labels.active_click_to_change}" alt="{$labels.active_click_to_change}" 
+        {if $testplan.active==1}
+            <input type="image" style="border:none"
+                   title="{$labels.active_click_to_change}" alt="{$labels.active_click_to_change}"
                    onClick = "do_action.value='setInactive';tplan_id.value={$testplan.id};"
                    src="{$tlImages.on}"/>
           {else}
-            <input type="image" style="border:none" 
-                 title="{$labels.inactive_click_to_change}" alt="{$labels.inactive_click_to_change}" 
+            <input type="image" style="border:none"
+                 title="{$labels.inactive_click_to_change}" alt="{$labels.inactive_click_to_change}"
                  onClick = "do_action.value='setActive';tplan_id.value={$testplan.id};"
                  src="{$tlImages.off}"/>
           {/if}
       </td>
       <td class="clickable_icon">
-        {if $testplan.is_public eq 1} 
+        {if $testplan.is_public eq 1}
             <img style="border:none" title="{$labels.public}"  alt="{$labels.public}" src="{$tlImages.checked}"/>
           {else}
-            &nbsp;        
+            &nbsp;
           {/if}
       </td>
       <td style="width:8%;">
-          <img style="border:none;cursor: pointer;" 
+          <img style="border:none;cursor: pointer;"
                alt="{$labels.testplan_alt_delete_tp}"
-             title="{$labels.testplan_alt_delete_tp}" 
+             title="{$labels.testplan_alt_delete_tp}"
              onclick="delete_confirmation({$testplan.id},'{$testplan.name|escape:'javascript'|escape}',
                                           '{$del_msgbox_title}','{$warning_msg}');"
              src="{$tlImages.delete}"/>
-          <a href="{$exportAction}{$testplan.id}"> 
-          <img style="border:none;cursor: pointer;" alt="{$labels.export_testplan_links}" 
+          <a href="{$exportAction}{$testplan.id}">
+          <img style="border:none;cursor: pointer;" alt="{$labels.export_testplan_links}"
                title="{$labels.export_testplan_links}" src="{$tlImages.export}"/>
-          </a>     
-          <a href="{$importAction}{$testplan.id}"> 
-          <img style="border:none;cursor: pointer;" alt="{$labels.import_testplan_links}" 
+          </a>
+          <a href="{$importAction}{$testplan.id}">
+          <img style="border:none;cursor: pointer;" alt="{$labels.import_testplan_links}"
                title="{$labels.import_testplan_links}"  src="{$tlImages.import}"/>
-          </a>     
+          </a>
 
           {if $testplan.rights.testplan_user_role_assignment}
-            <a href="{$assignRolesAction}{$testplan.id}"> 
-            <img style="border:none;cursor: pointer;" alt="{$labels.assign_roles}" 
+            <a href="{$assignRolesAction}{$testplan.id}">
+            <img style="border:none;cursor: pointer;" alt="{$labels.assign_roles}"
                  title="{$labels.assign_roles}"  src="{$tlImages.user}"/>
-            </a>     
+            </a>
           {/if}
-          <a href="{$gotoExecuteAction}{$testplan.id}"> 
-          <img style="border:none;cursor: pointer;" alt="{$labels.execution}" 
+          <a href="{$gotoExecuteAction}{$testplan.id}">
+          <img style="border:none;cursor: pointer;" alt="{$labels.execution}"
                title="{$labels.execution}"  src="{$tlImages.execution}"/>
-          </a>     
+          </a>
       </td>
     </tr>
     {/foreach}

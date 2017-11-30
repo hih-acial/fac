@@ -10,12 +10,15 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 
 
     {if $argsRelSet.num_relations > 0}
-    <table class="simple" width="100%">
+        <h4>Relations des cas de test</h4>
+    <table class="table">
+      <thead class="bg-info">
       <tr>
-        <th><nobr>{$rel_labels.relation_id} / {$rel_labels.relation_type_extended}</nobr></th>
-        <th colspan="1">{$rel_labels.test_case}</th>
+          <th><nobr>{$rel_labels.relation_id} / {$rel_labels.relation_type_extended}</nobr></th>
+          <th colspan="1">{$rel_labels.test_case}</th>
       </tr>
-      
+      </thead>
+      <tbody>
       {foreach item=rx from=$argsRelSet.relations}
         {$rel_status=$rx.related_item.status}
         <tr>
@@ -36,5 +39,6 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
           </td>
         </tr>
       {/foreach}
+      </tbody>
     </table>
     {/if}

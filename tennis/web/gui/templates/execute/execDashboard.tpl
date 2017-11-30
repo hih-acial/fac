@@ -20,7 +20,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
   {$round_enabled=1}
   <script language="JavaScript" src="{$basehref}gui/niftycube/niftycube.js" type="text/javascript"></script>
 {/if}
-</head>
+
 <body>
 
 <section class="jumbotron">
@@ -35,37 +35,31 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
 
 <section class="container">
   {if $gui->build_is_open == 0}
-    <div class="row">
-    <p class="text-danger">{$labels.build_is_closed}</p><br>
-    <p class="text-danger"> {$labels.test_cases_cannot_be_executed}</p>
-    </div>
+
+        <div class="alert alert-danger" role="alert">
+            {$labels.build_is_closed} <br>
+            {$labels.test_cases_cannot_be_executed}
+        </div>
     <br>
   {/if}
-
-  <div class="text-primary">
-  {$labels.testplan} {$gui->testplan_name|escape}
-  </div>
-  <div class="text-secondary">
-  {if $gui->testPlanEditorType == 'none'}{$gui->testplan_notes|nl2br}{else}{$gui->testplan_notes}{/if}
-  {if $gui->testplan_cfields neq ''} <div class="text-dark">{$gui->testplan_cfields}</div>{/if}
-  </div>
-
-  {if $gui->platform_info.id > 0}
-    <div class="text-primary">
-    {$labels.platform} {$gui->platform_info.name|escape}
+    <div class="alert alert-primary" role="alert">
+        {$labels.testplan} : {$gui->testplan_name|escape}
+        <br>
+        {if $gui->testPlanEditorType == 'none'}{$gui->testplan_notes|nl2br}{else}{$gui->testplan_notes}{/if}
+        {if $gui->testplan_cfields neq ''} <div class="text-dark">{$gui->testplan_cfields}</div>{/if}
+        <br>
+        {$labels.build} : {$gui->build_name|escape}
+        <br>
+        {if $gui->platform_info.id > 0}
+            {$labels.platform} : {$gui->platform_info.name|escape}
+            <br>
+            {if $gui->platformEditorType == 'none'}{$gui->platform_info.notes|nl2br}{else}{$gui->platform_info.notes}{/if}
+            <br>
+        {/if}
+        {if $gui->buildEditorType == 'none'}{$gui->build_notes|nl2br}{else}{$gui->build_notes}{/if}
+        <br>
+        {if $gui->build_cfields != ''} <div id="cfields_build" class="custom_field_container">{$gui->build_cfields}</div>{/if}
     </div>
-    <div id="platform_notes" class="exec_additional_info">
-	{if $gui->platformEditorType == 'none'}{$gui->platform_info.notes|nl2br}{else}{$gui->platform_info.notes}{/if}
-    </div>
-  {/if}
 
-  <div class="text-primary">
-  {$labels.build} {$gui->build_name|escape}
-  </div>
-  <div id="build_notes" class="exec_additional_info">
-  {if $gui->buildEditorType == 'none'}{$gui->build_notes|nl2br}{else}{$gui->build_notes}{/if}
-  {if $gui->build_cfields != ''} <div id="cfields_build" class="custom_field_container">{$gui->build_cfields}</div>{/if}
-  </div>
 </section>
 </body>
-</html>

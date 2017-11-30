@@ -1,4 +1,4 @@
-{* 
+{*
 TestLink Open Source Project - http://testlink.sourceforge.net/
 @filesource buildView.tpl
 
@@ -19,7 +19,7 @@ Purpose: smarty template - Show existing builds
 {lang_get s='warning_delete_build' var="warning_msg"}
 {lang_get s='delete' var="del_msgbox_title"}
 
-{lang_get var="labels" 
+{lang_get var="labels"
           s='title_build_2,test_plan,th_title,th_description,th_active,
              th_open,th_delete,alt_edit_build,alt_active_build,
              alt_open_build,alt_delete_build,no_builds,btn_build_create,
@@ -68,43 +68,43 @@ var del_action=fRoot+'{$deleteAction}';
   					     {if $gsmarty_gui->show_icon_edit}
   					         <img style="border:none" alt="{$labels.alt_edit_build}" title="{$labels.alt_edit_build}"
   					              src="{$tlImages.edit}"/>
-  					     {/if}    
-  					  </a>   
+  					     {/if}
+  					  </a>
   				</td>
   				<td>{if $gui->editorType == 'none'}{$build.notes|nl2br}{else}{$build.notes}{/if}</td>
   				<td>{if $build.release_date != ''}{localize_date d=$build.release_date}{/if}</td>
 
           <td class="clickable_icon">
-            {if $build.active==1} 
+            {if $build.active==1}
                 <input type="image" style="border:none" id="set_build_active"
-                       title="{$labels.active_click_to_change}" alt="{$labels.active_click_to_change}" 
+                       title="{$labels.active_click_to_change}" alt="{$labels.active_click_to_change}"
                        onClick = "do_action.value='setInactive';build_id.value={$build.id};"
                        src="{$tlImages.on}"/>
               {else}
                 <input type="image" style="border:none" id="set_build_inactive"
-                     title="{$labels.inactive_click_to_change}" alt="{$labels.inactive_click_to_change}" 
+                     title="{$labels.inactive_click_to_change}" alt="{$labels.inactive_click_to_change}"
                      onClick = "do_action.value='setActive';build_id.value={$build.id};"
                      src="{$tlImages.off}"/>
               {/if}
           </td>
 
           <td class="clickable_icon">
-            {if $build.is_open==1} 
+            {if $build.is_open==1}
                 <input type="image" style="border:none" id="close_build"
-                       title="{$labels.click_to_set_closed}" alt="{$labels.click_to_set_closed}" 
+                       title="{$labels.click_to_set_closed}" alt="{$labels.click_to_set_closed}"
                        onClick = "do_action.value='close';build_id.value={$build.id};"
                        src="{$tlImages.lock_open}"/>
               {else}
                 <input type="image" style="border:none" id="open_build"
-                     title="{$labels.click_to_set_open}" alt="{$labels.click_to_set_open}" 
+                     title="{$labels.click_to_set_open}" alt="{$labels.click_to_set_open}"
                      onClick = "do_action.value='open';build_id.value={$build.id};"
                      src="{$tlImages.lock}"/>
               {/if}
           </td>
 
   				<td class="clickable_icon">
-				       <img style="border:none;cursor: pointer;"  title="{$labels.alt_delete_build}" 
-  				            alt="{$labels.alt_delete_build}" 
+				       <img style="border:none;cursor: pointer;"  title="{$labels.alt_delete_build}"
+  				            alt="{$labels.alt_delete_build}"
  					            onclick="delete_confirmation({$build.id},'{$build.name|escape:'javascript'|escape}',
  					                                         '{$del_msgbox_title}','{$warning_msg}');"
   				            src="{$tlImages.delete}"/>
@@ -112,7 +112,7 @@ var del_action=fRoot+'{$deleteAction}';
   			</tr>
   		{/foreach}
   	</table>
-   </form> 
+   </form>
   {else}
   	<p>{$labels.no_builds}</p>
   {/if}

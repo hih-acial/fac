@@ -444,8 +444,9 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
         {/if}
 	</div>
 
-	<hr>
+    <h3>Etapes de test</h3>
 
+	<hr>
 
     {* ----------------------------------------------------------------------------------- *}
 	<div>

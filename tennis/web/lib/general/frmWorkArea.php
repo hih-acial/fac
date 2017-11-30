@@ -119,6 +119,7 @@ if (in_array($showFeature,array('executeTest','showMetrics','tc_exec_assignment'
     $ctx->tplanIDCard = $tplanIDCard;
     $ctx->featureTitle = $featureHint;
 
+
     validateBuildAvailability($db,$tplanMgr,$ctx,$hasToBe);
   }
   else
@@ -219,9 +220,8 @@ function validateBuildAvailability(&$db,&$tplanMgr,$context,$attrFilter)
     }  
 
 
-    $message = "<p>" . $context->featureTitle .
-               "<p>" . sprintf(lang_get('no_good_build'),$mzx) .
-               "<b> " . htmlspecialchars($tpName) . "</b>";
+    $message = "<div class='jumbotron'><h2 class='text-center'>".$context->featureTitle ."</h2></div>" .
+               "<div class='container'><div class='alert alert-danger' role='alert'>".sprintf(lang_get('no_good_build'),$mzx) ."<b> " . htmlspecialchars($tpName) . "</b></div></div>";
     
     $link_to_op = '';
     $hint_text = '';

@@ -1,12 +1,12 @@
-{* 
+{*
 TestLink Open Source Project - http://testlink.sourceforge.net/
 @filesource planUrgency.tpl
 
 Smarty template - manage test case urgency
-         
+
 *}
 {$ownURL="lib/plan/planUrgency.php"}
-{lang_get var="labels" 
+{lang_get var="labels"
           s='title_plan_urgency, th_testcase, th_urgency, urgency_low, urgency_medium, urgency_high,
              label_set_urgency_ts, btn_set_urgency_tc, urgency_description,testsuite_is_empty,
              priority, importance, execution_history, design,assigned_to'}
@@ -54,7 +54,7 @@ Smarty template - manage test case urgency
        {$importance=$res.importance}
        {$urgencyCode=$res.urgency}
        {$priority=$res.priority}
-   
+
       <tr>
 
       {if $start}
@@ -70,22 +70,22 @@ Smarty template - manage test case urgency
           </td>
           <td style="text-align: left;">
               {if $res.assigned_to != ''}
-              <img src="{$tlImages.info_small}" title="{$res.first|escape} {$res.last|escape}"> {$res.assigned_to|escape} 
+              <img src="{$tlImages.info_small}" title="{$res.first|escape} {$res.last|escape}"> {$res.assigned_to|escape}
               {/if}
           </td>
 
           <td>{$gsmarty_option_importance.$importance}</td>
-          <td><input type="radio"  name="urgency[{$res.tcversion_id}]"  value="{$smarty.const.HIGH}" 
+          <td><input type="radio"  name="urgency[{$res.tcversion_id}]"  value="{$smarty.const.HIGH}"
                  {if $urgencyCode == $smarty.const.HIGH}  checked="checked"  {/if}  />
             <span style="vertical-align:middle;">{$labels.urgency_high}</span>
           </td>
 
-          <td><input type="radio"  name="urgency[{$res.tcversion_id}]"  value="{$smarty.const.MEDIUM}" 
+          <td><input type="radio"  name="urgency[{$res.tcversion_id}]"  value="{$smarty.const.MEDIUM}"
                  {if $urgencyCode == $smarty.const.MEDIUM} checked="checked" {/if}/>
             <span style="vertical-align:middle;">{$labels.urgency_medium}</span>
           </td>
-          
-          <td><input type="radio"  name="urgency[{$res.tcversion_id}]" value="{$smarty.const.LOW}" 
+
+          <td><input type="radio"  name="urgency[{$res.tcversion_id}]" value="{$smarty.const.LOW}"
                  {if $urgencyCode == $smarty.const.LOW} checked="checked" {/if}  />
             <span style="vertical-align:middle;">{$labels.urgency_low}</span>
           </td>
@@ -103,7 +103,7 @@ Smarty template - manage test case urgency
           <td><span style="vertical-align:middle;">&nbsp;</span></td>
           <td><span style="vertical-align:middle;">&nbsp;</span></td>
           <td>&nbsp;</td>
-      {/if}  
+      {/if}
       </tr>
     {/foreach}
   {/foreach}

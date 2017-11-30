@@ -1,7 +1,7 @@
-{* 
- Testlink Open Source Project - http://testlink.sourceforge.net/ 
- @filesource  mainPage.tpl 
- Purpose: smarty template - main page / site map                 
+{*
+ Testlink Open Source Project - http://testlink.sourceforge.net/
+ @filesource  mainPage.tpl
+ Purpose: smarty template - main page / site map
 *}
 <html>
 {lang_get var='labels' s='title_product_mgmt,href_tproject_management,href_admin_modules,
@@ -110,7 +110,7 @@ $gui->grants.exec_ro_access == "yes")}
 {include file="custom.tpl"}
 
 <head>
-<script language="JavaScript" src="{$basehref}gui/niftycube/niftycube.js" type="text/javascript"></script>
+    <script language="JavaScript" src="{$basehref}gui/niftycube/niftycube.js" type="text/javascript"></script>
 </head>
 <body>
 
@@ -119,124 +119,124 @@ $gui->grants.exec_ro_access == "yes")}
     <div id="sidebar-wrapper">
         <ul class="sidebar-nav">
             {if $display_right_block_1}
-            {$planView="lib/plan/planView.php"}
-            {$buildView="lib/plan/buildView.php?tplan_id="}
-            {$mileView="lib/plan/planMilestonesView.php"}
+                {$planView="lib/plan/planView.php"}
+                {$buildView="lib/plan/buildView.php?tplan_id="}
+                {$mileView="lib/plan/planMilestonesView.php"}
                 {$reqOverView="lib/requirements/reqOverview.php"}
                 {$reqMonOverView="lib/requirements/reqMonitorOverview.php?tproject_id="}
-            <li>
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse"> Exigences</a>
-                <ul id="collapse" class="panel-collapse collapse">
-                    {if $gui->grants.reqs_view == "yes"}
-                        <li>
-                            <a href="{$gui->launcher}?feature=reqSpecMgmt"  >{$labels.href_req_spec}</a>
-                        </li>
-                        <li>
-                            <a href="{$reqOverView}"  >{$labels.href_req_overview}</a>
-                        </li>
-                        <li>
-                            <a href="{$gui->launcher}?feature=searchReq"  >{$labels.href_search_req}</a>
-                        </li>
-                        <li>
-                            <a href="{$gui->launcher}?feature=searchReqSpec" >{$labels.href_search_req_spec}</a>
-                        </li>
-                    {/if}
-                    {if $gui->grants.reqs_edit == "yes"}
-                        <li>
-                            <a href="lib/general/frmWorkArea.php?feature=assignReqs"  style="{$aStyle}">{$labels.href_req_assign}</a>
-                        </li>
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapse"> Exigences</a>
+                    <ul id="collapse" class="panel-collapse collapse">
+                        {if $gui->grants.reqs_view == "yes"}
+                            <li>
+                                <a href="{$gui->launcher}?feature=reqSpecMgmt"  >{$labels.href_req_spec}</a>
+                            </li>
+                            <li>
+                                <a href="{$reqOverView}"  >{$labels.href_req_overview}</a>
+                            </li>
+                            <li>
+                                <a href="{$gui->launcher}?feature=searchReq"  >{$labels.href_search_req}</a>
+                            </li>
+                            <li>
+                                <a href="{$gui->launcher}?feature=searchReqSpec" >{$labels.href_search_req_spec}</a>
+                            </li>
+                        {/if}
+                        {if $gui->grants.reqs_edit == "yes"}
+                            <li>
+                                <a href="lib/general/frmWorkArea.php?feature=assignReqs"  style="{$aStyle}">{$labels.href_req_assign}</a>
+                            </li>
 
-                    {/if}
-                    <li>
-                        <a href="{$reqMonOverView}{$gui->testprojectID}" >{$labels.href_req_monitor_overview}</a>
-                    </li>
-                    <li>
-                        <a href="{$gui->launcher}?feature=printReqSpec"  >{$labels.href_print_req}</a>
-                    </li>
-                </ul>
-            </li>
+                        {/if}
+                        <li>
+                            <a href="{$reqMonOverView}{$gui->testprojectID}" >{$labels.href_req_monitor_overview}</a>
+                        </li>
+                        <li>
+                            <a href="{$gui->launcher}?feature=printReqSpec"  >{$labels.href_print_req}</a>
+                        </li>
+                    </ul>
+                </li>
 
             {/if}
             {if $display_left_block_4 || $display_right_block_3}
-            {$tcSearch="lib/testcases/tcSearch.php?doAction=userInput&tproject_id="}
-            {$tcCreatedUser="lib/results/tcCreatedPerUserOnTestProject.php?do_action=uinput&tproject_id="}
+                {$tcSearch="lib/testcases/tcSearch.php?doAction=userInput&tproject_id="}
+                {$tcCreatedUser="lib/results/tcCreatedPerUserOnTestProject.php?do_action=uinput&tproject_id="}
                 {$platformAssign="lib/platforms/platformsAssign.php?tplan_id="}
-            <li>
-                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" >test</a>
-                <ul id="collapseTwo" class="panel-collapse collapse">
+                <li>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" >test</a>
+                    <ul id="collapseTwo" class="panel-collapse collapse">
 
-                    <li>
-                        <a href="{$gui->launcher}?feature=editTc" >
-                            {if $gui->grants.modify_tc eq "yes"}
-                                {lang_get s='href_edit_tc'}
-                            {else}
-                                {lang_get s='href_browse_tc'}
-                            {/if}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{$gui->launcher}?feature=planAddTC" >{$labels.href_add_remove_test_cases}</a>
-                    </li>
-
-                    <li>
-                        <a href="{$gui->launcher}?feature=tc_exec_assignment"  >{$labels.href_tc_exec_assignment}</a>
-                    </li>
-
-                    <li>
-                        <a href="{$tcSearch}{$gui->testprojectID}"  >{$labels.href_search_tc}</a>
-
-                    </li>
-                     <li>
-                         <a href="{$gui->launcher}?feature=keywordsAssign"  >{$labels.href_keywords_assign}</a>
-
-                     </li>
-                    <li>
-                        <a href="{$tcCreatedUser}{$gui->testprojectID}"  >{$labels.link_report_test_cases_created_per_user}</a>
-
-                    </li>
-                    {if $gui->grants.mgt_testplan_create == "yes"}
                         <li>
-                            <a href="{$planView}" >{$labels.href_plan_management}</a>
+                            <a href="{$gui->launcher}?feature=editTc" >
+                                {if $gui->grants.modify_tc eq "yes"}
+                                    {lang_get s='href_edit_tc'}
+                                {else}
+                                    {lang_get s='href_browse_tc'}
+                                {/if}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{$gui->launcher}?feature=planAddTC" >{$labels.href_add_remove_test_cases}</a>
                         </li>
 
-                    {/if}
-                    {if $gui->grants.testplan_create_build == "yes" and $gui->countPlans > 0}
                         <li>
-                            <a href="{$buildView}{$gui->testplanID}" >{$labels.href_build_new}</a>
+                            <a href="{$gui->launcher}?feature=tc_exec_assignment"  >{$labels.href_tc_exec_assignment}</a>
+                        </li>
+
+                        <li>
+                            <a href="{$tcSearch}{$gui->testprojectID}"  >{$labels.href_search_tc}</a>
 
                         </li>
-                    {/if}
-                    {if $gui->grants.testplan_milestone_overview == "yes" and $gui->countPlans > 0}
                         <li>
-                            <a href="{$mileView}" >{$labels.href_plan_mstones}</a>
+                            <a href="{$gui->launcher}?feature=keywordsAssign"  >{$labels.href_keywords_assign}</a>
+
                         </li>
-                    {/if}
-                </ul>
-            </li>
+                        <li>
+                            <a href="{$tcCreatedUser}{$gui->testprojectID}"  >{$labels.link_report_test_cases_created_per_user}</a>
+
+                        </li>
+                        {if $gui->grants.mgt_testplan_create == "yes"}
+                            <li>
+                                <a href="{$planView}" >{$labels.href_plan_management}</a>
+                            </li>
+
+                        {/if}
+                        {if $gui->grants.testplan_create_build == "yes" and $gui->countPlans > 0}
+                            <li>
+                                <a href="{$buildView}{$gui->testplanID}" >{$labels.href_build_new}</a>
+
+                            </li>
+                        {/if}
+                        {if $gui->grants.testplan_milestone_overview == "yes" and $gui->countPlans > 0}
+                            <li>
+                                <a href="{$mileView}" >{$labels.href_plan_mstones}</a>
+                            </li>
+                        {/if}
+                    </ul>
+                </li>
             {/if}
             <li>
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" >Exécution</a>
                 <ul id="collapseThree" class="panel-collapse collapse">
-                            {if $gui->grants.testplan_execute == "yes" ||$gui->grants.exec_ro_access == "yes"}
-                                {if $gui->grants.testplan_execute == "yes"}
-                                    {$lbx = $labels.href_execute_test}
-                                {/if}
-                                {if $gui->grants.exec_ro_access == "yes"}
-                                    {$lbx = $labels.href_exec_ro_access}
-                                {/if}
-                                <li>
-                                    <a href="{$gui->launcher}?feature=executeTest" >{$lbx}</a>
-                                </li>
-                            {/if}
-                           <li>
-                               <a href="{$gui->url.testcase_assignments}"  >{$labels.href_my_testcase_assignments}</a>
-                           </li>
-                              <li>
-                                  <a href="{$gui->launcher}?feature=showMetrics" >{$labels.href_rep_and_metrics}</a>
-                              </li>
-                            <li>
-                                <a href="{$gui->url.metrics_dashboard}">{$labels.href_metrics_dashboard}</a>
-                            </li>
+                    {if $gui->grants.testplan_execute == "yes" ||$gui->grants.exec_ro_access == "yes"}
+                        {if $gui->grants.testplan_execute == "yes"}
+                            {$lbx = $labels.href_execute_test}
+                        {/if}
+                        {if $gui->grants.exec_ro_access == "yes"}
+                            {$lbx = $labels.href_exec_ro_access}
+                        {/if}
+                        <li>
+                            <a href="{$gui->launcher}?feature=executeTest" >{$lbx}</a>
+                        </li>
+                    {/if}
+                    <li>
+                        <a href="{$gui->url.testcase_assignments}"  >{$labels.href_my_testcase_assignments}</a>
+                    </li>
+                    <li>
+                        <a href="{$gui->launcher}?feature=showMetrics" >{$labels.href_rep_and_metrics}</a>
+                    </li>
+                    <li>
+                        <a href="{$gui->url.metrics_dashboard}">{$labels.href_metrics_dashboard}</a>
+                    </li>
                     {if $gui->grants.testplan_add_remove_platforms == "yes"}
                         <li>
                             <a href="{$platformAssign}{$gui->testplanID}"  >{$labels.href_platform_assign}</a>
@@ -261,51 +261,51 @@ $gui->grants.exec_ro_access == "yes")}
                 </ul>
             </li>
             {if $display_left_block_2 || $display_left_block_1}
-            {$cfieldsView="lib/cfields/cfieldsView.php"}
-            {$issueTrackerView="lib/issuetrackers/issueTrackerView.php"}
-            <li style="margin-top: 150%;">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" >Administration</a>
-                <ul id="collapseFive" class="panel-collapse collapse">
-                    {if $gui->grants.tproject_user_role_assignment == "yes"}
-                        <li>
-                            <a href="{$usersAssign}{$gui->testprojectID}" >{$labels.href_assign_user_roles}</a>
-                        </li>
-                    {/if}
+                {$cfieldsView="lib/cfields/cfieldsView.php"}
+                {$issueTrackerView="lib/issuetrackers/issueTrackerView.php"}
+                <li style="margin-top: 150%;">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" >Administration</a>
+                    <ul id="collapseFive" class="panel-collapse collapse">
+                        {if $gui->grants.tproject_user_role_assignment == "yes"}
+                            <li>
+                                <a href="{$usersAssign}{$gui->testprojectID}" >{$labels.href_assign_user_roles}</a>
+                            </li>
+                        {/if}
 
-                    {if $gui->grants.cfield_management == "yes"}
-                        <li>
-                            <a href="{$cfAssignment}" >{$labels.href_cfields_tproject_assign}</a>
-                        </li>
-                    {/if}
-                            {if $gui->grants.cfield_management == "yes"}
-                               <li>
-                                   <a href="{$cfieldsView}" >{$labels.href_cfields_management}</a>
-                               </li>
-                            {/if}
-                            {if $gui->grants.issuetracker_management || $gui->grants.issuetracker_view}
-                               <li>
-                                   <a href="{$issueTrackerView}" >{$labels.href_issuetracker_management}</a>
-                               </li>
-                            {/if}
-                    {if $gui->grants.project_edit == "yes"}
-                        <li>
-                            <a href="{$projectView}"  >{$labels.href_tproject_management}</a>
-                        </li>
-                    {/if}
+                        {if $gui->grants.cfield_management == "yes"}
+                            <li>
+                                <a href="{$cfAssignment}" >{$labels.href_cfields_tproject_assign}</a>
+                            </li>
+                        {/if}
+                        {if $gui->grants.cfield_management == "yes"}
+                            <li>
+                                <a href="{$cfieldsView}" >{$labels.href_cfields_management}</a>
+                            </li>
+                        {/if}
+                        {if $gui->grants.issuetracker_management || $gui->grants.issuetracker_view}
+                            <li>
+                                <a href="{$issueTrackerView}" >{$labels.href_issuetracker_management}</a>
+                            </li>
+                        {/if}
+                        {if $gui->grants.project_edit == "yes"}
+                            <li>
+                                <a href="{$projectView}"  >{$labels.href_tproject_management}</a>
+                            </li>
+                        {/if}
 
-                    {if $gui->grants.keywords_view == "yes"}
+                        {if $gui->grants.keywords_view == "yes"}
 
-                        <li>
-                            <a href="{$keywordsAssignment}{$gui->testprojectID}" >{$labels.href_keywords_manage}</a>
-                        </li>
-                    {/if}
-                    {if $gui->grants.platform_management == "yes"}
-                        <li>
-                            <a href="{$platformsView}" >{$labels.href_platform_management}</a>
-                        </li>
-                    {/if}
-                </ul>
-            </li>
+                            <li>
+                                <a href="{$keywordsAssignment}{$gui->testprojectID}" >{$labels.href_keywords_manage}</a>
+                            </li>
+                        {/if}
+                        {if $gui->grants.platform_management == "yes"}
+                            <li>
+                                <a href="{$platformsView}" >{$labels.href_platform_management}</a>
+                            </li>
+                        {/if}
+                    </ul>
+                </li>
             {/if}
         </ul>
 
