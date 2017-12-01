@@ -6,13 +6,16 @@
  *  20100501 - franciscom - BUGID 3410: Smarty 3.0 compatibility
  *}
 {include file="inc_head.tpl"}
+{include file="custom.tpl"}
 <body>
 
 {if $gui->pageTitle != ""}
-	<h1 class="title">{$gui->pageTitle|escape}</h1>
+    <section class="jumbotron">
+        <h2 class="text-center">{$gui->pageTitle|escape}</h2>
+    </section>
 {/if}
 
-<div class="workBack">
+<div class="container">
 {$gui->pageContent}
 </div>
 

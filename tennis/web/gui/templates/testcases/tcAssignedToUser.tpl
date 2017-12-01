@@ -1,4 +1,4 @@
-{* 
+{*
 TestLink Open Source Project - http://testlink.sourceforge.net/
 $Id: tcAssignedToUser.tpl,v 1.21 2010/10/13 09:35:39 asimon83 Exp $
 Purpose: smarty template - view test case in test specification
@@ -20,7 +20,7 @@ rev:
 </head>
 
 {$this_template_dir=$smarty.template|dirname}
-{lang_get var='labels' 
+{lang_get var='labels'
           s='no_records_found,testplan,testcase,version,assigned_on,due_since,platform,goto_testspec,priority,
              high_priority,medium_priority,low_priority,build,testsuite,generated_by_TestLink_on,show_closed_builds_btn'}
 
@@ -53,13 +53,13 @@ rev:
         <input type="hidden" name="user_id" id="user_id" value="{$gui->user_id}">
         <input type="hidden" name="tcvx_{$idx}" id="tcvx_{$idx}" value="0">
         <input type="hidden" name="result_{$idx}" id="result_{$idx}" value="0">
-      
+
         <p>
         {$tableID="table_$idx"}
         {$matrix->renderBodySection($tableID)}
         <br /></p>
      </form>
-    
+
     {/foreach}
 
     <br />
@@ -71,7 +71,7 @@ rev:
   <div class="user_feedback">
     {$gui->warning_msg}
     </div>
-{/if}   
+{/if}
 </div>
 </body>
 </html>

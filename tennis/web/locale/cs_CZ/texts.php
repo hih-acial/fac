@@ -52,27 +52,27 @@ Tyto informace pak mohou sloužit jako podklad pro další plánování testů.<
 $TLS_htmltext_title['editTc']	= "Specifikace testů";
 $TLS_htmltext['editTc'] 		= "<h2>Účel</h2>
 <p><i>Specifikace testovacích případů</i> umožňuje uživatelům zobrazení a úpravu všech existujících " .
-		"<i>testovacích sad</i> a <i>testovacích případů</i>. Testovací případy jsou verzovány a všechny " .
-		"předcházející verze jsou zde dostupné. Je možné je zobrazit a dále s nimi pracovat.</p>
+    "<i>testovacích sad</i> a <i>testovacích případů</i>. Testovací případy jsou verzovány a všechny " .
+    "předcházející verze jsou zde dostupné. Je možné je zobrazit a dále s nimi pracovat.</p>
 
 <h2>Jak na to</h2>
 <ol>
 	<li>Zvolte testovací projekt ze stromové struktury v navigačním panelu na levé straně (hlavní uzel stromové struktury). <i>Poznámka: " .
-	"Změnu aktivního testovacího projektu můžete kdykoliv provést pomocí rozbalovacího " .
-	"seznamu v pravém horním rohu.</i></li>
+    "Změnu aktivního testovacího projektu můžete kdykoliv provést pomocí rozbalovacího " .
+    "seznamu v pravém horním rohu.</i></li>
 	<li>Kliknutím na tlačítko <b>Nová navázaná testovací sada</b> vytvořte novou testovací sadu. Testovací sady Vám pomohou" .
-	"vytvořit strukturu vašich testovacích dokumentů dle Vašich zvyklostí (funkční/nefunkční " .
-	"testy, komponenty produktu nebo funkčnosti, změnové požadavky, apod.). Popis " .
-	"testovací sady by měl obsahovat popis obsahu vložených testovacích případů, základní nastavení, " .
-	"odkazy na související dokumentaci, popis omezení popřípadě dalších užitečných informací v rámci testovací sady. Obecně definováno, " .
-	"všechny poznámky, které se vztahují k testovacím případům přiřazených do popisovaných testovacích sad. Testovací sady vycházejí z " .
-	"filozofie adresářů. V rámci aktuálního testovacího projektu tak mohou mezi nimi uživatelé přesunovat nebo kopírovat testovací případy, popřípadě samotné testovací sady. " .
-	". Testovací sady mohou být také importovány, nebo exportovány (včetně testovacích případů, které obsahují).</li> " .
-	"<li>V panelu navigace zvolte ve stromové struktuře vytvořenou testovací sadu a stisknutím " .
-	"tlačítka <b>Vytvořit testovací případ</b> vytvořte nový testovací případ. Testovací případ popisuje " .
-	"scénář testu, očekávané výsledky a obsah uživatelsky definovaných polí " .
-	" (další informace jsou dostupné v uživatelském manuálu). Pro zvýšení přehledu  " .
-	"je možné přiřadit k testovacímu případu <b>klíčová slova</b>.</li>
+    "vytvořit strukturu vašich testovacích dokumentů dle Vašich zvyklostí (funkční/nefunkční " .
+    "testy, komponenty produktu nebo funkčnosti, změnové požadavky, apod.). Popis " .
+    "testovací sady by měl obsahovat popis obsahu vložených testovacích případů, základní nastavení, " .
+    "odkazy na související dokumentaci, popis omezení popřípadě dalších užitečných informací v rámci testovací sady. Obecně definováno, " .
+    "všechny poznámky, které se vztahují k testovacím případům přiřazených do popisovaných testovacích sad. Testovací sady vycházejí z " .
+    "filozofie adresářů. V rámci aktuálního testovacího projektu tak mohou mezi nimi uživatelé přesunovat nebo kopírovat testovací případy, popřípadě samotné testovací sady. " .
+    ". Testovací sady mohou být také importovány, nebo exportovány (včetně testovacích případů, které obsahují).</li> " .
+    "<li>V panelu navigace zvolte ve stromové struktuře vytvořenou testovací sadu a stisknutím " .
+    "tlačítka <b>Vytvořit testovací případ</b> vytvořte nový testovací případ. Testovací případ popisuje " .
+    "scénář testu, očekávané výsledky a obsah uživatelsky definovaných polí " .
+    " (další informace jsou dostupné v uživatelském manuálu). Pro zvýšení přehledu  " .
+    "je možné přiřadit k testovacímu případu <b>klíčová slova</b>.</li>
 	<li>Testovací případy můžete procházet a editovat za pomoci stromové struktury navigačního panelu na levé straně obrazovky. Pro každý testovací případ 
   se ukládá jeho historie.</li>
 	<li>Po dokončení definice testovacích případů, přiřaďte testovací sadu do požadovaného <span class=\"help\" onclick=
@@ -80,7 +80,7 @@ $TLS_htmltext['editTc'] 		= "<h2>Účel</h2>
 </ol>
 
 <p>V Testlinku jsou testovací případy organizovány za pomoci testovacích sad." .
-"Testovací sady mohou být vnořené v jiných testovacích sadách a je tak umožněno vytvářet si strukturu testovacích sad.
+    "Testovací sady mohou být vnořené v jiných testovacích sadách a je tak umožněno vytvářet si strukturu testovacích sad.
  Informace o struktuře testovacich sad mohou být vytištěny společně s testovacími případy.</p>";
 
 
@@ -170,7 +170,7 @@ $TLS_htmltext['executeTest'] 		= "<h2>Účel</h2>
 
 <p>Umožňuje uživatelům provádět testovací případy. Uživatel může v rámci aktuálního sestavení nastavit 
 výsledek testu. Pro více informací o nastavení a možnostech filtrovaní se podívejte do nápovědy " .
-		"(klikněte na ikonu otazníku).</p>
+    "(klikněte na ikonu otazníku).</p>
 
 <h2>Jak na to</h2>
 
@@ -187,7 +187,7 @@ pokud chcete vytvořit nebo sledovat stav chyby přímo z prostředí Testlinku.
 // ------------------------------------------------------------------------------------------
 $TLS_htmltext_title['showMetrics']	= "Popis testovacích přehledů a metrik";
 $TLS_htmltext['showMetrics'] 		= "<p>Přehledy se vztahují k testovacímu projektu " .
-		"(nastavenému v horní části navigačního panelu). Testovací projekt nastavený pro generování přehledů se může lišit
+    "(nastavenému v horní části navigačního panelu). Testovací projekt nastavený pro generování přehledů se může lišit
 od aktuálně zvoleného testovacího plánu pro provádění testů. Pro přehled můžete zvolit formát ve které bude vygenerován:</p>
 <ul>
 <li><b>Normal</b> - přehled je zobrazen v prohlížeči</li>
@@ -335,8 +335,8 @@ $TLS_htmltext_title['planUpdateTC']	= "Aktualizace testovacích případů v tes
 $TLS_htmltext['planUpdateTC'] 		= "<h2>Účel</h2>
 <p>Tato stránka umožňuje aktualizovat testovací případ na novější (nebo jinou než aktuální) verzi v případě, že se specifikace
 testovacího případu změnila. Často se stává, že se během testování změní definice funkčnosti." .
-		" Uživatel změní specifikaci testovacího případu, která je poté potřeba také zpropagovat do testovacího plánu. V opačném případě" .
-		" bude testovací plán obsahovat původní verzi testovacího případu, aby se zajistila konzistence verze testovacího případu a jeho výsledku.</p>
+    " Uživatel změní specifikaci testovacího případu, která je poté potřeba také zpropagovat do testovacího plánu. V opačném případě" .
+    " bude testovací plán obsahovat původní verzi testovacího případu, aby se zajistila konzistence verze testovacího případu a jeho výsledku.</p>
 
 <h2>Jak na to</h2>
 <ol>
@@ -364,7 +364,7 @@ $TLS_htmltext['test_urgency'] 		= "<h2>Účel</h2>
 	<li>Stiskněte tlačítko 'Uložit' pro odeslání změn.</li>
 </ol>
 <p><i>Pro příklad, u testovacího případu s vysokou důležitostí v testovací sadě s nízkou urgentností bude " .
-		"výsledkem střední priorita.</i>";
+    "výsledkem střední priorita.</i>";
 
 
 // ------------------------------------------------------------------------------------------

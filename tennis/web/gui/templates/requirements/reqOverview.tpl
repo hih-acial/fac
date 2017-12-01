@@ -15,7 +15,7 @@
              dont_show_all_versions_btn, notes_req_overview, hlp_req_coverage_table'}
 
 {include file="inc_head.tpl" openHead="yes"}
-
+{include file="../custom.tpl"}
 {foreach from=$gui->tableSet key=idx item=matrix name="initializer"}
   {$tableID="table_$idx"}
   {if $smarty.foreach.initializer.first}
@@ -27,26 +27,29 @@
   {/if}
   {$matrix->renderHeadSection($tableID)}
 {/foreach}
-</head>
+
 
 <body>
 <section class="jumbotron">
-  <h1 class="title">{$gui->pageTitle|escape}</h1>
+  <h2 class="text-center">{$gui->pageTitle|escape}</h2>
 </section>
 
-<div class="workBack" style="overflow-y: auto;">
+<div class="container" >
 
 {if $gui->warning_msg == ''}
-  <p>{$labels.generated_by_TestLink_on} {$smarty.now|date_format:$gsmarty_timestamp_format} 
-     {if $gui->elapsedSeconds >0} ({$gui->elapsedSeconds} sec) {/if}</p>
-  <p><form method="post">
+    <div class="alert alert-primary">
+      <p>{$labels.generated_by_TestLink_on} {$smarty.now|date_format:$gsmarty_timestamp_format}
+          {if $gui->elapsedSeconds >0} ({$gui->elapsedSeconds} sec) {/if}</p>
+    </div>
+  <hr>
+  <form method="post">
   <input type="checkbox" name="all_versions" value="all_versions"
     {if $gui->all_versions} checked="checked" {/if}
      onclick="this.form.submit();" /> {$labels.show_all_versions_btn}
   <input type="hidden"
          name="all_versions_hidden"
          value="{$gui->all_versions}" />
-  </form></p><br/>
+  </form><br/>
   
   {foreach from=$gui->tableSet key=idx item=matrix}
     {$tableID="table_$idx"}
@@ -60,7 +63,7 @@
   <p>{$labels.hlp_req_coverage_table}</p>
   <br/><br/>
 {else}
-  <div class="user_feedback">
+  <div class="alert alert-warning">
     {$gui->warning_msg}
     </div>
 {/if}

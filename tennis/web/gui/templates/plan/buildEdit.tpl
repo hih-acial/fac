@@ -47,7 +47,11 @@ s="warning,warning_empty_build_name,enter_build,enter_build_notes,active,
 <div class="container">
     {include file="inc_update.tpl" user_feedback=$gui->user_feedback
     result=$sqlResult item="build"}
-
+    <div class="alert alert-primary">
+        {$labels.builds_description}
+    </div>
+    <hr>
+    <br>
     <div>
         <h2>{$gui->operation_descr|escape}
             {if $gui->mgt_view_events eq "yes" && $gui->build_id > 0}
@@ -71,7 +75,7 @@ s="warning,warning_empty_build_name,enter_build,enter_build_notes,active,
                 <label for="{$labels.enter_build_notes}">{$labels.enter_build_notes}</label>
                 {$gui->notes}
             </div>
-            <table class="common" style="width:80%">
+            <table class="common" style="width:10%">
 
                 {if $gui->cfields != ''}
                     {foreach key=accessKey item=cf from=$gui->cfields}
@@ -96,20 +100,6 @@ s="warning,warning_empty_build_name,enter_build,enter_build_notes,active,
                                onclick="showOrHideElement('closure_date',this.checked)"/>
                         <span id="closure_date" style="display:none;">{$labels.closed_on_date}: {localize_date d=$gui->closed_on_date}</span>
                         <input type="hidden" name="closed_on_date" value={$gui->closed_on_date}>
-                    </td>
-                </tr>
-
-                <tr>
-                    <th style="background:none;">{$labels.release_date}</th>
-                    <td>
-                        <input type="text"
-                               name="release_date" id="release_date"
-                               value="{$gui->release_date}" />
-                        <img title="{$labels.show_calender}" src="{$smarty.const.TL_THEME_IMG_DIR}/calendar.gif"
-                             onclick="showCal('release_date-cal','release_date','{$gsmarty_datepicker_format}');" >
-                        <img title="{$labels.clear_date}" src="{$smarty.const.TL_THEME_IMG_DIR}/trash.png"
-                             onclick="var x = document.getElementById('release_date'); x.value = '';" >
-                        <div id="release_date-cal" style="position:absolute;width:240px;left:300px;z-index:1;"></div>
                     </td>
                 </tr>
 
@@ -153,8 +143,20 @@ s="warning,warning_empty_build_name,enter_build,enter_build_notes,active,
                 {/if}
 
             </table>
-            <p>{$labels.builds_description}</p>
-            <div class="groupBtn">
+            <div class="form-group"><label for="release_date">release_date</label></div>
+
+                    <input class="form-control" type="text"
+                           name="release_date" id="release_date"
+                           value="{$gui->release_date}" />
+                    <img title="{$labels.show_calender}" src="{$smarty.const.TL_THEME_IMG_DIR}/calendar.gif"
+                         onclick="showCal('release_date-cal','release_date','{$gsmarty_datepicker_format}');" >
+                    <img title="{$labels.clear_date}" src="{$smarty.const.TL_THEME_IMG_DIR}/trash.png"
+                         onclick="var x = document.getElementById('release_date'); x.value = '';" >
+                    <div id="release_date-cal" style="position:absolute;width:240px;left:300px;z-index:1;"></div>
+            <br>
+            <br>
+
+            <div class="center-block text-center">
 
                 <input type="hidden" name="do_action" value="{$gui->buttonCfg->name}" />
                 <input type="hidden" name="build_id" value="{$gui->build_id}" />

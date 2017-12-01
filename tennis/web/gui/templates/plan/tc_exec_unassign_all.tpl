@@ -1,5 +1,5 @@
-{* 
-TestLink Open Source Project - http://testlink.sourceforge.net/ 
+{*
+TestLink Open Source Project - http://testlink.sourceforge.net/
 $Id: tc_exec_unassign_all.tpl,v 1.3 2010/07/26 19:01:13 asimon83 Exp $
 Purpose: show a confirmation before unassigning all testers from the test cases in a build.
 
@@ -32,13 +32,13 @@ function remove_testers(btn) {
 /**
  * open popup message to ask for user's confirmation before deleting assignments
  *
- * 
+ *
  */
 function warn_remove_testers(msgbox_title, msgbox_content) {
 	Ext.Msg.confirm(msgbox_title, msgbox_content, function(btn) {
 		remove_testers(btn);
 	});
-}					
+}
 
 {/literal}
 </script>
@@ -58,10 +58,10 @@ function warn_remove_testers(msgbox_title, msgbox_content) {
 		<form id='delete_tc_exec_assignments' name='delete_tc_exec_assignments' method='post'>
 			<input type="hidden" name="build_id" value="{$gui->build_id}" />
 			<input type="hidden" name="confirmed" value="yes" />
-			<input type="button" 
+			<input type="button"
 			       name="remove_all_tester_assignments"
 			       value="{lang_get s='btn_remove_all_tester_assignments'}"
-			       onclick="javascript: warn_remove_testers('{$gui->popup_title}', 
+			       onclick="javascript: warn_remove_testers('{$gui->popup_title}',
 			                                                '{$gui->popup_message}');" />
 		</form>
 	</div> <!-- groupBtn -->
@@ -72,6 +72,6 @@ function warn_remove_testers(msgbox_title, msgbox_content) {
 {/if}
 
 </div> <!-- workback -->
-  
+
 </body>
 </html>

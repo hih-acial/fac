@@ -1,7 +1,7 @@
-{* 
-TestLink Open Source Project - http://testlink.sourceforge.net/ 
+{*
+TestLink Open Source Project - http://testlink.sourceforge.net/
 
-generate the list of TC that can be removed from a Test Plan 
+generate the list of TC that can be removed from a Test Plan
 
 @filesource tc_exec_assignment.tpl
 @internal revisions
@@ -49,30 +49,30 @@ function setComboIfCbx(oid,combo_id_prefix,value_to_assign)
   var cb_id= new Array();
   var jdx=0;
   var idx=0;
-    
+
   // Build an array with the html select ids
-  //  
+  //
   for(idx = 0; idx < all_inputs.length; idx++)
   {
-    input_element=all_inputs[idx];    
-    if(input_element.type == "checkbox" &&  
+    input_element=all_inputs[idx];
+    if(input_element.type == "checkbox" &&
        input_element.checked  &&
        !input_element.disabled)
     {
       check_id=input_element.id;
-      
+
       // Consider the id a list with '_' as element separator
       apieces=check_id.split("_");
-      
+
       // apieces.length-2 => test case id
       // apieces.length-1 => platform id
       combo_id_suffix=apieces[apieces.length-2] + '_' + apieces[apieces.length-1];
       cb_id[jdx]=combo_id_prefix + combo_id_suffix;
       jdx++;
-    } 
+    }
   }
 
-  // To avoid issues with $  
+  // To avoid issues with $
   jQuery.noConflict();
 
   // now set the combos
@@ -88,7 +88,7 @@ function setComboIfCbx(oid,combo_id_prefix,value_to_assign)
 </script>
 
 </head>
-{* prefix for checkbox name ADD*}   
+{* prefix for checkbox name ADD*}
 {$add_cb="achecked_tc"}
 
 <body class="fixedheader">
@@ -173,10 +173,10 @@ function setComboIfCbx(oid,combo_id_prefix,value_to_assign)
 			      	</th>
               <th>{$labels.th_test_case}&nbsp;{$gsmarty_gui->role_separator_open}
               	{$labels.version}{$gsmarty_gui->role_separator_close}</th>
-              	
+
               {if $gui->platforms != ''}
 			      	  <th>{$labels.platform}</th>
-              {/if}	
+              {/if}
 			      	{if $session['testprojectOptions']->testPriorityEnabled}
 			      	  <th align="center">{$labels.priority}</th>
 			      	{/if}
@@ -185,7 +185,7 @@ function setComboIfCbx(oid,combo_id_prefix,value_to_assign)
             </tr>
 			      </thead>
             {* ---------------------------------------------------------------------------------------------------- *}
-            <tbody>  
+            <tbody>
             {foreach from=$ts.testcases item=tcase}
 
               {* loop over platforms - ATTENTION al least platform_id=0 always exists *}
@@ -193,21 +193,21 @@ function setComboIfCbx(oid,combo_id_prefix,value_to_assign)
                 {if $tcase.linked_version_id != 0}
                   {foreach from=$tcase.user_id[$platform_id] key=udx item=userItem name="testerSet"}
                     {$userID=0}
-             	      {if isset($tcase.user_id[$platform_id][$udx])} 
-                      {$userID=$tcase.user_id[$platform_id][$udx]} 
-                    {/if} 
+             	      {if isset($tcase.user_id[$platform_id][$udx])}
+                      {$userID=$tcase.user_id[$platform_id][$udx]}
+                    {/if}
 
               	    <tr>
                     {if $smarty.foreach.testerSet.iteration == 1}
               	    	<td>
                       		<input type="checkbox" name='{$add_cb}[{$tcase.id}][{$platform_id}]' align="middle"
-                    			                        id='{$add_cb}_{$ts_id}_{$tcase.id}_{$platform_id}' 
+                    			                        id='{$add_cb}_{$ts_id}_{$tcase.id}_{$platform_id}'
                       		                        value="{$tcase.linked_version_id}" />
-                    			<input type="hidden" name="a_tcid[{$tcase.id}][{$platform_id}]" 
+                    			<input type="hidden" name="a_tcid[{$tcase.id}][{$platform_id}]"
                     			                     value="{$tcase.linked_version_id}" />
-                    			<input type="hidden" name="has_prev_assignment[{$tcase.id}][{$platform_id}]" 
+                    			<input type="hidden" name="has_prev_assignment[{$tcase.id}][{$platform_id}]"
                     			                     value="{$userID}" />
-                    			<input type="hidden" name="feature_id[{$tcase.id}][{$platform_id}]" 
+                    			<input type="hidden" name="feature_id[{$tcase.id}][{$platform_id}]"
                     			                     value="{$tcase.feature_id[$platform_id]}" />
               	    	</td>
               	    	<td>
@@ -227,16 +227,16 @@ function setComboIfCbx(oid,combo_id_prefix,value_to_assign)
 
                       {if $gui->platforms != ''}
   			      	        <td>{$gui->platforms[$platform_id]|escape}</td>
-                      {/if}	
+                      {/if}
 
               	    	{if $session['testprojectOptions']->testPriorityEnabled}
               	    		<td align="center">
                         {if isset($gui->priority_labels[$tcase.priority])}{$gui->priority_labels[$tcase.priority]}{/if}</td>
               	    	{/if}
-                      
+
                     {else}
                         <td>&nbsp;</td><td>&nbsp;</td>
-                        {if $gui->platforms != ''}<td>&nbsp;</td>{/if} 
+                        {if $gui->platforms != ''}<td>&nbsp;</td>{/if}
                         {if $session['testprojectOptions']->testPriorityEnabled}<td>&nbsp;</td>{/if}
                     {/if} {* do it JUST ON first iteration *}
 
@@ -245,17 +245,17 @@ function setComboIfCbx(oid,combo_id_prefix,value_to_assign)
               	    		{if $userID >0 && $gui->users[$userID] != ''}
                         <img class="clickable" src="{$tlImages.remove}"
                              onclick="doAction.value='doRemove';targetFeature.value={$tcase.feature_id[$platform_id]};targetUser.value={$userID};tc_exec_assignment.submit();"
-                             title="{$labels.remove}" /> 
+                             title="{$labels.remove}" />
                           {$gui->users[$userID]|escape}
                           {if $gui->testers[$userID] == ''}{$labels.can_not_execute}{/if} {* user is a Tester? *}
-                        {/if}                          
+                        {/if}
               	    	</td>
-                      
+
                       {if $smarty.foreach.testerSet.iteration == 1}
                         <td align="center">
                       		  		<select class="chosen-select"
                                         data-placeholder="{$labels.chosen_blank_option}"
-                                        name="tester_for_tcid[{$tcase.id}][{$platform_id}]" 
+                                        name="tester_for_tcid[{$tcase.id}][{$platform_id}]"
                       		  		        id="tester_for_tcid_{$tcase.id}_{$platform_id}"
                       		  		        onchange='javascript: set_checkbox("{$add_cb}_{$ts_id}_{$tcase.id}_{$platform_id}",1)' >
                                  {html_options options=$gui->testers}
@@ -267,8 +267,8 @@ function setComboIfCbx(oid,combo_id_prefix,value_to_assign)
 
                     </tr>
                   {/foreach} {* $tcase.user_id[$platform_id] *}
-                {/if} {* $tcase.linked_version_id != 0 *}		
-              {/foreach}   
+                {/if} {* $tcase.linked_version_id != 0 *}
+              {/foreach}
             {/foreach} {* {foreach from=$ts.testcases item=tcase} *}
             </tbody>
           </table>
@@ -286,14 +286,14 @@ function setComboIfCbx(oid,combo_id_prefix,value_to_assign)
           {section name="div_closure" loop=$gui->support_array max=$max_loop} </div> {/section}
       {/if}
       {if $smarty.foreach.div_drawing.last}</div> {/if}
-    
+
     {/if} {* $ts_id != '' *}
 	{/foreach}
 
 	</div>
-  
+
  {/if}
-  
+
 </form>
 <script>
 jQuery( document ).ready(function() {

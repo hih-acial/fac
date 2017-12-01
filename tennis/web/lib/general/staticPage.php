@@ -48,6 +48,7 @@ else
 
 $smarty = new TLSmarty();
 $smarty->assign('gui', $gui);
+
 $smarty->display('staticPage.tpl');
 
 

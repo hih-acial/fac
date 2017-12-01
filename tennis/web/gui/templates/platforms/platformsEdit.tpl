@@ -15,6 +15,7 @@ Purpose: smarty template - View all platforms
 
 {include file="inc_head.tpl" jsValidate="yes" openHead="yes"}
 {include file="inc_del_onclick.tpl"}
+{include file="custom.tpl"}
 
 {literal}
 <script type="text/javascript">
@@ -39,13 +40,14 @@ function validateForm(f)
 <body>
 {assign var="cfg_section" value=$smarty.template|basename|replace:".tpl":"" }
 {config_load file="input_dimensions.conf" section=$cfg_section}
-
-<h1 class="title">{$gui->action_descr|escape}</h1>
+<section class="jumbotron">
+	<h2 class="text-center">{$gui->action_descr|escape}</h2>
+</section>
 
 {include file="inc_feedback.tpl" user_feedback=$gui->user_feedback}
 
 {if $gui->canManage ne ""}
-  <div class="workBack">
+  <div class="container">
   
   <div>
 	{if $gui->mgt_view_events eq "yes" && $gui->platformID > 0}
@@ -58,29 +60,25 @@ function validateForm(f)
   </div><br />
 
   	<form id="addPlatform" name="addPlatform" method="post" action="{$platform_edit_url}"
- 		      onsubmit="javascript:return validateForm(this);">
-
-  	<table class="common" style="width:50%">
-  		<tr>
-  			<th>{$labels.th_platform}</th>
-  			{assign var="input_name" value="name"}
-  			<td><input type="text" name="{$input_name}"
-  			           size="{#PLATFORM_SIZE#}" maxlength="{#PLATFORM_MAXLEN#}"
-  				         value="{$gui->name|escape}" required />
-			  		{include file="error_icon.tpl" field="$input_name"}
-			  </td>
-  		</tr>
-  		<tr>
-  			<th>{$labels.th_notes}</th>
-  			<td>{$gui->notes}</td>
-  		</tr>
-  	</table>
-  	<div class="groupBtn">	
+ 		      onsubmit="return validateForm(this);">
+	<div class="form-group">
+		<label for="{$labels.th_platform}">{$labels.th_platform}</label>
+        {assign var="input_name" value="name"}
+		<input class="form-control" id="{$labels.th_platform}" type="text" name="{$input_name}"
+			   size="{#PLATFORM_SIZE#}" maxlength="{#PLATFORM_MAXLEN#}"
+			   value="{$gui->name|escape}" required />
+        {include file="error_icon.tpl" field="$input_name"}
+	</div>
+		<div class="form-group">
+			<label for="{$labels.th_notes}">{$labels.th_notes}</label>
+            {$gui->notes}
+		</div>
+  	<div class="text-center center-block">
 	  	<input type="hidden" name="doAction" value="" />
-	    <input type="submit" id="submitButton" name="submitButton" value="{$gui->submit_button_label}"
+	    <input class="btn btn-success" type="submit" id="submitButton" name="submitButton" value="{$gui->submit_button_label}"
 		         onclick="doAction.value='{$gui->submit_button_action}'" />
-	  	<input type="button" value="{$labels.btn_cancel}"
-		         onclick="javascript:location.href=fRoot+'lib/platforms/platformsView.php'" />
+	  	<input class="btn btn-secondary" type="button" value="{$labels.btn_cancel}"
+		         onclick="location.href=fRoot+'lib/platforms/platformsView.php'" />
   	</div>
   	</form>
   </div>

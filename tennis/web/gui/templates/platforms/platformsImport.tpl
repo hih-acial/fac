@@ -18,6 +18,7 @@ Purpose: smarty template - manage import of platforms
 
 {include file="inc_head.tpl" openHead="yes" jsValidate="yes"}
 {include file="inc_del_onclick.tpl"}
+{include file="custom.tpl"}
 <script type="text/javascript">
 var alert_box_title = "{$labels.warning|escape:'javascript'}";
 var warning_empty_filename = "{$labels.warning_empty_filename|escape:'javascript'}";
@@ -39,8 +40,10 @@ function validateForm(f)
 </head>
 
 <body>
-<h1 class="title">{$gui->page_title|escape}</h1>
-<div class="workBack">
+<section class="jumbotron">
+    <h2 class="text-center">{$gui->page_title|escape}</h2>
+</section>
+<div class="container">
 {if $gui->file_check.show_results}
     {if $gui->file_check.import_msg.ok != ''}
         {$labels.imported}: {$gui->file_check.import_msg.ok|@count}<br>
@@ -57,43 +60,43 @@ function validateForm(f)
     {/if} 
     <form method="post" action="{$SCRIPT_NAME}">
       <br />
-        <input type="button" name="goback" value="{$labels.btn_goback}"
+        <input class="btn btn-success" type="button" name="goback" value="{$labels.btn_goback}"
           {if $gui->goback_url != ''}  onclick="location='{$gui->goback_url}'"
-            {else} onclick="javascript:history.back();" {/if} />
+            {else} onclick="history.back();" {/if} />
     </form>
 {else}
   <form method="post" enctype="multipart/form-data" action="{$SCRIPT_NAME}"
-        onsubmit="javascript:return validateForm(this);">
-    <table>
-    <tr>
-          <td>{$labels.file_type}</td>
-          <td>
-            <select name="importType">
+        onsubmit="return validateForm(this);">
+      <fieldset>
+          <legend>
+              <h3>Formulaire d'importation de plateformes</h3>
+          </legend>
+      </fieldset>
+      <div class="form-group">
+          <label for="{$labels.file_type}">{$labels.file_type}</label>
+          <select class="form-control" id="{$labels.file_type}" name="importType">
               {html_options options=$gui->importTypes}
-            </select>
+          </select>
           <a href="{$basehref}{$smarty.const.PARTIAL_URL_TL_FILE_FORMATS_DOCUMENT}">{$labels.view_file_format_doc}</a>
-        </td>
-      </tr>
-      <tr>
-        <td>{$labels.local_file}</td>
-          <td>
-            <input type="hidden" name="MAX_FILE_SIZE" value="{$gui->importLimitBytes}" /> 
-            <input type="file" name="targetFilename" value="" size="{#FILENAME_SIZE#}" maxlength="{#FILENAME_MAXLEN#}"/>
-          </td>
-      </tr>
-      </table>
-      <p>{$gui->max_size_import_file_msg}</p>
-      <div class="groupBtn">
+      </div>
+      <div class="form-group">
+          <label for="{$labels.local_file}">{$labels.local_file}</label>
+          <input type="hidden" name="MAX_FILE_SIZE" value="{$gui->importLimitBytes}" />
+          <input id="{$labels.local_file}" type="file" name="targetFilename" value="" size="{#FILENAME_SIZE#}" maxlength="{#FILENAME_MAXLEN#}"/>
+          <p class="text-danger">{$gui->max_size_import_file_msg}</p>
+      </div>
+
+
+      <div class="center-block text-center">
         <input type="hidden" name="doAction" id="doAction" value="doImport" />
         <input type="hidden" name="goback_url" value="{ $gui->goback_url|escape}" />
-        <input type="submit" name="UploadFile" value="{$labels.btn_upload_file}" />
-        <input type="button" name="cancel" value="{$labels.btn_cancel}"
+        <input class="btn btn-success" type="submit" name="UploadFile" value="{$labels.btn_upload_file}" />
+        <input class="btn btn-secondary" type="button" name="cancel" value="{$labels.btn_cancel}"
                              {if $gui->goback_url != ''}  onclick="location='{$gui->goback_url}'"
                              {else}  onclick="javascript:history.back();" {/if} />
       </div>
     </form> 
 {/if}
-
 
 {if $gui->file_check.status_ok eq 0}
 <script>

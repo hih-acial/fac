@@ -17,6 +17,7 @@ Purpose: smarty template - create Test Plan
 
 {include file="inc_head.tpl" openHead="yes" jsValidate="yes" editorType=$gui->editorType}
 {include file="inc_del_onclick.tpl"}
+{include file="custom.tpl"}
 <script type="text/javascript">
 var alert_box_title = "{$labels.warning|escape:'javascript'}";
 var warning_empty_tp_name = "{$labels.warning_empty_tp_name|escape:'javascript'}";
@@ -97,10 +98,13 @@ function jsCallDeleteFile(btn, text, o_id)
 {if !isset($loadOnCancelURL)}
   {$loadOnCancelURL=""}
 {/if}
+<section class="jumbotron">
+    <h2 class="text-center">{$gui->main_descr|escape}</h2>
+</section>
 
-<h1 class="title">{$gui->main_descr|escape}</h1>
-
-<div class="workBack">
+<div class="container">
+    <div class="alert alert-primary">{$labels.testplan_txt_notes}</div>
+    <br>
 {include file="inc_update.tpl" user_feedback=$gui->user_feedback}
   {$form_action='create'}
   {if $gui->tplan_id neq 0}
@@ -113,45 +117,51 @@ function jsCallDeleteFile(btn, text, o_id)
            title="{$labels.show_event_history}"/>
     {/if}
     </h2>
+      <hr>
+  {else}
+      <h2>Formulaire de création d'une campagne</h2>
+      <hr>
   {/if}
 
   <form method="post" name="testplan_mgmt" id="testplan_mgmt"
         action="lib/plan/planEdit.php?action={$form_action}"
-        onSubmit="javascript:return validateForm(this);">
-  <input type="hidden" id="tplan_id" name="tplan_id" value="{$gui->tplan_id}" />
-  <table class="common" width="80%">
+        onSubmit="return validateForm(this);">
+  <fieldset>
 
-    <tr><th style="background:none;">{$labels.testplan_th_name}</th>
-      <td><input type="text" name="testplan_name"
+      <input type="hidden" id="tplan_id" name="tplan_id" value="{$gui->tplan_id}" />
+
+      <div class="form-group">
+          <label for="testplan_name">{$labels.testplan_th_name}</label>
+          <input class="form-control" type="text" id="testplan_name" name="testplan_name"
                  size="{#TESTPLAN_NAME_SIZE#}"
                  maxlength="{#TESTPLAN_NAME_MAXLEN#}"
                  value="{$gui->testplan_name|escape}" required />
           {include file="error_icon.tpl" field="testplan_name"}
-      </td>
-    </tr>
-    <tr><th style="background:none;">{$labels.testplan_th_notes}</th>
-      <td >{$gui->notes}</td>
-    </tr>
-    {if $gui->tplan_id eq 0}
-      {if $gui->tplans}
-        <tr><th style="background:none;">{$labels.testplan_question_create_tp_from}</th>
-        <td>
-        <select name="copy_from_tplan_id"
-                onchange="manage_copy_ctrls('copy_controls',this.value,'0')">
-        <option value="0">{$labels.opt_no}</option>
-        {foreach item=testplan from=$gui->tplans}
-          <option value="{$testplan.id}">{$testplan.name|escape}</option>
-        {/foreach}
-        </select>
+      </div>
+      <div class="form-group">
+          <label for="{$labels.testplan_th_notes}">{$labels.testplan_th_notes}</label>
+          {$gui->notes}
+      </div>
 
-            <div id="copy_controls" style="display:none;">
-            {assign var=this_template_dir value=$smarty.template|dirname}
-            {include file="$this_template_dir/inc_controls_planEdit.tpl"}
-            </div>
-        </td>
-        </tr>
+      {if $gui->tplan_id eq 0}
+      {if $gui->tplans}
+      <div class="form-group">
+          <label for="copy_from_tplan_id">{$labels.testplan_question_create_tp_from}</label>
+          <select class="form-control" id="copy_from_tplan_id" name="copy_from_tplan_id"
+                  onchange="manage_copy_ctrls('copy_controls',this.value,'0')">
+              <option value="0">{$labels.opt_no}</option>
+              {foreach item=testplan from=$gui->tplans}
+                  <option value="{$testplan.id}">{$testplan.name|escape}</option>
+              {/foreach}
+          </select>
+          <div id="copy_controls" style="display:none;">
+              {assign var=this_template_dir value=$smarty.template|dirname}
+              {include file="$this_template_dir/inc_controls_planEdit.tpl"}
+          </div>
+      </div>
       {/if}
-    {/if}
+      {/if}
+  <table class="common" width="10%">
       <tr>
         <th style="background:none;">{$labels.testplan_th_active}</th>
           <td>
@@ -164,46 +174,42 @@ function jsCallDeleteFile(btn, text, o_id)
             <input type="checkbox" name="is_public" {if $gui->is_public eq 1} checked="checked" {/if} />
           </td>
       </tr>
-
+  </table>
+      <br>
       {if isset($gui->api_key) && $gui->api_key != ''}
-      <tr>
-        <th style="background:none;">{$labels.api_key}</th>
-        <td>{$gui->api_key}</td>
-      </tr>
+      <div class="form-group">
+          <label for="{$labels.api_key}">{$labels.api_key}</label>
+          <p>{$gui->api_key}</p>
+      </div>
       {/if}
 
 
 
     {if $gui->cfields neq ''}
-    <tr>
-      <td  colspan="2">
-     <div id="custom_field_container" class="custom_field_container">
-     {$gui->cfields}
-     </div>
-      </td>
-    </tr>
+        <p>{$gui->cfields}</p>
     {/if}
-  </table>
+
 
   <div class="groupBtn">
     {if $gui->tplan_id eq 0}
       <input type="hidden" name="do_action" value="do_create" />
-      <input type="submit" name="do_create" value="{$labels.btn_testplan_create}"
+      <input class="btn btn-info" type="submit" name="do_create" value="{$labels.btn_testplan_create}"
              onclick="do_action.value='do_create'"/>
     {else}
 
       <input type="hidden" name="do_action" value="do_update" />
-      <input type="submit" name="do_update" value="{$labels.btn_upd}"
+      <input class="btn btn-info" type="submit" name="do_update" value="{$labels.btn_upd}"
              onclick="do_action.value='do_update'"/>
 
     {/if}
 
-    <input type="button" name="go_back" value="{$labels.cancel}"
-                         onclick="javascript: location.href=fRoot+'lib/plan/planView.php';" />
+    <input class="btn btn-secondary" type="button" name="go_back" value="{$labels.cancel}"
+                         onclick="location.href=fRoot+'lib/plan/planView.php';" />
 
   </div>
-
+  </fieldset>
   </form>
+    <hr>
 {if $gui->tplan_id neq 0}
   {$downloadOnly=true}
   {if $gui->grants->testplan_create eq 'yes'}
@@ -217,7 +223,7 @@ function jsCallDeleteFile(btn, text, o_id)
                attach_loadOnCancelURL=$loadOnCancelURL}
 {/if}
              
-<p>{$labels.testplan_txt_notes}</p>
+
 
 </div>
 

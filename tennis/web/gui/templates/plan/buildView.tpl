@@ -13,7 +13,8 @@ Purpose: smarty template - Show existing builds
 {$managerURL="lib/plan/buildEdit.php"}
 {$editAction="$managerURL?do_action=edit&build_id="}
 {$deleteAction="$managerURL?do_action=do_delete&build_id="}
-{$createAction="$managerURL?do_action=create&tplan_id=$gui->tplan_id"}
+{$id = $gui->tplan_id}
+{$createAction="$managerURL?do_action=create&tplan_id=$id"}
 
 
 {lang_get s='warning_delete_build' var="warning_msg"}
@@ -28,7 +29,7 @@ Purpose: smarty template - Show existing builds
 
 {include file="inc_head.tpl" openHead="yes" jsValidate="yes" enableTableSorting="yes"}
 {include file="inc_del_onclick.tpl"}
-
+{include file="custom.tpl"}
 <script type="text/javascript">
 /* All this stuff is needed for logic contained in inc_del_onclick.tpl */
 var del_action=fRoot+'{$deleteAction}';
@@ -36,15 +37,21 @@ var del_action=fRoot+'{$deleteAction}';
 </head>
 
 <body {$body_onload}>
+<section class="jumbotron">
+	<h2 class="text-center">{$labels.title_build_2}{$smarty.const.TITLE_SEP_TYPE3}{$labels.test_plan}{$smarty.const.TITLE_SEP}{$gui->tplan_name|escape}</h2>
+</section>
 
-<h1 class="title">{$labels.title_build_2}{$smarty.const.TITLE_SEP_TYPE3}{$labels.test_plan}{$smarty.const.TITLE_SEP}{$gui->tplan_name|escape}</h1>
-
-<div class="workBack">
+<div class="container">
 {include file="inc_update.tpl" result=$sqlResult item="build" user_feedback=$gui->user_feedback}
-
+<div class="alert alert-primary">
+	{$labels.builds_description}
+</div>
+	<hr>
 {* --------------------------------------------------------------------------------- *}
 <div id="existing_builds">
   {if $gui->buildSet ne ""}
+	  <h3>Table des versions du produit</h3>
+	  <hr>
   <form method="post" id="buildView" name="buildView" action="{$managerURL}">
     <input type="hidden" name="do_action" id="do_action" value="">
     <input type="hidden" name="build_id" id="build_id" value="">
@@ -52,15 +59,17 @@ var del_action=fRoot+'{$deleteAction}';
 
 
     {* table id MUST BE item_view to use show/hide API info *}
-  	<table id="item_view" class="simple_tableruler sortable">
-  		<tr>
-  			<th>{$tlImages.toggle_api_info}{$tlImages.sort_hint}{$labels.th_title}</th>
-  			<th class="{$noSortableColumnClass}">{$labels.th_description}</th>
-  			<th class="{$noSortableColumnClass}" style="width:90px;">{$labels.release_date}</th>
-  			<th class="{$noSortableColumnClass}">{$labels.th_active}</th>
-  			<th class="{$noSortableColumnClass}">{$labels.th_open}</th>
-  			<th class="{$noSortableColumnClass}">{$labels.th_delete}</th>
-  		</tr>
+  	<table id="item_view" class="table table-hover sortable">
+		<thead class="bg-primary">
+			<tr>
+				<th>{$tlImages.toggle_api_info}{$tlImages.sort_hint}{$labels.th_title}</th>
+				<th class="{$noSortableColumnClass}">{$labels.th_description}</th>
+				<th class="{$noSortableColumnClass}" style="width:90px;">{$labels.release_date}</th>
+				<th class="{$noSortableColumnClass}">{$labels.th_active}</th>
+				<th class="{$noSortableColumnClass}">{$labels.th_open}</th>
+				<th class="{$noSortableColumnClass}">{$labels.th_delete}</th>
+			</tr>
+		</thead>
   		{foreach item=build from=$gui->buildSet}
         	<tr>
   				<td><span class="api_info" style='display:none'>{$tlCfg->api->id_format|replace:"%s":$build.id}</span>
@@ -114,18 +123,18 @@ var del_action=fRoot+'{$deleteAction}';
   	</table>
    </form>
   {else}
-  	<p>{$labels.no_builds}</p>
+	  <div class="alert alert-danger">
+          {$labels.no_builds}
+	  </div>
   {/if}
 </div>
 {* ------------------------------------------------------------------------------------------- *}
-
-<div class="groupBtn">
   <form method="post" action="{$createAction}" id="create_build">
-    <input type="submit" name="create_build" value="{$labels.btn_build_create}" />
+    <input class="btn btn-success" type="submit" name="create_build" value="{$labels.btn_build_create}" />
   </form>
-</div>
 
-<p>{$labels.builds_description}</p>
+
+
 </div>
 
 </body>

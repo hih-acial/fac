@@ -39,7 +39,7 @@ some smarty and javascript variables are created on the inc_*.tpl files.
 
 {include file="inc_head.tpl" openHead="yes" enableTableSorting="yes"}
 {include file="inc_del_onclick.tpl"}
-
+{include file="custom.tpl"}
 <script type="text/javascript">
 /* All this stuff is needed for logic contained in inc_del_onclick.tpl */
 var del_action=fRoot+'{$deleteAction}';
@@ -55,27 +55,35 @@ var del_action=fRoot+'{$deleteAction}';
 </head>
 
 <body {$body_onload}>
-
-<h1 class="title">{$gui->main_descr|escape}</h1>
+<section class="jumbotron">
+    <h2 class="text-center">{$gui->main_descr|escape}</h2>
+</section>
 {if $gui->user_feedback ne ""}
-  <div>
-    <p class="info">{$gui->user_feedback}</p>
-  </div>
+    <div class="alert alert-primary">
+        <p class="info">{$gui->user_feedback}</p>
+    </div>
 {/if}
 
-<div class="workBack">
-<div id="testplan_management_list">
+<div class="container">
+
+    <div id="testplan_management_list">
 {if $gui->tproject_id <= 0}
-  {$labels.error_no_testprojects_present}
+    <div class="alert alert-danger">
+        {$labels.error_no_testprojects_present}
+    </div>
 {elseif $gui->tplans eq ''}
-  {$labels.testplan_txt_empty_list}
+    <div class="alert alert-warning">
+        {$labels.testplan_txt_empty_list}
+    </div>
 {else}
+    <h2>Table des campagnes de test</h2>
+    <hr>
   <form method="post" id="testPlanView" name="testPlanView" action="{$managerURL}">
     <input type="hidden" name="do_action" id="do_action" value="">
     <input type="hidden" name="tplan_id" id="tplan_id" value="">
 
-  <table id='item_view'class="simple_tableruler sortable">
-    <thead>
+  <table id='item_view' class="table table-hover sortable">
+    <thead class="thead-dark">
     <tr>
       <th>{$tlImages.toggle_api_info}{$tlImages.sort_hint}{$labels.testplan_th_name}</th>
       <th class="{$noSortableColumnClass}">{$labels.testplan_th_notes}</th>
@@ -86,7 +94,7 @@ var del_action=fRoot+'{$deleteAction}';
       {/if}
       <th class="{$noSortableColumnClass}">{$labels.testplan_th_active}</th>
       <th class="{$noSortableColumnClass}">{$labels.public}</th>
-      <th class="{$noSortableColumnClass}">&nbsp;</th>
+      <th class="{$noSortableColumnClass}">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -174,7 +182,7 @@ var del_action=fRoot+'{$deleteAction}';
  {if $gui->grants->testplan_create && $gui->tproject_id > 0}
  <div class="groupBtn">
     <form method="post" action="{$createAction}">
-      <input type="submit" name="create_testplan" value="{$labels.btn_testplan_create}" />
+      <input class="btn btn-success" type="submit" name="create_testplan" value="{$labels.btn_testplan_create}" />
     </form>
   </div>
  {/if}

@@ -14,7 +14,7 @@
              dont_show_all_versions_btn'}
 
 {include file="inc_head.tpl" openHead="yes"}
-
+{include file="custom.tpl"}
 {foreach from=$gui->tableSet key=idx item=matrix name="initializer"}
   {$tableID="table_$idx"}
   {if $smarty.foreach.initializer.first}
@@ -29,9 +29,12 @@
 </head>
 
 <body>
-<h1 class="title">{$gui->pageTitle|escape}</h1>
+<section class="jumbotron">
+  <h2 class="text-center">{$gui->pageTitle|escape}</h2>
+</section>
 
-<div class="workBack" style="overflow-y: auto;">
+
+<div class="container">
 
 {foreach from=$gui->tableSet key=idx item=matrix}
 {$tableID="table_$idx"}

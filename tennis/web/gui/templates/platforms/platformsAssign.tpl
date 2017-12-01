@@ -13,6 +13,7 @@ Purpose: smarty template - assign platforms to testplans
 
 {include file="inc_head.tpl" openHead='yes'}
 {include file="inc_ext_js.tpl"}
+{include file="custom.tpl"}
 <script language="JavaScript" src="gui/javascript/OptionTransfer.js" type="text/javascript"></script>
 <script language="JavaScript" src="gui/javascript/expandAndCollapseFunctions.js" type="text/javascript"></script>
 
@@ -21,7 +22,7 @@ Purpose: smarty template - assign platforms to testplans
 {* Used to show warnings when trying to remove platform with testcases *}
 {$gui->platform_count_js}
 
-  var {$opt_cfg->js_ot_name} = new OptionTransfer("{$opt_cfg->from->name}","{$opt_cfg->to->name}");
+  var {$opt_cfg->js_ot_name} =new OptionTransfer("{$opt_cfg->from->name}","{$opt_cfg->to->name}");
   {$opt_cfg->js_ot_name}.saveRemovedLeftOptions("{$opt_cfg->js_ot_name}_removedLeft");
   {$opt_cfg->js_ot_name}.saveRemovedRightOptions("{$opt_cfg->js_ot_name}_removedRight");
   {$opt_cfg->js_ot_name}.saveAddedLeftOptions("{$opt_cfg->js_ot_name}_addedLeft");
@@ -68,27 +69,35 @@ Purpose: smarty template - assign platforms to testplans
 </head>
 
 <body {if $gui->can_do} onLoad="{$opt_cfg->js_ot_name}.init(document.forms[0])" {/if}>
+<section class="jumbotron">
+	<h2 class="text-center">{$gui->mainTitle}</h2>
+</section>
 
-<div class="workBack">
-	<h1 class="title">{$gui->mainTitle}</h1>
+<div class="container">
+
 
 {if $gui->warning != ''}
-  {* do not escape *}
-  {$gui->warning}
+	<div class="alert alert-warning">
+        {* do not escape *}
+        {$gui->warning}
+	</div>
+
 {/if}
 
 {if $gui->can_do}
-		<div style="margin-top: 25px;">
+		<div class="text-center center-block">
 			<form method="post" action="lib/platforms/platformsAssign.php?tplan_id={$gui->tplan_id}">
 			  <input type="hidden" name="doAction" value="">
 				{include file="opt_transfer.inc.tpl" option_transfer=$opt_cfg}
 				<br />
-				<input type="submit" name="doAssignPlatforms" value="{$labels.btn_save}" 
+				<input class="btn btn-success" type="submit" name="doAssignPlatforms" value="{$labels.btn_save}"
 				       onclick="doAction.value='doAssignPlatforms'"	/>
 			</form>
 		</div>
 	{else}
-	  {$labels.platform_assignment_no_testplan}
+	<div class="alert alert-warning">
+        {$labels.platform_assignment_no_testplan}
+	</div>
 	{/if}
 </div>
 </body>

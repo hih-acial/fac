@@ -25,7 +25,7 @@ Purpose: smarty template - View all platforms
 {assign var="viewAction" value="lib/platforms/platformsView.php"}
 {assign var="dummy" value="lib/platforms/platformsImport.php?goback_url="}
 {assign var="importAction" value="$basehref$dummy$basehref$viewAction"}
-
+{include file="custom.tpl"}
 
 <script type="text/javascript">
 <!--
@@ -39,18 +39,24 @@ Purpose: smarty template - View all platforms
 {assign var="cfg_section" value=$smarty.template|basename|replace:".tpl":"" }
 {config_load file="input_dimensions.conf" section=$cfg_section}
 
-<h1 class="title">{$labels.menu_manage_platforms}</h1>
-{include file="inc_feedback.tpl" user_feedback=$gui->user_feedback}
-<div class="workBack">
+<section class="jumbotron">
+    <h2 class="text-center">{$labels.menu_manage_platforms}</h2>
+</section>
+
+
+<div class="container">
+        {include file="inc_feedback.tpl" user_feedback=$gui->user_feedback}
 {if $gui->platforms != ''}
-	<table class="simple_tableruler sortable">
-		<tr>
-			<th width="30%">{$tlImages.toggle_api_info}{$tlImages.sort_hint}{$labels.th_platform}</th>
-			<th>{$tlImages.sort_hint}{$labels.th_notes}</th>
-			{if $gui->canManage != ""}
-				<th>{$labels.th_delete}</th>
-			{/if}
-		</tr>
+	<table class="table table-hover sortable">
+        <thead class="bg-primary">
+        <tr>
+            <th width="30%">{$tlImages.toggle_api_info}{$tlImages.sort_hint}{$labels.th_platform}</th>
+            <th>{$tlImages.sort_hint}{$labels.th_notes}</th>
+            {if $gui->canManage != ""}
+                <th>{$labels.th_delete}</th>
+            {/if}
+        </tr>
+        </thead>
 		{section name=platform loop=$gui->platforms}
 		<tr>
 			<td>
@@ -85,20 +91,20 @@ Purpose: smarty template - View all platforms
 	</table>
  {/if}
 	
-	<div class="groupBtn">	
-   		<form style="float:left" name="platform_view" id="platform_view" method="post" action="lib/platforms/platformsEdit.php">
+	<div class="form-inline text-center center-block">
+   		<form name="platform_view" id="platform_view" method="post" action="lib/platforms/platformsEdit.php">
 	  		<input type="hidden" name="doAction" value="" />
 		  	{if $gui->canManage ne ""}
-		    	<input type="submit" id="create_platform" name="create_platform" 	value="{$labels.btn_create_platform}"
+		    	<input class="btn btn-success" type="submit" id="create_platform" name="create_platform" 	value="{$labels.btn_create_platform}"
 		           	 onclick="doAction.value='create'"/>
 			  {/if}	
 		</form>
      	<form name="platformsExport" id="platformsExport" method="post" action="lib/platforms/platformsExport.php">
      		<input type="hidden" name="goback_url" value="{$basehref|escape}{$viewAction|escape}"/>
-			<input type="submit" name="export_platforms" id="export_platforms"
+			<input class="btn btn-secondary" type="submit" name="export_platforms" id="export_platforms"
 		         style="margin-left: 3px;" value="{$labels.btn_export}" />
 		  	{if $gui->canManage ne ""}       
-		  		<input type="button" name="import_platforms" id="import_platforms" 
+		  		<input class="btn btn-info" type="button" name="import_platforms" id="import_platforms"
 		         	   onclick="location='{$importAction}'" value="{$labels.btn_import}" />
        	  	{/if}
 	  	</form>

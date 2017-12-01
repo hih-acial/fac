@@ -18,9 +18,9 @@ INPUT:
 
 {if $user_feedback.message != ''}
     {if $user_feedback.type === 'ERROR'}
-		  {assign var="divClass" value="error"}
+		{assign var="divClass" value="alert alert-danger"}
   	{else}
-		  {assign var="divClass" value="user_feedback"}
+		{assign var="divClass" value="alert alert-success"}
     {/if}
     <div class="{$divClass}">
 		<p>{$user_feedback.message|escape}</p>

@@ -17,31 +17,33 @@ Form for searching through requirement specifications.
 
 
 {include file="inc_head.tpl"}
+{include file="custom.tpl"}
 <body>
+<section class="jumbotron">
+	<h2 class="text-center">{$gui->mainCaption|escape}</h2>
+</section>
 
-<h1 class="title">{$gui->mainCaption|escape}</h1>
-
-<div style="margin: 1px;">
-<form method="post" action="{$basehref}lib/requirements/reqSpecSearch.php" target="workframe">
-	<table class="smallGrey" style="width:100%">
-		<caption>{$labels.caption_search_form_req_spec}</caption>
+<div class="container">
+	<h4>{$labels.caption_search_form_req_spec}</h4>
+	<form method="post" action="{$basehref}lib/requirements/reqSpecSearch.php" target="workframe">
+	<table class="table" style="width:100%">
 		<tr>
 			<td>{$labels.req_spec_document_id}</td>
-			<td><input type="text" name="requirement_document_id" size="{#REQSPECDOCID_SIZE#}" maxlength="{#REQSPECDOCID_MAXLEN#}" /></td>
+			<td><input class="form-control" type="text" name="requirement_document_id" size="{#REQSPECDOCID_SIZE#}" maxlength="{#REQSPECDOCID_MAXLEN#}" /></td>
 		</tr>
 		<tr>
 			<td>{$labels.title}</td>
-			<td><input type="text" name="name" size="{#REQSPECNAME_SIZE#}" maxlength="{#REQSPECNAME_MAXLEN#}" /></td>
+			<td><input class="form-control" type="text" name="name" size="{#REQSPECNAME_SIZE#}" maxlength="{#REQSPECNAME_MAXLEN#}" /></td>
 		</tr>
 		<tr>
 			<td>{$labels.scope}</td>
-			<td><input type="text" name="scope" 
+			<td><input class="form-control" type="text" name="scope"
 			           size="{#SCOPE_SIZE#}" maxlength="{#SCOPE_MAXLEN#}" /></td>
 		</tr>
 		<tr>
 			<td>{$labels.type}</td>
 			<td>
-				<select name="reqSpecType" id="reqSpecType">
+				<select class="form-control" name="reqSpecType" id="reqSpecType">
 					<option value="notype">&nbsp;</option>
   					{html_options options=$gui->types}
   				</select>
@@ -51,7 +53,7 @@ Form for searching through requirement specifications.
 		{if $gui->filter_by.design_scope_custom_fields}
 		    <tr>
    	    	<td>{$labels.custom_field}</td>
-		    	<td><select name="custom_field_id">
+		    	<td><select class="form-control" name="custom_field_id">
 		    			<option value="0">&nbsp;</option>
 		    			{foreach from=$gui->design_cf key=cf_id item=cf}
 		    				<option value="{$cf_id}">{$cf.label|escape}</option>
@@ -62,14 +64,14 @@ Form for searching through requirement specifications.
 		    <tr>
 	       		<td>{$labels.custom_field_value}</td>
          		<td>
-		    		<input type="text" name="custom_field_value" 
+		    		<input class="form-control" type="text" name="custom_field_value"
 		    	         size="{#CFVALUE_SIZE#}" maxlength="{#CFVALUE_MAXLEN#}"/>
 		    	</td>
 	      </tr>
 	  {/if}
 		<tr>
 			<td>{$labels.log_message}</td>
-			<td><input type="text" name="log_message" id="log_message" 
+			<td><input class="form-control" type="text" name="log_message" id="log_message"
 					   size="{#LOGMSG_SIZE#}" maxlength="{#LOGMSG_MAXLEN#}" /></td>
 		</tr>
 	  		
@@ -77,10 +79,10 @@ Form for searching through requirement specifications.
   			      
 	</table>
 	
-	<p style="padding-left: 20px;">
+	<div class="text-center">
 		
-		<input type="submit" name="doSearch" value="{$labels.btn_find}" />
-	</p>
+		<input class="btn btn-info" type="submit" name="doSearch" value="{$labels.btn_find}" />
+	</div>
 </form>
 
 </div>
