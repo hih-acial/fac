@@ -78,7 +78,8 @@
 {if $control->display_settings}
     <div class="card">
         <div class="card-header" >
-            <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse" class="card-title text-center collapsed" style="cursor: pointer" aria-expanded="false"> {$labels.caption_nav_settings}</h4>
+            <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse" class="card-title text-center collapsed" style="cursor: pointer" aria-expanded="false"> {$labels.caption_nav_settings}  <span class="glyphicon glyphicon-chevron-down"></span></h4>
+
         </div>
         <div id="collapse" class="collapse" style="display: none">
             <div id="settings" class="card-body">
@@ -176,7 +177,7 @@
 {if $control->display_filters}
     <div class="card">
         <div class="card-header" >
-            <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="card-title text-center collapsed" style="cursor: pointer" aria-expanded="false"> {$labels.caption_nav_filters}</h4>
+            <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="card-title text-center collapsed" style="cursor: pointer" aria-expanded="false"> {$labels.caption_nav_filters}  <span class="glyphicon glyphicon-chevron-down"></span></h4>
         </div>
         <div id="collapse1" class="collapse" style="display:none;">
             <div id="filters" class="card-body">
@@ -467,7 +468,7 @@
 {if $control->display_req_settings}
   <div class="card">
     <div class="card-header" >
-        <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse" class="card-title text-center collapsed" style="cursor: pointer" aria-expanded="false"> {$labels.caption_nav_settings}</h4>
+        <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse" class="card-title text-center collapsed" style="cursor: pointer" aria-expanded="false"> {$labels.caption_nav_settings}  <span class="glyphicon glyphicon-chevron-down"></span></h4>
     </div>
     <div id="collapse" class="collapse" style="display: none">
         <div id="settings" class="card-body">
@@ -504,7 +505,7 @@
 {if $control->display_req_filters}
     <div class="card">
         <div class="card-header" >
-            <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="card-title text-center collapsed" style="cursor: pointer" aria-expanded="false"> {$labels.caption_nav_filters}</h4>
+            <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="card-title text-center collapsed" style="cursor: pointer" aria-expanded="false"> {$labels.caption_nav_filters}  <span class="glyphicon glyphicon-chevron-down"></span></h4>
         </div>
         <div id="collapse1" class="collapse" style="display: none">
             <div id="filters" class="card-body">
