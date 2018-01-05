@@ -140,7 +140,7 @@ viewer for requirement
 {if $gui->version_option > 0}
   <div class="messages" align="center">{$labels.showing_version} {$args_req.version}</div>
 {/if}
-<section class="well">
+<section>
   <h4>Informations sur l'exigence</h4>
   <hr>
   <table class="table table-bordered">

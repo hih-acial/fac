@@ -16,7 +16,7 @@
                           href_print_tc,href_keywords_assign, href_req_overview,
                           href_print_req,title_plugins,title_documentation,href_issuetracker_management,
                           href_reqmgrsystem_management,href_req_monitor_overview,
-            current_test_plan,ok,testplan_role,msg_no_rights_for_tp,
+             current_test_plan,ok,testplan_role,msg_no_rights_for_tp,
              title_test_execution,href_execute_test,href_rep_and_metrics,
              href_update_tplan,href_newest_tcversions,title_plugins,
              href_my_testcase_assignments,href_platform_assign,
@@ -325,8 +325,8 @@ $gui->grants.exec_ro_access == "yes")}
                     {if $gui->num_active_tplans > 0}
                         <form name="testplanForm" action="lib/general/mainPage.php">
                             {if $gui->countPlans > 0}
-                                <h4>{$labels.current_test_plan}:</h4>
-                                <select class="form-control" name="testplan" onchange="this.form.submit();">
+                                <h4><label for="testplan">{$labels.current_test_plan}:</label></h4>
+                                <select class="form-control" id="testplan" name="testplan" onchange="this.form.submit();">
                                     {section name=tPlan loop=$gui->arrPlans}
                                         <option value="{$gui->arrPlans[tPlan].id}"
                                                 {if $gui->arrPlans[tPlan].selected} selected="selected" {/if}

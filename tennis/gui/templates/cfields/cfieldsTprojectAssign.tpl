@@ -173,12 +173,6 @@ Purpose: management Custom fields assignment to a test project
 		</div>
 
 
-<script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-</script>
 
 
 

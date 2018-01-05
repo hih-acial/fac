@@ -321,7 +321,7 @@ s="requirement_spec,Requirements,tcversion_is_inactive_msg,
 
 
 </script>
-<section class="well">
+<section>
 <form id="stepsControls" name="stepsControls" method="post" action="{$basehref}lib/testcases/tcEdit.php">
     <input type="hidden" name="goback_url" value="{$goBackAction}" />
     <input type="hidden" id="stepsControls_doAction" name="doAction" value="" />
@@ -422,7 +422,7 @@ s="requirement_spec,Requirements,tcversion_is_inactive_msg,
 {if $args_linked_versions != null && $tlCfg->spec_cfg->show_tplan_usage}
     {* Test Case version Test Plan Assignment *}
     <br />
-<section class="well">
+<section>
     {include file="testcases/quickexec.inc.tpl" args_edit_enabled=$edit_enabled}
 </section>
 {/if}

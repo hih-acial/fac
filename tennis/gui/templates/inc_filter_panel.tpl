@@ -78,9 +78,9 @@
 {if $control->display_settings}
     <div class="card">
         <div class="card-header" >
-            <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse" class="card-title text-center" style="cursor: pointer"> {$labels.caption_nav_settings}</h4>
+            <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse" class="card-title text-center collapsed" style="cursor: pointer" aria-expanded="false"> {$labels.caption_nav_settings}</h4>
         </div>
-        <div id="collapse">
+        <div id="collapse" class="collapse" style="display: none">
             <div id="settings" class="card-body">
                 <input type='hidden' id="tpn_view_settings" name="tpn_view_status"  value="0" />
 
@@ -176,9 +176,9 @@
 {if $control->display_filters}
     <div class="card">
         <div class="card-header" >
-            <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="card-title text-center" style="cursor: pointer"> {$labels.caption_nav_filters}</h4>
+            <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="card-title text-center collapsed" style="cursor: pointer" aria-expanded="false"> {$labels.caption_nav_filters}</h4>
         </div>
-        <div id="collapse1">
+        <div id="collapse1" class="collapse" style="display:none;">
             <div id="filters" class="card-body">
 
 
@@ -327,7 +327,7 @@
                                 {else}
                                     <select class="chosen-select form-control" name="filter_assigned_user"
                                             id="filter_assigned_user"
-                                            onchange="javascript: triggerAssignedBox('filter_assigned_user',
+                                            onchange="triggerAssignedBox('filter_assigned_user',
                                                     'filter_assigned_user_include_unassigned',
                                                     '{$control->option_strings.any}',
                                                     '{$control->option_strings.none}',
@@ -467,9 +467,9 @@
 {if $control->display_req_settings}
   <div class="card">
     <div class="card-header" >
-        <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse" class="card-title text-center" style="cursor: pointer"> {$labels.caption_nav_settings}</h4>
+        <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse" class="card-title text-center collapsed" style="cursor: pointer" aria-expanded="false"> {$labels.caption_nav_settings}</h4>
     </div>
-    <div id="collapse">
+    <div id="collapse" class="collapse" style="display: none">
         <div id="settings" class="card-body">
             <input type='hidden' id="tpn_view_settings" name="tpn_view_status"  value="0" />
 
@@ -504,9 +504,9 @@
 {if $control->display_req_filters}
     <div class="card">
         <div class="card-header" >
-            <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="card-title text-center" style="cursor: pointer"> {$labels.caption_nav_filters}</h4>
+            <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse1" class="card-title text-center collapsed" style="cursor: pointer" aria-expanded="false"> {$labels.caption_nav_filters}</h4>
         </div>
-        <div id="collapse1">
+        <div id="collapse1" class="collapse" style="display: none">
             <div id="filters" class="card-body">
 
 

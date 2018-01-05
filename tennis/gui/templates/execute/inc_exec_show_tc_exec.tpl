@@ -118,7 +118,7 @@ TestLink Open Source Project - http://testlink.sourceforge.net/
     {$exec_build_title="$build_title $title_sep $my_build_name"}
 
 
-    <div id="execution_history" class="jumbotron">
+    <div id="execution_history">
         <div class="card border-dark">
             <div class="card-header">
                 <h4 data-toggle="collapse" data-parent="#accordion" href="#collapse" class="card-title text-center collapsed" style="cursor: pointer" aria-expanded="false"> Exécutions de la fiche de test</h4>

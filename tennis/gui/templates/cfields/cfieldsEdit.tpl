@@ -30,11 +30,7 @@ This is done to simplify logic.
 {lang_get s='delete' var="del_msgbox_title" }
 
 {lang_get var="labels"
-          s="btn_ok,title_cfields_mgmt,warning_is_in_use,warning,name,label,type,possible_values,
-             warning_empty_cfield_name,warning_empty_cfield_label,testproject,assigned_to_testprojects,
-             enable_on_design,show_on_exec,enable_on_exec,enable_on_testplan_design,
-             available_on,btn_upd,btn_delete,warning_no_type_change,enable_on,
-             btn_add,btn_cancel,show_on_design,show_on_testplan_design,btn_add_and_assign_to_current,"}
+          s="btn_ok,title_cfields_mgmt,warning_is_in_use,warning,name,label,type,possible_values,warning_empty_cfield_name,warning_empty_cfield_label,testproject,assigned_to_testprojects,enable_on_design,show_on_exec,enable_on_exec,enable_on_testplan_design,available_on,btn_upd,btn_delete,warning_no_type_change,enable_on,btn_add,btn_cancel,show_on_design,show_on_testplan_design,btn_add_and_assign_to_current,"}
 
 {include file="inc_head.tpl" jsValidate="yes" openHead="yes"}
 {include file="inc_del_onclick.tpl"}
@@ -487,12 +483,5 @@ function initShowOnExec(id_master,show_on_cfg)
             </div>
         </div>
 
-
-<script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-</script>
 </body>
 </html>
